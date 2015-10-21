@@ -1,0 +1,31 @@
+<h1>Profile page</h1>
+<p>
+<form action="/users/logout" method="post">
+<button type="submit" name="logout">Logout</button>
+</form>
+</p>
+<hr />
+<p>
+<%= @user.first_name %>  <%= @user.last_name %>
+</p>
+<p>
+<h3> Your Tracks </h3>
+<% unless @user.tracks.empty? %>
+  <% @user.tracks.each do |track| %>
+    <p>
+      Artist: <%= track.artist %>
+    </p>
+
+    <p>
+      Created at: <%= track.created_at.to_formatted_s(:long_ordinal)  %>             
+    </p>
+  <hr />
+  <% end %>
+<% end %>
+
+<p>
+<a href="/">Go to Home Page</a>
+</p>
+<p>
+<a href="tracks/new">Add new Track</a>
+</p>

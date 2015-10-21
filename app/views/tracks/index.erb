@@ -1,0 +1,42 @@
+<% if current_user %>
+  <p>
+    <a href="/users/<%= current_user.id %>">Your Profile</a>
+  </p>
+  <p>
+<form action="/users/logout" method="post">
+    <button type="submit" name="logout">Logout</button>
+</form>
+  </p>
+<% end %>  
+
+<div class="container">
+  <% @tracks.each do |track| %>
+    <div class="track">
+      <h3>
+        <a href="/tracks/<%= track.id %>">
+          <%= track.title %>
+        </a> 
+        <small>
+          (by: <%= track.artist %>)
+        </small>
+      </h3>
+      <p>
+        Added By: <%= track.user.username %>
+      </p>
+      <p>
+        Upvotes: <%= track.upvotes.count %>
+        <form action="/users/upvote" method="post">
+          <button type="submit" name="logout">Upvote!</button>
+          <input type="hidden" name="track_id" value="<%= track.id %>">
+        </form>
+      </p>
+</div>
+  <% end %>
+</div>
+  <hr />
+  <div class="container">
+    <a href='/'>Home Page</a>
+  <p>
+  <a href="/tracks/new">Add more tracks</a>
+  </p>
+</div>

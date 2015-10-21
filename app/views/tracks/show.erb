@@ -1,0 +1,20 @@
+<div class="container">
+  <h1><%= @track.title %></h1>
+  <span><a href="<%= @track.url %>">Link to Track</a></span>
+
+
+  <p>
+    Artist: <%= @track.artist %>
+  </p>
+
+  <p>
+    Created at: <%= @track.created_at.to_formatted_s(:long_ordinal)  %>             
+  </p>
+  <p>
+    Added By: <%= track.user.username %>
+  </p>
+
+  <hr/>
+  
+  <a href="/tracks">Back to All Tracks</a>
+</div>

@@ -1,0 +1,37 @@
+<!--<div class="container">-->
+<% if current_user.id == nil %>
+  <p>400 Need to be logged in to see this page</p>
+<% else %>
+    <h1>Post a Track</h1>
+    <hr/>
+
+    <% if @track && @track.errors.any? %>
+      <div>
+        <strong>Some issues with the track you tryna post, please fix them:</strong>
+        <ul>
+          <% @track.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <form method="post" action="/tracks">
+      <div>
+        <label>Artist:</label>
+        <input type="text" name="artist" value="<%= @track && @track.artist %>">
+      </div>
+      <div>
+        <label>Song Title:</label>
+        <input type="text" name="title" value="<%= @track && @track.title %>">
+      </div>
+      <div>
+        <label>Url (optional):</label>
+        <input type="text" name="url" style="width: 300px;" value="<%= @track && @track.url %>">
+      </div>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  <% end %>
+<!--</div>-->
