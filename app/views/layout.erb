@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
@@ -89,4 +90,48 @@
         <script src="javascript/scripts.js"></script>
         <%= yield %>
     </body>
+=======
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Savebook - share your book!</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/app.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+   
+  
+</head>
+<body>
+
+<div class="df-navbar">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+  </button>
+  <div class="df-brand">
+    <a class="navbar-brand" href="#"><img src="images/savebook_logo.png"></a>
+  </div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav navbar-right df-navlist">
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">All books</a></li>
+      <li><a href="#">All users</a></li>
+    </ul>
+  </div>
+</div>
+  <%= yield %>
+
+  <!-- script references -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="javascript/application.js"></script>
+  <script src="javascript/bootstrap.min.js"></script>
+  <script src="javascript/scripts.js"></script>
+</body>
+>>>>>>> 00ffa30098c9fa430d694baea81793125d4844c5
 </html>
