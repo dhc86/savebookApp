@@ -5,6 +5,7 @@
 
 .df-navlist{
   top: 15px;
+  right: 100px;
   position: relative;
 }
 
@@ -53,6 +54,31 @@ a {
   color:#FFFFFF;
   background-color:#3B5999;
 }
-.login-button+.login-button{
+.login-button+.login-button, .login-pic+.login-button{
   margin-top: 50px;
+}
+
+
+.login-pic{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.navbar-header a img {
+ /* position: absolute;
+  left: 10px;
+  top: -20px;*/
+}
+
+
+
+
+
+
+.toto-nav {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 80px;
+  background-color: #3B5999;
 }
