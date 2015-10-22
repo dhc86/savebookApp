@@ -17,6 +17,7 @@ get '/' do
 end
 
 get '/books' do
+binding.pry
   @books = Book.all
   #filter with our search conditions here
   erb :'books/index'
