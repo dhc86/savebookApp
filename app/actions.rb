@@ -1,3 +1,5 @@
+
+
 helpers do # methods defined here are available in the .erb files, actions.rb and templates in the app
 
   def logged_in?
@@ -17,7 +19,6 @@ get '/' do
 end
 
 get '/books' do
-binding.pry
   @books = Book.all
   #filter with our search conditions here
   erb :'books/index'
