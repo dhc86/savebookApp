@@ -63,13 +63,9 @@ a {
   margin: 0 auto;
 }
 
-.navbar-header a img {
- /* position: absolute;
-  left: 10px;
-  top: -20px;*/
-}
 
-.toto-nav {
+
+.df-navbar {
   position: fixed;
   top: 0px;
   width: 100%;
@@ -77,4 +73,21 @@ a {
   background-color: #3B5999;
 }
 
+.book{
 
+  width:100px;
+  height: 150px;
+  margin: 10px auto;
+}
+
+.book-own{
+  border: solid 3px red; 
+}
+
+.book-lend{
+  border:solid 3px blue;
+}
+
+.book-borrow{
+  border:solid 3px green;
+}
