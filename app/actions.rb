@@ -21,3 +21,7 @@ get '/books' do
   #filter with our search conditions here
   erb :'books/index'
 end
+
+get '/login' do
+  erb :login
+end
