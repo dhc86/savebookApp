@@ -8,7 +8,8 @@ class Book < ActiveRecord::Base
   validates :isbn, presence: true
   validates :description, presence: true
 
-
+  
+  # Finds details of a book based on user entered ISBN
   def self.find_book_with_isbn(isbn)
     response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}")
      title = response["items"][0]["volumeInfo"]["title"]
