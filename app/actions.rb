@@ -11,13 +11,13 @@ helpers do # methods defined here are available in the .erb files, actions.rb an
   end
 end
 
-get '/books' do
-  #@books = Book.all
-  #filter with our search conditions here
-  erb :'books/index'
-end
-
 get '/' do
   #will enable or disable login or profile features if logged_in? or not
   erb :index
+end
+
+get '/books' do
+  @books = Book.all
+  #filter with our search conditions here
+  erb :'books/index'
 end
