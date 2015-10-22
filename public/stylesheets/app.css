@@ -15,10 +15,9 @@ a {
 
 
 .main-left, .main-right{
-  border: solid 3px black; 
-  height:600px;
-  padding: 10px 10px;
-
+  border: solid 1px black; 
+  height:auto;
+  padding: 20px 20px;
 }
 
 .navbar-toggle .icon-bar {
@@ -70,11 +69,6 @@ a {
   top: -20px;*/
 }
 
-
-
-
-
-
 .toto-nav {
   position: fixed;
   top: 0px;
@@ -82,3 +76,5 @@ a {
   height: 80px;
   background-color: #3B5999;
 }
+
+
