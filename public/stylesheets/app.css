@@ -5,6 +5,7 @@
 
 .df-navlist{
   top: 15px;
+  right: 100px;
   position: relative;
 }
 
@@ -14,10 +15,9 @@ a {
 
 
 .main-left, .main-right{
-  border: solid 3px black; 
-  height:600px;
-  padding: 10px 10px;
-
+  border: solid 1px black; 
+  height:auto;
+  padding: 20px 20px;
 }
 
 .navbar-toggle .icon-bar {
@@ -37,4 +37,57 @@ a {
   border: solid 1px black;
   width: 150px;
   height:200px;
+}
+
+.login-board{
+  position: relative;
+  top: 100px;
+}
+.login-button{
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid black;
+  height: 80px;
+  line-height:80px;
+  font-size: 40px;
+  color:#FFFFFF;
+  background-color:#3B5999;
+}
+.login-button+.login-button, .login-pic+.login-button{
+  margin-top: 50px;
+}
+
+
+.login-pic{
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+
+.df-navbar {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 80px;
+  background-color: #3B5999;
+}
+
+.book{
+
+  width:100px;
+  height: 150px;
+  margin: 10px auto;
+}
+
+.book-own{
+  border: solid 3px red; 
+}
+
+.book-lend{
+  border:solid 3px blue;
+}
+
+.book-borrow{
+  border:solid 3px green;
 }
