@@ -1,16 +1,13 @@
 <div class="container">
-  <h1>Home Page</h1>
-  <% if current_user %>
-    <p>
-      <a href="/users/<%= current_user.id %>">Your Profile</a>
-    </p>
-    <% end %>
+<div class="row">
+  <div class=" col-sm-4 main-left">
+    <div class='profile-photo container'>
+      profile-photo
+    </div>
+
+  </div>
+  <div class=" col-sm-8 main-right">
+    
+  </div>
 </div>
-  <hr />
-<div class="container">
-  <a href="/users/signup">Sign Up to begin postng tracks...</a>
-  <p>
-    <h3>Already a member?</h3>
-    <p><a href="/users/login">Login here</a></p>
-  </p>
 </div>

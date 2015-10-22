@@ -1,0 +1,40 @@
+.df-navbar {
+  background-color:#3B5999;
+  color: #FFFFFF;
+}
+
+.df-navlist{
+  top: 15px;
+  position: relative;
+}
+
+a {
+  color:#FFFFFF;
+}
+
+
+.main-left, .main-right{
+  border: solid 3px black; 
+  height:600px;
+  padding: 10px 10px;
+
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+
+.profile-photo{
+  border: solid 1px black;
+  width: 200px;
+  height:200px;
+
+}
+
+
+.book{
+  border: solid 1px black;
+  width: 150px;
+  height:200px;
+}

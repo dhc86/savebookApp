@@ -11,4 +11,6 @@ helpers do # methods defined here are available in the .erb files, actions.rb an
   end
 end
 
-
+get '/' do
+  erb :index
+end
