@@ -13,31 +13,33 @@
 
 ActiveRecord::Schema.define(version: 1) do
 
-  create_table "tracks", force: :cascade do |t|
-    t.string   "title"
-    t.string   "artist"
-    t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "books", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "title"
+    t.string   "author"
+    t.string   "description"
+    t.string   "isbn"
+    t.string   "picture_url", default: "http://i.imgur.com/Ibd6JdC.jpg"
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
-  create_table "upvotes", force: :cascade do |t|
-    t.integer  "track_id"
+  create_table "lends", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "book_id"
+    t.integer  "borrower_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "password"
-    t.string   "username"
     t.string   "email"
-    t.boolean  "logged_in"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "password"
+    t.string   "picture_url", default: "http://i.imgur.com/vUmohYJ.jpg"
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
 end
