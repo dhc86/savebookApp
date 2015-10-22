@@ -1,0 +1,13 @@
+.df-navbar {
+  background-color:#3B5999;
+  color: #FFFFFF;
+}
+
+.df-navlist{
+  top: 15px;
+  position: relative;
+}
+
+a {
+  color:#FFFFFF;
+}
