@@ -1,3 +1,35 @@
+require './config/environment'
+
+# First User
+User.create(first_name: 'Nicki', last_name: 'Minaj', email: 'nicki@google.com', password: 'password', picture_url: 'http://i.imgur.com/cs4CE4S.jpg')
+
+# Second User
+User.create(first_name: 'Nick', last_name: 'Jonas', email: 'jonas@google.com', password: 'password', picture_url: 'http://i.imgur.com/OAnfgJU.jpg')
+
+# Third User
+User.create(first_name: 'Albert', last_name: 'Einstein', email: 'einstein@google.com', password: 'password', picture_url: 'http://i.imgur.com/t3XvDKM.jpg')
+
+# Fourth User
+User.create(first_name: 'Barack', last_name: 'Obama', email: 'obama@google.com', password: 'password', picture_url: 'http://i.imgur.com/zHOf0m4.jpg')
+
+# Fifth User
+User.create(first_name: 'Johnny', last_name: 'Depp', email: 'johnnydepp@google.com', password: 'password', picture_url: 'http://i.imgur.com/cn3Un8c.jpg')
+
+# Sixth User
+User.create(first_name: 'Justin', last_name: 'Beiber', email: 'justin@google.com', password: 'password', picture_url: 'http://i.imgur.com/m83NUbx.jpg')
+
+# Seventh User
+User.create(first_name: 'Steve', last_name: 'Jobs', email: 'stevejobs@google.com', password: 'password', picture_url: 'http://i.imgur.com/ZS4sZZl.jpg')
+
+# Eighth User
+User.create(first_name: 'Stephen', last_name: 'Hawking', email: 'hawking@google.com', password: 'password', picture_url: 'http://i.imgur.com/Os95cm5.jpg')
+
+# Ninth User
+User.create(first_name: 'David', last_name: 'Hasselhoff', email: 'david@google.com', password: 'password', picture_url: 'http://i.imgur.com/E7WC6Uq.jpg')
+
+# Tenth User
+User.create(first_name: 'Snoop', last_name: 'Dogg', email: 'snoopy@google.com', password: 'password', picture_url: 'http://i.imgur.com/5T3W7Wz.jpg') 
+
 # Books for first user
 
 User.first.books.create(
@@ -97,168 +129,168 @@ User.fourth.books.create(
   )
 
 User.fourth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+  title: 'Stars of Fortune: Book One of the Guardians Trilogy',
+  author: 'Nora Roberts',
+  description: 'Nora Roberts is the #1 New York Times bestselling author of more than 200 novels. She is also the author of the bestselling futuristic suspense series written under the pen name J. D. Robb. There are more than 500 million copies of her books in print',
+  isbn: '978-0425280102',
+  picture_url: 'http://i.imgur.com/rIgegMo.jpg'
   )
 
 
 # Books for fifth user
 
 User.fifth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+  title: 'Men Are From Mars, Women Are From Venus',
+  author: 'John Gray',
+  description: 'Popular marriage counselor and seminar leader John Gray provides a unique, practical and proven way for men and women to communicate and relate better by acknowledging the differences between them. Once upon a time Martians and Venusians met, fell in love, and had happy relationships together because they respected and accepted their differences. Then they came to earth and amnesia set in: they forgot they were from different planets. Using this metaphor to illustrate the commonly occurring conflicts between men and women, Gray explains how these differences can come between the sexes and prohibit mutually fulfilling loving relationships. Based on years of successful counseling of couples, he gives advice on how to counteract these differences in communication styles, emotional needs and modes of behavior to promote a greater understanding between individual partners. Gray shows how men and women react differently in conversation and how their relationships are affected by male intimacy cycles ("get close", "back off"), and female self-esteem fluctuations (I\'m okay, I\'m not okay).',
+  isbn: '9780060574215',
+  picture_url: 'http://i.imgur.com/a2PEYhA.jpg'
   )
 
 User.fifth.books.create(
-  title: '',
+  title: 'Starship Troopers',
   author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+  description: "The historians can't seem to settle whether to call this one 'The Third Space War' (or the fourth), or whether 'The First Interstellar War' fits it better. We just call it 'The Bug War.' Everything up to then and still later were 'incidents,' 'patrols,' or 'police actions.' However, you are just as dead if you buy the farm in an 'incident' as you are if you buy it in a declared war... In one of Robert A. Heinlein's most controversial bestsellers, a recruit of the future goes through the toughest boot camp in the Universe--and into battle with the Terran Mobile Infantry against mankind's most alarming enemy.",
+  isbn: '0441783589',
+  picture_url: 'http://i.imgur.com/Kfcbjoj.jpg'
   )
 
 User.fifth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+  title: 'Keep Moving: And Other Tips and Truths About Aging',
+  author: 'Dick Van Dyke',
+  description: 'Dick Van Dyke, the star of Mary Poppins, Chitty Chitty Bang Bang, and The Dick Van Dyke Show, has received five Emmy awards, a Tony, and a Grammy. In 2013, he received the Screen Actors Guild Life Achievement Award. He is also the New York Times bestselling author of My Lucky Life In and Out of Show Business. He lives in Malibu, California.',
+  isbn: '978-1602862968',
+  picture_url: 'http://i.imgur.com/URW40MU.jpg'
   )
 
 # Books for sixth user
 
-User.sixth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(6).books.create(
+  title: 'Redwall',
+  author: 'Brian Jacques',
+  description: 'When the peaceful life of ancient Redwall Abbey is shattered by the arrival of the evil rat Cluny and his villainous hordes, Matthias, a young mouse, determines to find the legendary sword of Martin the Warrior which, he is convinced, will help Redwall\'s inhabitants destroy the enemy.',
+  isbn: '0399214240',
+  picture_url: 'http://i.imgur.com/BKla4uC.jpg'
   )
 
-User.sixth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(6).books.create(
+  title: 'The Giving Tree',
+  author: 'Shel Silverstein',
+  description: 'A young boy grows to manhood and old age experiencing the love and generosity of a tree which gives to him without thought of return.',
+  isbn: '9780060256654 ',
+  picture_url: 'http://i.imgur.com/dci8Isk.jpg'
   )
 
-User.sixth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(6).books.create(
+  title: 'The Heart Goes Last: A Novel',
+  author: 'Margaret Atwood',
+  description: 'MARGARET ATWOOD, whose work has been published in thirty-five countries, is the author of more than forty books of fiction, poetry, and critical essays. In addition to The Handmaid\'s Tale, her novels include Cat\'s Eye, short-listed for the 1989 Booker Prize; Alias Grace, which won the Giller Prize in Canada and the Premio Mondello in Italy; The Blind Assassin, winner of the 2000 Booker Prize; Oryx and Crake, short-listed for the 2003 Man Booker Prize; The Year of the Flood; and her most recent, MaddAddam. She is the recipient of the Los Angeles Times Innovator\'s Award, and lives in Toronto with the writer Graeme Gibson.',
+  isbn: '978-0771009112',
+  picture_url: 'http://i.imgur.com/sYTfDaQ.jpg'
   )
 
 # Books for seventh user
 
-User.seventh.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(7).books.create(
+  title: 'Wine Folly: The Essential Guide to Wine',
+  author: 'Madeline Puckette',
+  description: 'Red or white? Cabernet or merlot? Light or bold? What to pair with food? Drinking great wine isn’t hard, but finding great wine does require a deeper understanding of the fundamentals. Wine Folly: The Essential Guide to Wine will help you make sense of it all in a unique infographic wine book. Designed by the creators of WineFolly.com, which has won Wine Blogger of the Year from the International Wine & Spirits Competition, this book combines sleek, modern information design with data visualization and gives readers pragmatic answers to all their wine questions',
+  isbn: '978-1592408993',
+  picture_url: 'http://i.imgur.com/iV2o2SR.jpg'
   )
 
-User.seventh.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(7).books.create(
+  title: 'The Walking Dead Book 12',
+  author: 'Robert Kirkman, Cliff Rathburn, Charlie Adlard',
+  description: 'After Rick delivers Carl to Hilltop to start their new lives apart, a threat emerges from within the walker hordes that no one could expect. A threat that will leave readers speechless. Collects The Walking Dead #133-144.',
+  isbn: '978-1632154514',
+  picture_url: 'http://i.imgur.com/W26VS6c.jpg'
   )
 
-User.seventh.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(7).books.create(
+  title: 'The Battle of Alberta: The Historic Rivalry Between the Edmonton Oilers and the Calgary Flames',
+  author: ' Mark Spector',
+  description: 'An up-close look at the rivalry between the Calgary Flames and the Edmonton Oilers, told from the perspective of those that were there. Sports writer and on-air personality Mark Spector pays tribute to the province\'s hockey heyday with a unique blend of humour and homage.',
+  isbn: '978-0771078064',
+  picture_url: 'http://i.imgur.com/tg6OzhF.jpg'
   )
 
 # Books for eighth user
 
-User.eighth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(8).books.create(
+  title: 'World War Z',
+  author: 'Max Brooks',
+  description: 'An account of the decade-long conflict between humankind and hordes of the predatory undead is told from the perspective of dozens of survivors who describe in their own words the epic human battle for survival.',
+  isbn: '9780307351937',
+  picture_url: 'http://i.imgur.com/PzHuP6r.jpg'
   )
 
-User.eighth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(8).books.create(
+  title: 'Xenoblade Chronicles X Collector\'s Edition Guide',
+  author: ' Prima Games',
+  description: 'The Xenoblade Chronicles X Collector’s Edition Guide includes: Deluxe hardcover: The beautiful hardcover edition of the guide will have premium treatments. Screen cleaner: Includes a high-quality, microfiber screen cleaner featuring art from the game. Explore everything: Our detailed walkthrough will guide players through all regions of this massive open world. Customize your gameplay: Learn the best ways to customize your character and Skell to match your playstyle. Master combat: Proven battle tactics on how to defeat each enemy and boss. All the secrets: Complete details on all secrets in the game. Free mobile-friendly eGuide! Includes a code to access the eGuide, a digital version of the complete strategy guide optimized for a second-screen experience.',
+  isbn: '978-0744016734',
+  picture_url: 'http://i.imgur.com/UcOffDI.jpg'
   )
 
-User.eighth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(8).books.create(
+  title: 'The Giver',
+  author: 'Lois Lowry',
+  description: 'Given his lifetime assignment at the Ceremony of Twelve, Jonas becomes the receiver of memories shared by only one other in his community and discovers the terrible truth about the society in which he lives.',
+  isbn: '9780547345901',
+  picture_url: 'http://i.imgur.com/UlJYPyf.png'
   )
 
 # Books for ninth user
 
-User.ninth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(9).books.create(
+  title: 'Xenoblade Chronicles X Collector\'s Edition Guide',
+  author: 'Prima Games',
+  description: 'Deluxe hardcover: The beautiful hardcover edition of the guide will have premium treatments. Screen cleaner: Includes a high-quality, microfiber screen cleaner featuring art from the game. Explore everything: Our detailed walkthrough will guide players through all regions of this massive open world. Customize your gameplay: Learn the best ways to customize your character and Skell to match your playstyle.',
+  isbn: '978-0744016734',
+  picture_url: 'http://i.imgur.com/UcOffDI.jpg'
   )
 
-User.ninth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(9).books.create(
+  title: 'The Outlandish Companion Volume Two',
+  author: 'Diana Gabaldon',
+  description: ' #1 New York Times bestselling author Diana Gabaldon has captivated fans with the story of Jamie and Claire for 23 years and 8 epic novels. Now, she takes her readers deeper into their world with the second volume of her comprehensive guide to all things Outlandish, covering all the Outlander books that have been published since the first volume in 1999: The Fiery Cross, A Breath of Snow and Ashes, An Echo in the Bone, and Written in My Own Heart\'s Blood. Featuring all new material and extensive illustrations, Diana shares with readers new and old the fascinating history and secrets behind her beloved series.',
+  isbn: '978-0385685528',
+  picture_url: 'http://i.imgur.com/foMNATb.jpg'
   )
 
-User.ninth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(9).books.create(
+  title: 'The Drowning',
+  author: 'Camilla Läckberg',
+  description: 'Christian Thydell has been receiving anonymous threats since he began writing his novel \'The Mermaid\'. When one message, secreted within a bouquet of flowers, causes him to collapse at the launch party, crime writer Erica Falck is compelled to investigate.',
+  isbn: '9780007419531',
+  picture_url: 'http://i.imgur.com/UFf91oR.jpg'
   )
 
 # Books for tenth user
 
-User.tenth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(10).books.create(
+  title: 'The Very Hungry Caterpillar',
+  author: 'Eric Carle',
+  description: 'THE all-time classic picture book, from generation to generation, sold somewhere in the world every 30 seconds! Have you shared it with a child or grandchild in your life? Carle\'s classic tale of a voracious caterpillar who eats his way through the days of the week and then changes into a eautiful butterfly has been reissued in a sumptuous twenty-fifth anniversary edition with a shiny, silver-coated cover and wonderfully thick, durably pages. --The Horn Book \'The very hungry caterpillar literally eats his way through the pages of the book--and right into your child\'s heart...\' -- Mother\'s Manual \'Gorgeously illustrated, brilliantly innovative...\' -- The New York Times Book Review Watch a Video',
+  isbn: '9780399208539',
+  picture_url: 'http://i.imgur.com/hj215Le.jpg'
   )
 
-User.tenth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(10).books.create(
+  title: 'The Hunger Games',
+  author: 'Suzanne Collins',
+  description: 'In a future North America, where the rulers of Panem maintain control through an annual televised survival competition pitting young people from each of the twelve districts against one another, sixteen-year-old Katniss\'s skills are put to the test when she voluntarily takes her younger sister\'s place.',
+  isbn: '9781410419866',
+  picture_url: 'http://i.imgur.com/zHOy6TK.jpg'
   )
 
-User.tenth.books.create(
-  title: '',
-  author: '',
-  description: '',
-  isbn: '',
-  picture_url: ''
+User.find(10).books.create(
+  title: 'The Cat in the Hat',
+  author: 'Seuss',
+  description: 'Join the Cat in the Hat as he makes learning to read a joy! It\'s a rainy day and Dick and Sally can\'t find anything to do . . . until the Cat in the Hat unexpectedly appears and turns their dreary afternoon into a fun-filled extravaganza! This beloved Beginner Book by Dr. Seuss, which also features timeless Dr. Seuss characters such as Fish and Thing 1 and Thing 2, is fun to read aloud and easy to read alone. Written using 236 different words that any first or second grader can read, it\'s a fixture in home and school libraries and a favorite among parents, beginning readers, teachers, and librarians. Originally created by Dr. Seuss, Beginner Books encourage children to read all by themselves, with simple words and illustrations that give clues to their meaning.',
+  isbn: '9780394800011',
+  picture_url: 'http://i.imgur.com/SYFHFY3.jpg'
   )
 
 
