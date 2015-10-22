@@ -23,3 +23,8 @@ get '/' do
   #will enable or disable login or profile features if logged_in? or not
   erb :index
 end
+
+
+get '/login' do
+  erb :login
+end
