@@ -1,13 +1,45 @@
 <div class="container">
-<div class="row">
-  <div class=" col-sm-4 main-left">
-    <div class='profile-photo container'>
-      profile-photo
-    </div>
-
-  </div>
-  <div class=" col-sm-8 main-right">
-    
-  </div>
+    <div class="row">
+        <div class=" col-sm-12 main-right">
+            <form action="/books" method="get" id="searchform">
+                <div class="input-group col-xs-8">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">Filter by</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#title">Title</a></li>
+                            <li><a href="#author">Author</a></li>
+                            <li><a href="#isbn">ISBN</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#all">Anything</a></li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="search_param" value="all" id="search_param">         
+                    <input type="text" class="form-control" name="search_text" placeholder="Search books...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+            </form>
+            <% if @books %>
+                <div class="row">
+                    <% @books.each do |book| %>
+                        <div class="book col-xs-6 col-md-3">
+                            <% if book.picture_url %>
+                                <a href="#" class="thumbnail">
+                                    <img src= <%= book.picture_url %>>
+                                </a>
+                            <% end %>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+    </div></li></span>
 </div>
 </div>
+<script type="text/javascript">
+    $('#searchform li a').on('click', function(){
+        $('#search_param').val($(this).text());
+    });
+</script>
