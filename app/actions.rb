@@ -171,7 +171,7 @@ put '/books/:id' do |id|
   else
     erb :'books/edit'
   end
-
+end 
 # Get the Lend book page
 get '/books/:id/lend' do |id|
 
