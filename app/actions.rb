@@ -26,13 +26,20 @@ get '/users' do
   erb :'users/index'
 end
 
-
-
 get '/books' do
   @books = Book.all
   if params[:search_text] && params[:search_param]
-    #@books = @books.where(':search LIKE :text', {search: "%#{params[:search_param]}%", text: "%#{params[:search_text]}%"})
+    parameter = params[:search_param].downcase
+    case parameter
+    when 'title'
     @books = @books.where('title LIKE :text', {text: "%#{params[:search_text]}%"})
+    when 'author'
+    @books = @books.where('author LIKE :text', {text: "%#{params[:search_text]}%"})
+    when 'isbn' 
+    @books = @books.where('isbn LIKE :text', {text: "%#{params[:search_text]}%"})
+    when '*'
+    @books = @books.where('isbn LIKE :text OR author LIKE :text OR title LIKE :text', {text: "%#{params[:search_text]}%"})  
+    end
   end
   erb :'books/index'
 end
