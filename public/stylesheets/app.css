@@ -1,10 +1,15 @@
-
-/*nav bar in layout*/
-
-.df-navbar {
-  background-color:#3B5999;
-  color: #FFFFFF;
+@media (min-width: 1200px){
+.container {
+    width: 1200px;
 }
+}
+
+/*Layout*/
+.main-board{
+  position: relative;
+  top: 100px;
+}
+/*nav bar in layout*/
 
 .df-navbar {
   position: fixed;
@@ -12,6 +17,7 @@
   width: 100%;
   height: 80px;
   background-color: #3B5999;
+     z-index: 100;
 }
 
 .df-navlist{
@@ -22,6 +28,11 @@
 
 .df-navlist a {
   color:#FFFFFF;
+  font-size: 18px;
+}
+
+.df-navlist a:hover{
+  color:black;
 }
 
 
@@ -31,23 +42,25 @@
 
 /*Profile page*/
 .main-left, .main-right{
-  border: solid 1px black; 
   height:auto;
   padding: 20px 20px;
 }
-
+.profile-info{
+  text-align: center;
+}
 
 .profile-photo{
   border: solid 1px black;
   width: 200px;
   height:200px;
+  margin-right: auto;
+  margin-left: auto;
 }
-
+.profile-photo img{
+  width: 200px;
+  height:200px;
+}
 /*Login page*/
-.main-board{
-  position: relative;
-  top: 100px;
-}
 .login-button{
   text-align: center;
   border-radius: 20px;
@@ -58,6 +71,10 @@
   color:#FFFFFF;
   background-color:#3B5999;
 }
+.login-button a{
+  color:#FFFFFF;
+}
+
 .login-button+.login-button, .login-pic+.login-button{
   margin-top: 50px;
 }
@@ -73,31 +90,68 @@
 
 .book-container{
   position: relative;
-  border: 1px solid red;
   text-align: center;
-  max-height: 250px;
+  height: 300px;
   overflow: hidden;
+  padding: 0 5px;
+  padding-top: 30px;
 }
 .book-container img {
-  max-width: 150px;
+  width: 80%;
+  height: 82%;
+  margin-bottom: 5px;
 }
-@media (max-width: 780px) {
-  .book-container {
-    max-height: none;
-  }
-  .book-container img {
-    width: 200px;
-  }
-}
+
 
 .book-own{
   /*border: solid 3px red; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: blue;
+  color: #FFFFFF;
+  height: 45px ;
+  line-height: 50px;
+  font-size: 20px;
 }
 
 .book-lend{
-  /*border:solid 3px blue;*/
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: black;
+  color: #FFFFFF;
+  height: 45px ;
+  line-height: 50px;
+  font-size: 20px;
 }
 
 .book-borrow{
-  /*border:solid 3px green;*/
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: red;
+  color: #FFFFFF;
+  height: 45px ;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.add-book{
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: green;
+  color: #FFFFFF;
+  height: 45px ;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.shelves{
+  background-image: url("../images/shelves.png");
+  background-repeat: no-repeat;
+  border-radius:20px;
+}
+
+.inner-shelves{
+  width:85%;
+  height:90% ;
+  margin:11% 11% 0 7%;
 }

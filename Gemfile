@@ -10,6 +10,8 @@ gem 'sinatra-activerecord'
 
 gem 'puma'
 gem 'tux'
+gem 'geocoder'
+gem 'geokit'
 
 gem 'httparty'
 
@@ -17,4 +19,5 @@ group :development, :test do
   gem 'pry'
   gem 'shotgun'
   gem 'sqlite3'
+
 end
