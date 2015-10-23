@@ -1,4 +1,3 @@
-require 'httparty'
 class Book < ActiveRecord::Base
   belongs_to :user
   has_one :lend, dependent: :destroy
@@ -27,5 +26,11 @@ class Book < ActiveRecord::Base
       { title: title, author: author, description: description, picture_url: picture_url }
     end
   end
+
+
+
+
+
+
 
 end

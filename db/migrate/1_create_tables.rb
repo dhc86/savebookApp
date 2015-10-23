@@ -7,6 +7,9 @@ class CreateTables < ActiveRecord::Migration
       t.string :email
       t.string :password
       t.string :picture_url, default: 'http://i.imgur.com/vUmohYJ.jpg'
+      t.string :address
+      t.float :latitude
+      t.float :longitude
       t.timestamps null: false
     end
 
