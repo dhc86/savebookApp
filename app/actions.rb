@@ -6,9 +6,10 @@ helpers do # methods defined here are available in the .erb files, actions.rb an
     !!current_user
   end
 
+# Remember to change back to session
   def current_user
-    if session[:user_id]
-      User.find(session[:user_id])
+    if cookie[:user_id]
+      User.find(cookie[:user_id])
     end
   end
 end
@@ -65,7 +66,7 @@ post '/books' do
   if @book.save
     redirect "/books/#{@book.id}"
   else
-    erb :'books/new'
+    erb :'/books/new'
   end
 end
 
@@ -79,11 +80,12 @@ end
 put '/books/:id' do |id|
   @book = Book.find(id)
   if @book.update(params[:post])
-    redirect "/books/#{@post.id}"
+    redirect "/books/#{@book.id}"
   else
-    erb :'posts/edit'
+    erb :'books/edit'
   end
 end
+
 
 get '/' do
   #will enable or disable login or profile features if logged_in? or not
