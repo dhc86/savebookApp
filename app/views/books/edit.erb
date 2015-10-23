@@ -2,11 +2,11 @@
 
 
 <div class="book-detail">
-  <p> Here is the current information of your book. In this page you can update your book information.</p>
+  <h1> Here is the current information of your book. In this page you can update your book information.</h1>
+  
   
   <h1><%= @book.title %></h1>
 
-  <p>This is the current information about your book</p>
   <p>
     <span><img src="<%= @book.picture_url %>" /></span>
   </p>
@@ -28,7 +28,7 @@
     Added on: <%= @book.created_at.to_formatted_s(:long_ordinal)  %>             
   </p>
   <p>
-    By: <%= @book.user.first_name %>  <%= @book.user.last_name %>
+    Owned by: <%= @book.user.first_name %>  <%= @book.user.last_name %>
   </p>
 
   <hr/>
@@ -48,7 +48,7 @@
       </div>
     <% end %>
 <p>    
-<h2> Add a Book to your collection</h2>
+<h2> Update your Book from your collection:</h2>
 </p>
 <form method="post" action="/books">
   <div>
@@ -71,6 +71,6 @@
     <input type="text" name="url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
   </div>
   <div>
-    <button class="button">Add Book</button>
+    <button class="button">Update Book</button>
   </div>
 </form>
