@@ -26,11 +26,21 @@ get '/users' do
   erb :'users/index'
 end
 
-
-
 get '/books' do
   @books = Book.all
-  #filter with our search conditions here
+  if params[:search_text] && params[:search_param]
+    parameter = params[:search_param].downcase
+    case parameter
+    when 'title'
+    @books = @books.where('title LIKE :text', {text: "%#{params[:search_text]}%"})
+    when 'author'
+    @books = @books.where('author LIKE :text', {text: "%#{params[:search_text]}%"})
+    when 'isbn' 
+    @books = @books.where('isbn LIKE :text', {text: "%#{params[:search_text]}%"})
+    when '*'
+    @books = @books.where('isbn LIKE :text OR author LIKE :text OR title LIKE :text', {text: "%#{params[:search_text]}%"})  
+    end
+  end
   erb :'books/index'
 end
 
@@ -41,7 +51,7 @@ end
 
 # Save a new book to database
 post '/books' do
-   # params = {
+  # params = {
   #   book: {
   #     title: 'value from input',
   #     author: 'value from textarea'
@@ -63,11 +73,19 @@ get '/books/:id' do |id|
   erb :'books/show'
 end
 
+<<<<<<< HEAD
 # Edit an existing post
 put '/books/:id' do |id|
   @book = Book.find(id)
   if @book.update(params[:post])
     redirect "/books/#{@book.id}"
+=======
+# Edit an existing book
+put '/books/:id' do |id|
+  @book = Book.find(id)
+  if @book.update(params[:post])
+    redirect "/books/#{@post.id}"
+>>>>>>> 4ed2864a7b47e2c013b68b952b0e22a82ec6729c
   else
     erb :'books/edit'
   end
