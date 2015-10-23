@@ -1,4 +1,21 @@
 
+
+
+
+
+<!-- This will call the distance between the user and the book -->
+<h1><%=  %></h1>
+
+<p>
+  this book is:<%= @distance %> miles apart from you!, click borrow to read this book!
+</p>
+
+
+
+
+
+
+
 <% if @book && @book.errors.any? %>
       <div>
         <strong>Some issues in the book details you tryna save, please fix them:</strong>
@@ -36,3 +53,4 @@
     <button class="button">Add Book</button>
   </div>
 </form>
+
