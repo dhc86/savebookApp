@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'httparty'
+require 'geocoder'
 
 require 'active_support/all'
 
@@ -7,6 +9,11 @@ require 'active_support/all'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/contrib/all' # Requires cookies, among other things
+
+# gem to run the geo location
+require 'geokit'
+
+
 
 require 'pry'
 
