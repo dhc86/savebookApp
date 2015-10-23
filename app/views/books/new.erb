@@ -30,36 +30,36 @@
 <h2> Add a Book to your collection</h2>
 </p>
 
-<form method="post" action="/books">
+<form id="fill-by-isbn">
   <label>Know the ISBN number? Add Book directly:  </label>
   <input type="text" name="isbn" value="" />
   <button>Submit ISBN</button>
 </form>
 
-<form method="post" action="/books">
+<form method="post" id="new-book" action="/books">
   <div>
     <label>Title:</label>
-    <input type="text" name="title" value="<%= @book && @book.title %>">
+    <input type="text" id="title" name="title" value="<%= @book && @book.title %>">
   </div>
   <div>
     <label>Author:</label>
-    <input type="text" name="author" value="<%= @book && @book.author %>">
+    <input type="text" id="author" name="author" value="<%= @book && @book.author %>">
   </div>
   <div>
     <label>ISBN:</label>
-    <input type="text" name="isbn" value="<%= @book && @book.isbn %>">
+    <input type="text" id="isbn" name="isbn" value="<%= @book && @book.isbn %>">
   </div>
   <div>
     <label>Description: </label>
     <p>
-    <textarea name="description" rows="10" cols="50" value="<%= @book && @book.description %>">
+    <textarea name="description" id="description" rows="10" cols="50" value="<%= @book && @book.description %>">
     </textarea> 
     </p>
   </div>
   <div>
     <label>Picture url (optional):</label>
-    <input type="text" name="picture_url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
-  </div>
+    <input type="text" id="url" name="url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
+  </div> 
   <div>
     <button class="button">Add Book</button>
   </div>
