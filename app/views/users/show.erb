@@ -13,19 +13,37 @@
 
   </div>
   <div class=" col-lg-9 main-right">
-      
-      <% @user.books.each_slice(4) do |books| %>       
-        <div class='row shelves'>
-          <div class="row inner-shelves">
-            <% books.each do |b| %>
-              <div class="col-sm-3 book-container">
-                <a href="/books/<%= b.id %>">
-                <img src= <%= b.picture_url %> >
-                <div class="book-own">Your book</div>
-                </a>
-              </div>
-            <% end %>
-          </div>    
+    <div class='row shelves'>
+      <div class="row inner-shelves">
+        <div class="col-sm-3 book-container">
+          <img src="http://www.iconarchive.com/download/i42578/oxygen-icons.org/oxygen/Actions-address-book-new.ico">
+          <div class="add-book">Add book</div>
         </div>
-      <% end %>
+        <% @user.books.each_with_index do |book, index| %>
+          <% if index < 3 %>
+            <div class="col-sm-3 book-container">
+              <a href="/books/<%= book.id %>">
+                <img src= <%= book.picture_url %> >
+                <div class="book-own">Your book</div>
+              </a>
+            </div>
+          <% end %> 
+        <% end %> 
+      </div>    
+    </div>   
 
+    <% @user.books[3..-1].each_slice(4) do |books| %>       
+      <div class='row shelves'>
+        <div class="row inner-shelves">
+          <% books.each do |b| %>
+            <div class="col-sm-3 book-container">
+              <a href="/books/<%= b.id %>">
+              <img src= <%= b.picture_url %> >
+              <div class="book-own">Your book</div>
+              </a>
+            </div>
+          <% end %>
+        </div>    
+      </div>
+    <% end %>
+</div>
