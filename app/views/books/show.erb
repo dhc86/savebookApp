@@ -1,0 +1,28 @@
+<div class="book-detail">
+  <h1><%= @book.title %></h1>
+  <p>
+    <span><img src="<%= @book.picture_url %>" /></span>
+  </p>
+
+
+  <p>
+    <strong>Author: <%= @book.author %></strong>
+  </p>
+  <div class="description">
+    <p>
+    Description:
+    </p>
+    <p>
+    <%= @book.description %>
+    </p>
+  </div>
+
+  <p>
+    Added on: <%= @book.created_at.to_formatted_s(:long_ordinal)  %>             
+  </p>
+  <p>
+    By: <%= @book.user.first_name %>  <%= @book.user.last_name %>
+  </p>
+
+  <hr/>
+</div>
