@@ -41,8 +41,8 @@ get '/users/login' do
 end
 
 # Show a User Profile
-get '/users/:id' do |id|
-  @user = User.find(id)
+get '/users/:id' do
+  @user = User.find(params[:id])
   erb :'users/show'
 end
 
@@ -92,6 +92,7 @@ get '/books/new' do
 end
 
 #this will find the distance between the user and the book based on lacotion!
+<<<<<<< HEAD
 get '/books/show' do
   @user1 = User.find(id)
   @user2 = User.find
@@ -104,6 +105,26 @@ get '/books/show' do
 
 end 
 
+#Zudo code:
+# get '/books/:id'
+#   Load current user from database
+#   Load book from database
+#   Load book's owner(user) from database
+#   Get geo for current user
+#   Get geo for owner
+#   Compute distance
+#   Load ERB
+# end
+
+# get '/books/:id' do
+#   @user = User.find(session[:user_id])
+#   @book = Book.find(params[:id])
+#   @owner = @book.user
+#   @a = Geokit::Geocoders::GoogleGeocoder.geocode @user.address
+#   @b = Geokit::Geocoders::GoogleGeocoder.geocode @owner.address
+#   @distance = @a.distance_to(@b)
+#   erb :'books/show'
+# end
 
 
 
@@ -154,10 +175,25 @@ get '/books/:id' do |id|
 end
 
 
-
+# Edit an existing book
+put '/books/:id' do |id|
+  @book = Book.find(id)
+  if @book.update(params[:post])
+    redirect "/books/#{@book.id}"
+  else
+    erb :'books/edit'
+  end
+end 
 # Get the Lend book page
 get '/books/:id/lend' do |id|
 
+end
+
+# Get the page to edit the book
+get '/books/:id/edit' do |id|
+    # binding.pry
+    @book = Book.find(id)
+    erb :'books/edit'
 end
 
 
