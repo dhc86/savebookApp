@@ -15,8 +15,8 @@ helpers do # methods defined here are available in the .erb files, actions.rb an
 end
 
 # Show a User Profile
-get '/users/:id' do |id|
-  @user = User.find(id)
+get '/users/:id' do
+  @user = User.find(params[:id])
   erb :'users/show'
 end
 
@@ -53,18 +53,27 @@ get '/books/new' do
 end
 
 #this will find the distance between the user and the book based on lacotion!
-get '/books/show' do
-  @user1 = User.find(id)
-  @user2 = User.find
-  @a = Geokit::Geocoders::GoogleGeocoder.geocode ''
-  @a = Geokit::Geocoders::GoogleGeocoder.geocode '' 
-  @distance = @a.distance_to(@b)
 
-  #need the other code to show the book information
-  
+#Zudo code:
+# get '/books/:id'
+#   Load current user from database
+#   Load book from database
+#   Load book's owner(user) from database
+#   Get geo for current user
+#   Get geo for owner
+#   Compute distance
+#   Load ERB
+# end
 
-end 
-
+# get '/books/:id' do
+#   @user = User.find(session[:user_id])
+#   @book = Book.find(params[:id])
+#   @owner = @book.user
+#   @a = Geokit::Geocoders::GoogleGeocoder.geocode @user.address
+#   @b = Geokit::Geocoders::GoogleGeocoder.geocode @owner.address
+#   @distance = @a.distance_to(@b)
+#   erb :'books/show'
+# end
 
 
 
@@ -92,6 +101,7 @@ get '/books/:id' do |id|
   erb :'books/show'
 end
 
+
 # Edit an existing book
 put '/books/:id' do |id|
   @book = Book.find(id)
@@ -100,6 +110,13 @@ put '/books/:id' do |id|
   else
     erb :'books/edit'
   end
+end
+
+# Get the page to edit the book
+get '/books/:id/edit' do |id|
+    # binding.pry
+    @book = Book.find(id)
+    erb :'books/edit'
 end
 
 
