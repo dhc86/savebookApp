@@ -62,13 +62,13 @@
   <div>
     <label>Description: </label>
     <p>
-    <textarea name="picture_url" rows="10" cols="50" value="<%= @book && @book.description %>">
+    <textarea name="description" rows="10" cols="50" value="<%= @book && @book.description %>">
     </textarea> 
     </p>
   </div>
   <div>
     <label>Picture url (optional):</label>
-    <input type="text" name="url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
+    <input type="text" name="picture_url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
   </div>
   <div>
     <button class="button">Update Book</button>
