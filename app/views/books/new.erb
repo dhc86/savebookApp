@@ -1,0 +1,38 @@
+
+<% if @book && @book.errors.any? %>
+      <div>
+        <strong>Some issues in the book details you tryna save, please fix them:</strong>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+<p>    
+<h2> Add a Book to your collection</h2>
+</p>
+<form method="post" action="/books">
+  <div>
+    <label>Title:</label>
+    <input type="text" name="title" value="<%= @book && @book.title %>">
+  </div>
+  <div>
+    <label>Author:</label>
+    <input type="text" name="author" value="<%= @book && @book.author %>">
+  </div>
+  <div>
+    <label>Description: </label>
+    <p>
+    <textarea name="picture_url" rows="10" cols="50" value="<%= @book && @book.description %>">
+    </textarea> 
+    </p>
+  </div>
+  <div>
+    <label>Picture url (optional):</label>
+    <input type="text" name="url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
+  </div>
+  <div>
+    <button class="button">Add Book</button>
+  </div>
+</form>
