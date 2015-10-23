@@ -89,12 +89,12 @@
   text-align: center;
   height: 300px;
   overflow: hidden;
-  padding: 5px 5px;
+  padding: 0 5px;
   padding-top: 30px;
 }
 .book-container img {
   width: 80%;
-  height: 80%;
+  height: 82%;
   margin-bottom: 5px;
 }
 
