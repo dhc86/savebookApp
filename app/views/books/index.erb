@@ -2,7 +2,7 @@
     <div class="row">
         <div class=" col-sm-12 main-right">
             <form action="/books" method="get" id="searchform">
-                <div class="input-group col-xs-8">
+                <div class="input-group col-xs-6 col-md-offset-3">
                     <div class="input-group-btn search-panel">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <span id="search_concept">Filter by</span> <span class="caret"></span>
@@ -22,15 +22,18 @@
                     </span>
                 </div>
             </form>
+        </div>
+        <div class= "col-sm-12 main-right">
             <div class="row">
                 <% @books.each do |book| %>
-                    <div class="book col-xs-6 col-md-3">
-                        <% if book.picture_url %>
-                            <a href="#" class="thumbnail">
+                    <% if book.picture_url %>
+                        <div class="col-sm-2 book-container">
+                            <a href=<%= "books/" + book.id.to_s %> class="thumbnail">
                                 <img src= <%= book.picture_url %>>
+                                <div class="add-book">Add book</div>
                             </a>
-                        <% end %>
-                    </div>
+                        </div>
+                    <% end %>
                 <% end %>
             </div>
         </div>
@@ -42,4 +45,4 @@
             $('#search_param').val($(this).text());
             $('.search-panel').find('.btn').html($(this).text()+' <span class="caret"></span>');
             });
-        </script>
+</script>

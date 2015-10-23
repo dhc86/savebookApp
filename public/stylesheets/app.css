@@ -22,6 +22,7 @@
 
 .df-navlist a {
   color:#FFFFFF;
+  font-size: 18px;
 }
 
 
@@ -42,8 +43,13 @@
   border: solid 1px black;
   width: 200px;
   height:200px;
+  margin-right: auto;
+  margin-left: auto;
 }
-
+.profile-photo img{
+  width: 200px;
+  height:200px;
+}
 /*Login page*/
 .login-button{
   text-align: center;
@@ -71,9 +77,10 @@
 .book-container{
   position: relative;
   text-align: center;
-  height: 300px;
+  height: 400px;
   overflow: hidden;
   padding: 5px 5px;
+  padding-top: 30px;
 }
 .book-container img {
   width: 180px;
@@ -127,4 +134,9 @@
   height: 50px ;
   line-height: 50px;
   font-size: 20px;
+}
+
+.shelves{
+  background-image: url("../images/shelves.png");
+  background-repeat: no-repeat;
 }

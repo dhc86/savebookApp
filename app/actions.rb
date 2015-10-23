@@ -91,6 +91,22 @@ get '/books/new' do
   erb :'books/new'
 end
 
+#this will find the distance between the user and the book based on lacotion!
+get '/books/show' do
+  @user1 = User.find(id)
+  @user2 = User.find
+  @a = Geokit::Geocoders::GoogleGeocoder.geocode ''
+  @a = Geokit::Geocoders::GoogleGeocoder.geocode '' 
+  @distance = @a.distance_to(@b)
+
+  #need the other code to show the book information
+  
+
+end 
+
+
+
+
 # Save a new book to database
 post '/books' do
   # params = {
