@@ -8,9 +8,7 @@ helpers do # methods defined here are available in the .erb files, actions.rb an
     !!current_user
   end
 
-  # Remember to change back to session
   def current_user
-    # cookies[:user_id] = 1   
     if session[:user_id]
       User.find(session[:user_id])
     end
@@ -19,7 +17,6 @@ end
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|
-  # binding.pry
   id = params[:book_id]
   @book = Book.find(id)
   erb :'books/edit'
@@ -38,6 +35,12 @@ end
 # Login page for user
 get '/users/login' do
   erb :'users/login'
+end
+
+# Remove session and return to login page
+get '/users/logout' do
+  session.clear
+  redirect "/users/login"
 end
 
 # Show a User Profile
@@ -161,6 +164,7 @@ end
 
 # Show details of a Book
 get '/books/:id' do |id|
+  redirect "/users/login" unless logged_in?
   @book = Book.find(id)
   erb :'books/show'
 end
@@ -183,7 +187,6 @@ end
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|
-    # binding.pry
     @book = Book.find(id)
     erb :'books/edit'
 end
@@ -194,7 +197,7 @@ end
 get '/' do
   #will enable or disable login or profile features if logged_in? or not
   if logged_in? 
-    redirect "/users/#{cookies[:user_id]}"
+    redirect "/users/#{session[:user_id]}"
   else
     erb :'/login'
   end
