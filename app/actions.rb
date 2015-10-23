@@ -53,7 +53,7 @@ post '/books' do
   if @book.save
     redirect "/books/#{@book.id}"
   else
-    erb :'boooks/new'
+    erb :'books/new'
   end
 end
 
@@ -64,12 +64,12 @@ get '/books/:id' do |id|
 end
 
 # Edit an existing post
-put '/posts/:id' do |id|
-  @post = Post.find(id)
-  if @post.update(params[:post])
-    redirect "/posts/#{@post.id}"
+put '/books/:id' do |id|
+  @book = Book.find(id)
+  if @book.update(params[:post])
+    redirect "/books/#{@book.id}"
   else
-    erb :'posts/edit'
+    erb :'books/edit'
   end
 end
 
