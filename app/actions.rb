@@ -193,7 +193,12 @@ end
 
 get '/' do
   #will enable or disable login or profile features if logged_in? or not
-  erb :index
+  if logged_in? 
+    redirect "/users/#{cookies[:user_id]}"
+  else
+    erb :'/login'
+  end
+
 end
 
 get '/login' do

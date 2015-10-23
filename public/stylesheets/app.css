@@ -71,6 +71,10 @@
   color:#FFFFFF;
   background-color:#3B5999;
 }
+.login-button a{
+  color:#FFFFFF;
+}
+
 .login-button+.login-button, .login-pic+.login-button{
   margin-top: 50px;
 }
