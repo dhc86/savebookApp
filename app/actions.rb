@@ -26,11 +26,13 @@ get '/users' do
   erb :'users/index'
 end
 
+#allows user to all books and then filter or search for them
 get '/books' do
   @books = Book.all
   if params[:search_text] && params[:search_param]
-    parameter = params[:search_param].downcase
-    case parameter
+    @text = params[:search_text]
+    @parameter = params[:search_param].downcase
+    case @parameter
     when 'title'
     @books = @books.where('title LIKE :text', {text: "%#{params[:search_text]}%"})
     when 'author'
