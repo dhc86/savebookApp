@@ -1,28 +1,46 @@
 <div class="book-detail">
+
   <h1><%= @book.title %></h1>
-  <p>
-    <span><img src="<%= @book.picture_url %>" /></span>
-  </p>
-
-
-  <p>
-    <strong>Author: <%= @book.author %></strong>
-  </p>
-  <div class="description">
+  <div>
     <p>
-    Description:
-    </p>
-    <p>
-    <%= @book.description %>
+      <span><img src="<%= @book.picture_url %>" /></span>
     </p>
   </div>
+    
+  <div>
+    <% if current_user.id == @book.user_id %>
+      <form method="get" action="/books/:id/edit"c>
+        <input type="hidden" name="book_id" value="<%= @book.id %>">
+        <input type="hidden" name="book" value="<%= @book %>">
+        <button class="button">Edit Book</button>
+      </form>
+    <% else %>
+        <form method="get" action="/books/:id/lend">
 
-  <p>
+          <button class="button">Borrow Book</button>
+        </form>
+    <% end %>
+  </div>
+
+    <p>
+    <strong>Author: <%= @book.author %></strong>
+    </p>
+    <div class="description">
+        <p>
+        Description:
+        </p>
+        <p>
+        <%= @book.description %>
+        </p>
+    </div>
+
+    <p>
     Added on: <%= @book.created_at.to_formatted_s(:long_ordinal)  %>             
   </p>
   <p>
-    By: <%= @book.user.first_name %>  <%= @book.user.last_name %>
+    Owned By: <%= @book.user.first_name %>  <%= @book.user.last_name %>
   </p>
 
-  <hr/>
+
+    <hr/>
 </div>

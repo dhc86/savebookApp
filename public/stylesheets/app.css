@@ -1,3 +1,9 @@
+@media (min-width: 1200px){
+.container {
+    width: 1200px;
+}
+}
+
 /*Layout*/
 .main-board{
   position: relative;
@@ -22,6 +28,11 @@
 
 .df-navlist a {
   color:#FFFFFF;
+  font-size: 18px;
+}
+
+.df-navlist a:hover{
+  color:black;
 }
 
 
@@ -42,8 +53,13 @@
   border: solid 1px black;
   width: 200px;
   height:200px;
+  margin-right: auto;
+  margin-left: auto;
 }
-
+.profile-photo img{
+  width: 200px;
+  height:200px;
+}
 /*Login page*/
 .login-button{
   text-align: center;
@@ -74,19 +90,14 @@
   height: 300px;
   overflow: hidden;
   padding: 5px 5px;
+  padding-top: 30px;
 }
 .book-container img {
-  width: 180px;
-  height: 230px;
+  width: 80%;
+  height: 80%;
+  margin-bottom: 5px;
 }
-@media (max-width: 780px) {
-  .book-container {
-    max-height: none;
-  }
-  .book-container img {
-    width: 200px;
-  }
-}
+
 
 .book-own{
   /*border: solid 3px red; */
@@ -94,7 +105,7 @@
   border-bottom-left-radius: 10px;
   background-color: blue;
   color: #FFFFFF;
-  height: 50px ;
+  height: 45px ;
   line-height: 50px;
   font-size: 20px;
 }
@@ -104,7 +115,7 @@
   border-bottom-left-radius: 10px;
   background-color: black;
   color: #FFFFFF;
-  height: 50px ;
+  height: 45px ;
   line-height: 50px;
   font-size: 20px;
 }
@@ -114,7 +125,7 @@
   border-bottom-left-radius: 10px;
   background-color: red;
   color: #FFFFFF;
-  height: 50px ;
+  height: 45px ;
   line-height: 50px;
   font-size: 20px;
 }
@@ -124,7 +135,19 @@
   border-bottom-left-radius: 10px;
   background-color: green;
   color: #FFFFFF;
-  height: 50px ;
+  height: 45px ;
   line-height: 50px;
   font-size: 20px;
+}
+
+.shelves{
+  background-image: url("../images/shelves.png");
+  background-repeat: no-repeat;
+  border-radius:20px;
+}
+
+.inner-shelves{
+  width:85%;
+  height:90% ;
+  margin:11% 11% 0 7%;
 }

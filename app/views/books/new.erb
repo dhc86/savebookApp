@@ -30,6 +30,12 @@
 <h2> Add a Book to your collection</h2>
 </p>
 <form method="post" action="/books">
+  <label>Know the ISBN number? Add Book directly:  </label>
+  <input type="text" name="isbn" value="" />
+  <button>Submit ISBN</button>
+</form>
+
+<form method="post" action="/books">
   <div>
     <label>Title:</label>
     <input type="text" name="title" value="<%= @book && @book.title %>">

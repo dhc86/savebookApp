@@ -36,7 +36,7 @@ User.first.books.create(
   title: 'Crazy Sexy Juice: 100+ Simple Juice, Smoothie & Nut Milk Recipes to Supercharge Your Health',
   author: 'Kris Carr',
   description: 'Kris Carr is a multi-week New York Times best-selling author and health advocate. She is the subject and director of the documentary Crazy Sexy Cancer, which aired on TLC and OWN: The Oprah Winfrey Network. Kris is also the author of the groundbreaking Crazy Sexy Cancer book series. Her third book, Crazy Sexy Diet, is a wellness game plan for peak health, spiritual wealth, and happiness. Kris regularly lectures at medical schools, hospitals, corporations such as Whole Foods, and HarvardUniversity. She is a contributing editor for Natural Health magazine and writes for many online publications.',
-  isbn: '978-1401941529', 
+  isbn: '9781401941529', 
   picture_url: 'http://i.imgur.com/2yaTIE1.jpg'
   )
 
@@ -78,7 +78,7 @@ User.second.books.create(
   title: 'Furiously Happy: A Funny Book About Horrible Things',
   author: 'Jenny Lawson',
   description: 'In Furiously Happy, #1 New York Times bestselling author Jenny Lawson explores her lifelong battle with mental illness. A hysterical, ridiculous book about crippling depression and anxiety? That sounds like a terrible idea. But terrible ideas are what Jenny does best.',
-  isbn: '1250077001',
+  isbn: '9781250077001',
   picture_url: 'http://i.imgur.com/f8xHUNf.jpg'
   )
 
@@ -89,7 +89,7 @@ User.third.books.create(
   title: 'The Subtle Knife',
   author: 'Pullman Philip',
   description: 'As the boundaries between worlds begin to dissolve, Lyra and her daemon help Will Parry in his search for his father and for a powerful, magical knife.',
-  isbn: '0440238145',
+  isbn: '9780440238145',
   picture_url: 'http://i.imgur.com/YkmYyvx.jpg'
   )
 
@@ -97,7 +97,7 @@ User.third.books.create(
   title: 'Breaking Away: A Harrowing True Story of Resilience, Courage, and Triumph',
   author: 'Patrick O\'Sullivan',
   description: 'Patrick O\'Sullivan was a kid with skills, with natural gifts that catapulted him into the spotlight and made NHL scouts rave. O\’Sullivan seemed destined to become one of the next great hockey players in the world. But then it all went horribly wrong.',
-  isbn: '1443444669',
+  isbn: '9781443444669',
   picture_url: 'http://i.imgur.com/fhujD6O.jpg'
   )
 
@@ -105,7 +105,7 @@ User.third.books.create(
   title: 'A Knight of the Seven Kingdoms',
   author: 'George R. R. Martin',
   description: 'Taking place nearly a century before the events of A Game of Thrones, A Knight of the Seven Kingdoms compiles the first three official prequel novellas to George R. R. Martin’s ongoing masterwork, A Song of Ice and Fire. These never-before-collected adventures recount an age when the Targaryen line still holds the Iron Throne, and the memory of the last dragon has not yet passed from living consciousness.',
-  isbn: '0345533488',
+  isbn: '9780345533488',
   picture_url: 'http://i.imgur.com/Nkt6Q76.jpg'
   )
 
@@ -116,7 +116,7 @@ User.fourth.books.create(
   title: 'The Hobbit - A Journey Into Maturity',
   author: 'Green, William H.',
   description: 'This fantasy favourite of children and adolescents has neither children, nor women as main characters. Nevertheless, William Green\'s discussion reveals the sexual symbolism and gender relations in the story of Bilbo Baggins, the homebody hobbit who goes adventuring in spite of himself. By showing us that it is really the story of an adolescent\'s journey into maturity, Green explains why the book became a cult classic in the 1960s. By examining Tolkien\'s spatial imagery he demonstrates the depth of this literary work, identifying it as more than just a prequel to The Lord of the Rings.',
-  isbn: '0805788069',
+  isbn: '9780805788069',
   picture_url: 'http://i.imgur.com/4gOaYxC.jpg'
   )
 
@@ -124,7 +124,7 @@ User.fourth.books.create(
   title: 'Diary of a Wimpy Kid',
   author: 'Jeff Kinney',
   description: 'Jeff Kinney is a #1 New York Times bestselling author and five-time Nickelodeon Kids’ Choice Award winner for Favorite Book. Jeff has been named one of Time magazine’s 100 Most Influential People in the World. He is also the creator of Poptropica, which was named one of Time magazine’s 50 Best Websites. He spent his childhood in the Washington, D.C., area and moved to New England in 1995. Jeff lives with his wife and two sons in Plainville, Massachusetts, where he owns a bookstore, An Unlikely Story.',
-  isbn: '978-1419717017',
+  isbn: '9781419717017',
   picture_url: 'http://i.imgur.com/WNbiPZS.jpg'
   )
 
@@ -132,7 +132,7 @@ User.fourth.books.create(
   title: 'Stars of Fortune: Book One of the Guardians Trilogy',
   author: 'Nora Roberts',
   description: 'Nora Roberts is the #1 New York Times bestselling author of more than 200 novels. She is also the author of the bestselling futuristic suspense series written under the pen name J. D. Robb. There are more than 500 million copies of her books in print',
-  isbn: '978-0425280102',
+  isbn: '9780425280102',
   picture_url: 'http://i.imgur.com/rIgegMo.jpg'
   )
 
@@ -151,7 +151,7 @@ User.fifth.books.create(
   title: 'Starship Troopers',
   author: '',
   description: "The historians can't seem to settle whether to call this one 'The Third Space War' (or the fourth), or whether 'The First Interstellar War' fits it better. We just call it 'The Bug War.' Everything up to then and still later were 'incidents,' 'patrols,' or 'police actions.' However, you are just as dead if you buy the farm in an 'incident' as you are if you buy it in a declared war... In one of Robert A. Heinlein's most controversial bestsellers, a recruit of the future goes through the toughest boot camp in the Universe--and into battle with the Terran Mobile Infantry against mankind's most alarming enemy.",
-  isbn: '0441783589',
+  isbn: '9780441783589',
   picture_url: 'http://i.imgur.com/Kfcbjoj.jpg'
   )
 
@@ -159,7 +159,7 @@ User.fifth.books.create(
   title: 'Keep Moving: And Other Tips and Truths About Aging',
   author: 'Dick Van Dyke',
   description: 'Dick Van Dyke, the star of Mary Poppins, Chitty Chitty Bang Bang, and The Dick Van Dyke Show, has received five Emmy awards, a Tony, and a Grammy. In 2013, he received the Screen Actors Guild Life Achievement Award. He is also the New York Times bestselling author of My Lucky Life In and Out of Show Business. He lives in Malibu, California.',
-  isbn: '978-1602862968',
+  isbn: '9781602862968',
   picture_url: 'http://i.imgur.com/URW40MU.jpg'
   )
 
@@ -169,7 +169,7 @@ User.find(6).books.create(
   title: 'Redwall',
   author: 'Brian Jacques',
   description: 'When the peaceful life of ancient Redwall Abbey is shattered by the arrival of the evil rat Cluny and his villainous hordes, Matthias, a young mouse, determines to find the legendary sword of Martin the Warrior which, he is convinced, will help Redwall\'s inhabitants destroy the enemy.',
-  isbn: '0399214240',
+  isbn: '9780399214240',
   picture_url: 'http://i.imgur.com/BKla4uC.jpg'
   )
 
@@ -185,7 +185,7 @@ User.find(6).books.create(
   title: 'The Heart Goes Last: A Novel',
   author: 'Margaret Atwood',
   description: 'MARGARET ATWOOD, whose work has been published in thirty-five countries, is the author of more than forty books of fiction, poetry, and critical essays. In addition to The Handmaid\'s Tale, her novels include Cat\'s Eye, short-listed for the 1989 Booker Prize; Alias Grace, which won the Giller Prize in Canada and the Premio Mondello in Italy; The Blind Assassin, winner of the 2000 Booker Prize; Oryx and Crake, short-listed for the 2003 Man Booker Prize; The Year of the Flood; and her most recent, MaddAddam. She is the recipient of the Los Angeles Times Innovator\'s Award, and lives in Toronto with the writer Graeme Gibson.',
-  isbn: '978-0771009112',
+  isbn: '9780771009112',
   picture_url: 'http://i.imgur.com/sYTfDaQ.jpg'
   )
 
@@ -195,7 +195,7 @@ User.find(7).books.create(
   title: 'Wine Folly: The Essential Guide to Wine',
   author: 'Madeline Puckette',
   description: 'Red or white? Cabernet or merlot? Light or bold? What to pair with food? Drinking great wine isn’t hard, but finding great wine does require a deeper understanding of the fundamentals. Wine Folly: The Essential Guide to Wine will help you make sense of it all in a unique infographic wine book. Designed by the creators of WineFolly.com, which has won Wine Blogger of the Year from the International Wine & Spirits Competition, this book combines sleek, modern information design with data visualization and gives readers pragmatic answers to all their wine questions',
-  isbn: '978-1592408993',
+  isbn: '9781592408993',
   picture_url: 'http://i.imgur.com/iV2o2SR.jpg'
   )
 
@@ -203,7 +203,7 @@ User.find(7).books.create(
   title: 'The Walking Dead Book 12',
   author: 'Robert Kirkman, Cliff Rathburn, Charlie Adlard',
   description: 'After Rick delivers Carl to Hilltop to start their new lives apart, a threat emerges from within the walker hordes that no one could expect. A threat that will leave readers speechless. Collects The Walking Dead #133-144.',
-  isbn: '978-1632154514',
+  isbn: '9781632154514',
   picture_url: 'http://i.imgur.com/W26VS6c.jpg'
   )
 
@@ -211,7 +211,7 @@ User.find(7).books.create(
   title: 'The Battle of Alberta: The Historic Rivalry Between the Edmonton Oilers and the Calgary Flames',
   author: ' Mark Spector',
   description: 'An up-close look at the rivalry between the Calgary Flames and the Edmonton Oilers, told from the perspective of those that were there. Sports writer and on-air personality Mark Spector pays tribute to the province\'s hockey heyday with a unique blend of humour and homage.',
-  isbn: '978-0771078064',
+  isbn: '9780771078064',
   picture_url: 'http://i.imgur.com/tg6OzhF.jpg'
   )
 
@@ -229,7 +229,7 @@ User.find(8).books.create(
   title: 'Xenoblade Chronicles X Collector\'s Edition Guide',
   author: ' Prima Games',
   description: 'The Xenoblade Chronicles X Collector’s Edition Guide includes: Deluxe hardcover: The beautiful hardcover edition of the guide will have premium treatments. Screen cleaner: Includes a high-quality, microfiber screen cleaner featuring art from the game. Explore everything: Our detailed walkthrough will guide players through all regions of this massive open world. Customize your gameplay: Learn the best ways to customize your character and Skell to match your playstyle. Master combat: Proven battle tactics on how to defeat each enemy and boss. All the secrets: Complete details on all secrets in the game. Free mobile-friendly eGuide! Includes a code to access the eGuide, a digital version of the complete strategy guide optimized for a second-screen experience.',
-  isbn: '978-0744016734',
+  isbn: '9780744016734',
   picture_url: 'http://i.imgur.com/UcOffDI.jpg'
   )
 
@@ -247,7 +247,7 @@ User.find(9).books.create(
   title: 'Xenoblade Chronicles X Collector\'s Edition Guide',
   author: 'Prima Games',
   description: 'Deluxe hardcover: The beautiful hardcover edition of the guide will have premium treatments. Screen cleaner: Includes a high-quality, microfiber screen cleaner featuring art from the game. Explore everything: Our detailed walkthrough will guide players through all regions of this massive open world. Customize your gameplay: Learn the best ways to customize your character and Skell to match your playstyle.',
-  isbn: '978-0744016734',
+  isbn: '9780744016734',
   picture_url: 'http://i.imgur.com/UcOffDI.jpg'
   )
 
@@ -255,7 +255,7 @@ User.find(9).books.create(
   title: 'The Outlandish Companion Volume Two',
   author: 'Diana Gabaldon',
   description: ' #1 New York Times bestselling author Diana Gabaldon has captivated fans with the story of Jamie and Claire for 23 years and 8 epic novels. Now, she takes her readers deeper into their world with the second volume of her comprehensive guide to all things Outlandish, covering all the Outlander books that have been published since the first volume in 1999: The Fiery Cross, A Breath of Snow and Ashes, An Echo in the Bone, and Written in My Own Heart\'s Blood. Featuring all new material and extensive illustrations, Diana shares with readers new and old the fascinating history and secrets behind her beloved series.',
-  isbn: '978-0385685528',
+  isbn: '9780385685528',
   picture_url: 'http://i.imgur.com/foMNATb.jpg'
   )
 
