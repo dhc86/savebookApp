@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
 
   validates :email, uniqueness: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+  
 
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude

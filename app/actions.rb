@@ -6,9 +6,10 @@ helpers do # methods defined here are available in the .erb files, actions.rb an
     !!current_user
   end
 
+# Remember to change back to session
   def current_user
-    if session[:user_id]
-      User.find(session[:user_id])
+    if cookie[:user_id]
+      User.find(cookie[:user_id])
     end
   end
 end
@@ -26,14 +27,22 @@ get '/users' do
   erb :'users/index'
 end
 
-
-
-
+#allows user to all books and then filter or search for them
 get '/books' do
   @books = Book.all
   if params[:search_text] && params[:search_param]
-    #@books = @books.where(':search LIKE :text', {search: "%#{params[:search_param]}%", text: "%#{params[:search_text]}%"})
+    @text = params[:search_text]
+    @parameter = params[:search_param].downcase
+    case @parameter
+    when 'title'
     @books = @books.where('title LIKE :text', {text: "%#{params[:search_text]}%"})
+    when 'author'
+    @books = @books.where('author LIKE :text', {text: "%#{params[:search_text]}%"})
+    when 'isbn' 
+    @books = @books.where('isbn LIKE :text', {text: "%#{params[:search_text]}%"})
+    when '*'
+    @books = @books.where('isbn LIKE :text OR author LIKE :text OR title LIKE :text', {text: "%#{params[:search_text]}%"})  
+    end
   end
   erb :'books/index'
 end
@@ -73,7 +82,7 @@ post '/books' do
   if @book.save
     redirect "/books/#{@book.id}"
   else
-    erb :'books/new'
+    erb :'/books/new'
   end
 end
 
@@ -87,11 +96,12 @@ end
 put '/books/:id' do |id|
   @book = Book.find(id)
   if @book.update(params[:post])
-    redirect "/books/#{@post.id}"
+    redirect "/books/#{@book.id}"
   else
-    erb :'posts/edit'
+    erb :'books/edit'
   end
 end
+
 
 get '/' do
   #will enable or disable login or profile features if logged_in? or not
