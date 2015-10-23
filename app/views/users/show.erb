@@ -19,8 +19,10 @@
           <div class="row inner-shelves">
             <% books.each do |b| %>
               <div class="col-sm-3 book-container">
+                <a href="/books/<%= b.id %>">
                 <img src= <%= b.picture_url %> >
                 <div class="book-own">Your book</div>
+                </a>
               </div>
             <% end %>
           </div>    
