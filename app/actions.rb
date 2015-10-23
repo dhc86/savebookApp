@@ -11,8 +11,8 @@ helpers do # methods defined here are available in the .erb files, actions.rb an
   # Remember to change back to session
   def current_user
     # cookies[:user_id] = 1   
-    if cookies[:user_id]
-      User.find(cookies[:user_id])
+    if session[:user_id]
+      User.find(session[:user_id])
     end
   end
 end
@@ -52,7 +52,7 @@ post '/users/login' do
   @user = User.find_by(email: params[:email], password: params[:password])
   # halt(400) unless logged_in? -- should be used before
   if @user
-    cookies[:user_id] = @user.id
+    session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
   else
     erb :'user/login'
