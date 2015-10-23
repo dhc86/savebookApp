@@ -1,28 +1,27 @@
 <div class="book-detail">
-  <h1><%= @book.title %></h1>
-  <p>
+    <h1><%= @book.title %></h1>
+    <p>
     <span><img src="<%= @book.picture_url %>" /></span>
-  </p>
+    </p>
 
-
-  <p>
+    <p>
     <strong>Author: <%= @book.author %></strong>
-  </p>
-  <div class="description">
-    <p>
-    Description:
     </p>
-    <p>
-    <%= @book.description %>
-    </p>
-  </div>
+    <div class="description">
+        <p>
+        Description:
+        </p>
+        <p>
+        <%= @book.description %>
+        </p>
+    </div>
 
-  <p>
+    <p>
     Added on: <%= @book.created_at.to_formatted_s(:long_ordinal)  %>             
-  </p>
-  <p>
+    </p>
+    <p>
     By: <%= @book.user.first_name %>  <%= @book.user.last_name %>
-  </p>
+    </p>
 
-  <hr/>
+    <hr/>
 </div>
