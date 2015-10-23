@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /vagrant/savebook/app/views/books/index.erb @ line 34 :
+
+    [1;34m29[0m:                     <% if book.picture_url %>
+    [1;34m30[0m:                         <div class="col-sm-2 book-container">
+    [1;34m31[0m:                             <a href=<%= "books/" + book.id.to_s %> class="thumbnail">
+    [1;34m32[0m:                                 <img src= <%= book.picture_url %>>
+    [1;34m33[0m:                                 <% if logged_in? %>
+ => [1;34m34[0m:                                     <% binding.pry %>
+    [1;34m35[0m:                                     <div class="add-book">Add book</div>
+    [1;34m36[0m:                                     <% end %>
+    [1;34m37[0m:                             </a>
+    [1;34m38[0m:                         </div>
+    [1;34m39[0m:                     <% end %>
+
