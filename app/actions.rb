@@ -92,7 +92,6 @@ get '/books/new' do
 end
 
 #this will find the distance between the user and the book based on lacotion!
-<<<<<<< HEAD
 get '/books/show' do
   @user1 = User.find(id)
   @user2 = User.find
