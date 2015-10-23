@@ -1,14 +1,14 @@
-
+require "json"
 
 helpers do # methods defined here are available in the .erb files, actions.rb and templates in the app
 
-  
+
 
   def logged_in?
     !!current_user
   end
 
-# Remember to change back to session
+  # Remember to change back to session
   def current_user
     # cookies[:user_id] = 1   
     if cookies[:user_id]
@@ -19,10 +19,10 @@ end
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|
-   # binding.pry
-   id = params[:book_id]
-   @book = Book.find(id)
-   erb :'books/edit'
+  # binding.pry
+  id = params[:book_id]
+  @book = Book.find(id)
+  erb :'books/edit'
 end
 
 # Edit an existing book
@@ -74,13 +74,13 @@ get '/books' do
     @parameter = params[:search_param].downcase
     case @parameter
     when 'title'
-    @books = @books.where('title LIKE :text', {text: "%#{params[:search_text]}%"})
+      @books = @books.where('title LIKE :text', {text: "%#{params[:search_text]}%"})
     when 'author'
-    @books = @books.where('author LIKE :text', {text: "%#{params[:search_text]}%"})
+      @books = @books.where('author LIKE :text', {text: "%#{params[:search_text]}%"})
     when 'isbn' 
-    @books = @books.where('isbn LIKE :text', {text: "%#{params[:search_text]}%"})
+      @books = @books.where('isbn LIKE :text', {text: "%#{params[:search_text]}%"})
     when '*'
-    @books = @books.where('isbn LIKE :text OR author LIKE :text OR title LIKE :text', {text: "%#{params[:search_text]}%"})  
+      @books = @books.where('isbn LIKE :text OR author LIKE :text OR title LIKE :text', {text: "%#{params[:search_text]}%"})  
     end
   end
   erb :'books/index'
@@ -92,6 +92,17 @@ get '/books/new' do
 end
 
 #this will find the distance between the user and the book based on lacotion!
+get '/books/show' do
+  @user1 = User.find(id)
+  @user2 = User.find
+  @a = Geokit::Geocoders::GoogleGeocoder.geocode ''
+  @a = Geokit::Geocoders::GoogleGeocoder.geocode '' 
+  @distance = @a.distance_to(@b)
+
+  #need the other code to show the book information
+
+
+end 
 
 #Zudo code:
 # get '/books/:id'
@@ -114,7 +125,12 @@ end
 #   erb :'books/show'
 # end
 
-
+get '/books/:isbn/info' do
+  #if params[:isbn]
+    book_details = Book.find_book_with_isbn(params[:isbn])
+    json book_details
+  #end
+end
 
 # Save a new book to database
 post '/books' do
@@ -126,27 +142,14 @@ post '/books' do
   #     picture_url: ''
   #   }
   # }
-  if params[:isbn]
-    book_details = Book.find_book_with_isbn(params[:isbn])
-    if book_details
-      @book = Book.new 
-      @book.title = book_details[:title]
-      @book.author = book_details[:author]
-      @book.description = book_details[:description]
-      @book.isbn = params[:isbn].to_i
-      @book.picture_url = book_details[:picture_url] if book_details[:picture_url]
-      @book.user_id = current_user.id
-      
-    end
-    redirect '/books/new' 
-  else
     @book = Book.new(
       title: params[:title],
       author: params[:author],
+      isbn: params[:isbn],
       description: params[:description],
       picture_url: params[:picture_url]
     )
-  end
+  #end
   if @book.save
     redirect "/books/#{@book.id}"
   else
@@ -171,7 +174,8 @@ put '/books/:id' do |id|
   else
     erb :'books/edit'
   end
-end 
+end
+
 # Get the Lend book page
 get '/books/:id/lend' do |id|
 

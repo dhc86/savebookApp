@@ -36,10 +36,8 @@
 
     <p>
     Added on: <%= @book.created_at.to_formatted_s(:long_ordinal)  %>             
-  </p>
-  <p>
-    Owned By: <%= @book.user.first_name %>  <%= @book.user.last_name %>
-  </p>
+    </p>
+    <!-- Removed first name and last name. Was causing issues -->
 
 
     <hr/>
