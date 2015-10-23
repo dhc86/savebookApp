@@ -30,7 +30,7 @@
                         <div class="col-sm-2 book-container">
                             <a href=<%= "books/" + book.id.to_s %>>
                                 <img src= <%= book.picture_url %>>
-                                <% if current_user.id == book.user_id %>
+                                <% if current_user && current_user.id == book.user_id %>
                                     <div class="book-own">Your book</div>
                                 <% elsif book.lend.nil? %>
                                     <div class="book-borrow">Book borrow</div>
