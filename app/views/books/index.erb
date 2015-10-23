@@ -16,7 +16,7 @@
                         </ul>
                     </div>
                     <input type="hidden" name="search_param" value="all" id="search_param">         
-                    <input type="text" class="form-control" name="search_text" placeholder="Search books...">
+                    <input type="text" class="form-control" name="search_text" value="" placeholder="Search books...">
                     <span class="input-group-btn">
                         <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
@@ -40,6 +40,7 @@
 </div>
 <script type="text/javascript">
     $('#searchform li a').on('click', function(){
-        $('#search_param').val($(this).text());
+            $('#search_param').val($(this).text());
+            $(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
     });
 </script>

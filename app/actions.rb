@@ -30,7 +30,10 @@ end
 
 get '/books' do
   @books = Book.all
-  #filter with our search conditions here
+  if params[:search_text] && params[:search_param]
+    #@books = @books.where(':search LIKE :text', {search: "%#{params[:search_param]}%", text: "%#{params[:search_text]}%"})
+    @books = @books.where('title LIKE :text', {text: "%#{params[:search_text]}%"})
+  end
   erb :'books/index'
 end
 
@@ -41,7 +44,7 @@ end
 
 # Save a new book to database
 post '/books' do
-   # params = {
+  # params = {
   #   book: {
   #     title: 'value from input',
   #     author: 'value from textarea'
@@ -53,7 +56,7 @@ post '/books' do
   if @book.save
     redirect "/books/#{@book.id}"
   else
-    erb :'boooks/new'
+    erb :'books/new'
   end
 end
 
@@ -63,11 +66,11 @@ get '/books/:id' do |id|
   erb :'books/show'
 end
 
-# Edit an existing post
-put '/posts/:id' do |id|
-  @post = Post.find(id)
-  if @post.update(params[:post])
-    redirect "/posts/#{@post.id}"
+# Edit an existing book
+put '/books/:id' do |id|
+  @book = Book.find(id)
+  if @book.update(params[:post])
+    redirect "/books/#{@post.id}"
   else
     erb :'posts/edit'
   end
