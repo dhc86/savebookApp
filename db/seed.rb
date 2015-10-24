@@ -293,10 +293,22 @@ User.find(10).books.create(
   picture_url: 'http://i.imgur.com/SYFHFY3.jpg'
   )
 
+User.find(10).books.create(
+  title: 'The Drowning',
+  author: 'Camilla Läckberg',
+  description: 'Christian Thydell has been receiving anonymous threats since he began writing his novel \'The Mermaid\'. When one message, secreted within a bouquet of flowers, causes him to collapse at the launch party, crime writer Erica Falck is compelled to investigate.',
+  isbn: '9780007419531',
+  picture_url: 'http://i.imgur.com/UFf91oR.jpg'
+  )
 
 
-
-
+User.find(10).books.create(
+  title: 'The Giver',
+  author: 'Lois Lowry',
+  description: 'Given his lifetime assignment at the Ceremony of Twelve, Jonas becomes the receiver of memories shared by only one other in his community and discovers the terrible truth about the society in which he lives.',
+  isbn: '9780547345901',
+  picture_url: 'http://i.imgur.com/UlJYPyf.png'
+  )
 
 
 

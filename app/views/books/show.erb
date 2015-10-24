@@ -8,7 +8,7 @@
   </div>
     
   <div>
-    <% if current_user.id == @book.user_id %>
+    <% if current_user && current_user.id == @book.user_id %>
       <form method="get" action="/books/:id/edit"c>
         <input type="hidden" name="book_id" value="<%= @book.id %>">
         <input type="hidden" name="book" value="<%= @book %>">
@@ -22,7 +22,14 @@
         </form>
     <% end %>
   </div>
-    <p>This book is <%= @distance %> miles away from you. Click on Borrow Book button to check availability</p>
+
+    <% if (@distance != 0) %>
+      <p>This book is <%= @distance %> miles away from you. Click on Borrow Book button to check availability</p>    
+    <% else %>
+      <p> You own this book </p>
+    <% end %>
+
+
 
     <p>
     <strong>Author: <%= @book.author %></strong>
