@@ -1,3 +1,4 @@
+<!-- This is the page to your your own profile page -->
 <div class="container" >
 <div class="row">
   <div class=" col-lg-3 main-left">
@@ -10,8 +11,8 @@
     <div class="profile-info">
       <%= @user.first_name %> <%= @user.last_name %>
     </div>
-
   </div>
+
   <div class=" col-lg-9 main-right">
     <div class='row shelves'>
       <div class="row inner-shelves">
@@ -48,7 +49,28 @@
         </div>    
       </div>
     <% end %>
+    <% @lend_book_id.each_slice(4) do |books_id| %>       
+      <div class='row shelves'>
+        <div class="row inner-shelves">
+          <% books_id.each do |id| %>
+            <div class="col-sm-3 book-container">
+              <a href="/books/<%= id %>">
+              <img src= <%= Book.find(id).picture_url %> >
+              <div class="book-lend">Lend book</div>
+              </a>
+            </div>
+          <% end %>
+        </div>    
+      </div>
+    <% end %>
   </div>
+
+
+
+
+  </div>
+  
+
 
 </div>
 </div>
