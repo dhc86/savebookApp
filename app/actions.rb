@@ -129,7 +129,37 @@ post '/books' do
   end
 end
 
+# Lend out a book
+post '/books/:id/lend' do |id|
+  id = params[:book_id]
+  @book = Book.find(params[:book_id])
+  @book.lends.create(
+    borrower_id: params[:borrower_id],
+    checkout: params[:checkout],
+    due: params[:due]
+    )
+  redirect "/books/#{id}"
+end
 
+get '/books/:id/lend' do |id|
+  id = params[:book_id]
+  if params[:lend_id]
+    lend = Lend.find(params[:lend_id])
+    lend.update(checkin: params[:checkin])
+    lend.save
+  end
+  redirect "/books/#{id}"
+end
+
+# put '/books/:id/lend' do |id|
+#   id = params[:book_id]
+#   if params[:lend_id]
+#     lend = Lend.find(params[:lend_id])
+#     lend.update(checkin: params[:checkin])
+#     lend.save
+#   end
+#   redirect "/books/#{id}"
+# end
 
 # Show details of a Book
 get '/books/:id' do |id|
@@ -159,10 +189,6 @@ put '/books/:id' do |id|
   end
 end
 
-# Get the Lend book page
-get '/books/:id/lend' do |id|
-
-end
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|
