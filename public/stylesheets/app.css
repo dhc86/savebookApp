@@ -125,6 +125,28 @@
   font-size: 20px;
 }
 
+.book-lentout{
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: cyan;
+  color: #FFFFFF;
+  height: 45px ;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+
+.book-borrowed{
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: yellow;
+  color: #FFFFFF;
+  height: 45px ;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+
 .book-borrow{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
