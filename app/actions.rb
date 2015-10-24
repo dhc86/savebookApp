@@ -1,25 +1,22 @@
 require "json"
 
 helpers do # methods defined here are available in the .erb files, actions.rb and templates in the app
-
-
-
+  
   def logged_in?
     !!current_user
   end
 
-  # Remember to change back to session
   def current_user
-    # cookies[:user_id] = 1   
-    if cookies[:user_id]
-      User.find(cookies[:user_id])
+    if session[:user_id]
+      User.find(session[:user_id])
     end
   end
+
 end
+
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|
-  # binding.pry
   id = params[:book_id]
   @book = Book.find(id)
   erb :'books/edit'
@@ -40,30 +37,26 @@ get '/users/login' do
   erb :'users/login'
 end
 
+# Remove session and return to login page
+get '/users/logout' do
+  session.clear
+  redirect "/users/login"
+end
+
 # Show a User Profile
 get '/users/:id' do
   @user = User.find(params[:id])
   erb :'users/show'
 end
 
-
-
 post '/users/login' do
   @user = User.find_by(email: params[:email], password: params[:password])
-  # halt(400) unless logged_in? -- should be used before
   if @user
-    cookies[:user_id] = @user.id
+    session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
   else
     erb :'user/login'
   end
-end
-
-# Display all users
-get '/users' do
-  @users = User.all
-  #filter with our search conditions here
-  erb :'users/index'
 end
 
 #allows user to all books and then filter or search for them
@@ -127,8 +120,8 @@ end
 
 get '/books/:isbn/info' do
   #if params[:isbn]
-    book_details = Book.find_book_with_isbn(params[:isbn])
-    json book_details
+  book_details = Book.find_book_with_isbn(params[:isbn])
+  json book_details
   #end
 end
 
@@ -142,13 +135,13 @@ post '/books' do
   #     picture_url: ''
   #   }
   # }
-    @book = Book.new(
-      title: params[:title],
-      author: params[:author],
-      isbn: params[:isbn],
-      description: params[:description],
-      picture_url: params[:picture_url]
-    )
+  @book = Book.new(
+    title: params[:title],
+    author: params[:author],
+    isbn: params[:isbn],
+    description: params[:description],
+    picture_url: params[:picture_url]
+  )
   #end
   if @book.save
     redirect "/books/#{@book.id}"
@@ -161,6 +154,7 @@ end
 
 # Show details of a Book
 get '/books/:id' do |id|
+  redirect "/users/login" unless logged_in?
   @book = Book.find(id)
   erb :'books/show'
 end
@@ -183,18 +177,14 @@ end
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|
-    # binding.pry
-    @book = Book.find(id)
-    erb :'books/edit'
+  @book = Book.find(id)
+  erb :'books/edit'
 end
-
-
-
 
 get '/' do
   #will enable or disable login or profile features if logged_in? or not
   if logged_in? 
-    redirect "/users/#{cookies[:user_id]}"
+    redirect "/users/#{session[:user_id]}"
   else
     erb :'/login'
   end
