@@ -1,7 +1,7 @@
 require "json"
 
 helpers do # methods defined here are available in the .erb files, actions.rb and templates in the app
-  
+
   def logged_in?
     !!current_user
   end
@@ -32,7 +32,7 @@ put '/books/:id' do |id|
     description: params[:description],
     picture_url: params[:picture_url]
   )
-    redirect "/books/#{@book.id}"
+  redirect "/books/#{@book.id}"
   else
     erb :'books/edit'
   end
@@ -40,7 +40,7 @@ end
 
 # Login page for user
 get '/users/login' do
-    redirect "/users/#{current_user.id}" if current_user
+  redirect "/users/#{current_user.id}" if current_user
   erb :'users/login'
 end
 
@@ -65,7 +65,7 @@ get '/users/:id' do
   else
     erb :'users/show'
   end
-  
+
 end
 
 post '/users/login' do
@@ -114,12 +114,12 @@ end
 # Save a new book to database
 post '/books' do
   redirect "/users/login" unless logged_in?
-  @book = Book.new(
+  @book = current_user.books.new(
     title: params[:title],
     author: params[:author],
     isbn: params[:isbn],
     description: params[:description],
-    picture_url: params[:picture_url]
+    picture_url: params[:url]
   )
   #end
   if @book.save
@@ -129,7 +129,37 @@ post '/books' do
   end
 end
 
+# Lend out a book
+post '/books/:id/lend' do |id|
+  id = params[:book_id]
+  @book = Book.find(params[:book_id])
+  @book.lends.create(
+    borrower_id: params[:borrower_id],
+    checkout: params[:checkout],
+    due: params[:due]
+    )
+  redirect "/books/#{id}"
+end
 
+get '/books/:id/lend' do |id|
+  id = params[:book_id]
+  if params[:lend_id]
+    lend = Lend.find(params[:lend_id])
+    lend.update(checkin: params[:checkin])
+    lend.save
+  end
+  redirect "/books/#{id}"
+end
+
+# put '/books/:id/lend' do |id|
+#   id = params[:book_id]
+#   if params[:lend_id]
+#     lend = Lend.find(params[:lend_id])
+#     lend.update(checkin: params[:checkin])
+#     lend.save
+#   end
+#   redirect "/books/#{id}"
+# end
 
 # Show details of a Book
 get '/books/:id' do |id|
@@ -138,7 +168,7 @@ get '/books/:id' do |id|
   @book = Book.find(id)
   erb :'books/show'
 
-# This feature calculates the distance between current user and book to borrow
+  # This feature calculates the distance between current user and book to borrow
   @book = Book.find(params[:id])
   @owner = @book.user
   # binding.pry
@@ -151,6 +181,7 @@ end
 
 # Edit an existing book
 put '/books/:id' do |id|
+  redirect "/users/login" unless logged_in?
   @book = Book.find(id)
   if @book.update(params[:post])
     redirect "/books/#{@book.id}"
@@ -159,10 +190,6 @@ put '/books/:id' do |id|
   end
 end
 
-# Get the Lend book page
-get '/books/:id/lend' do |id|
-
-end
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|

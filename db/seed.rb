@@ -222,7 +222,7 @@ User.find(8).books.create(
   author: 'Max Brooks',
   description: 'An account of the decade-long conflict between humankind and hordes of the predatory undead is told from the perspective of dozens of survivors who describe in their own words the epic human battle for survival.',
   isbn: '9780307351937',
-  picture_url: 'http://i.imgur.com/PzHuP6r.jpg'
+  picture_url: 'http://i.imgur.com/uF1Sleu.jpg'
   )
 
 User.find(8).books.create(
