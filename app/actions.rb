@@ -45,8 +45,20 @@ end
 
 # Show a User Profile
 get '/users/:id' do
-  @user = User.find(params[:id])
-  erb :'users/show'
+  requestUserId   = params[:id]
+  loggedInUserId  = session[:user_id] 
+  @user = User.find(requestUserId)
+  if loggedInUserId
+    @isMyProfile = requestUserId == loggedInUserId.to_s
+    if @isMyProfile
+      erb :'users/profile'
+    else
+      erb :'users/show'
+    end
+  else
+    erb :'users/show'
+  end
+  
 end
 
 post '/users/login' do
