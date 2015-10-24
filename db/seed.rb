@@ -226,32 +226,16 @@ User.find(8).books.create(
   )
 
 User.find(8).books.create(
-  title: 'Xenoblade Chronicles X Collector\'s Edition Guide',
-  author: ' Prima Games',
-  description: 'The Xenoblade Chronicles X Collector’s Edition Guide includes: Deluxe hardcover: The beautiful hardcover edition of the guide will have premium treatments. Screen cleaner: Includes a high-quality, microfiber screen cleaner featuring art from the game. Explore everything: Our detailed walkthrough will guide players through all regions of this massive open world. Customize your gameplay: Learn the best ways to customize your character and Skell to match your playstyle. Master combat: Proven battle tactics on how to defeat each enemy and boss. All the secrets: Complete details on all secrets in the game. Free mobile-friendly eGuide! Includes a code to access the eGuide, a digital version of the complete strategy guide optimized for a second-screen experience.',
-  isbn: '9780744016734',
-  picture_url: 'http://i.imgur.com/UcOffDI.jpg'
-  )
-
-User.find(8).books.create(
   title: 'The Giver',
   author: 'Lois Lowry',
   description: 'Given his lifetime assignment at the Ceremony of Twelve, Jonas becomes the receiver of memories shared by only one other in his community and discovers the terrible truth about the society in which he lives.',
   isbn: '9780547345901',
-  picture_url: 'http://i.imgur.com/UlJYPyf.png'
+  picture_url: 'http://i.imgur.com/Yj9vLt3.jpg'
   )
 
 # Books for ninth user
 
-User.find(9).books.create(
-  title: 'Xenoblade Chronicles X Collector\'s Edition Guide',
-  author: 'Prima Games',
-  description: 'Deluxe hardcover: The beautiful hardcover edition of the guide will have premium treatments. Screen cleaner: Includes a high-quality, microfiber screen cleaner featuring art from the game. Explore everything: Our detailed walkthrough will guide players through all regions of this massive open world. Customize your gameplay: Learn the best ways to customize your character and Skell to match your playstyle.',
-  isbn: '9780744016734',
-  picture_url: 'http://i.imgur.com/UcOffDI.jpg'
-  )
-
-User.find(9).books.create(
+  User.find(9).books.create(
   title: 'The Outlandish Companion Volume Two',
   author: 'Diana Gabaldon',
   description: ' #1 New York Times bestselling author Diana Gabaldon has captivated fans with the story of Jamie and Claire for 23 years and 8 epic novels. Now, she takes her readers deeper into their world with the second volume of her comprehensive guide to all things Outlandish, covering all the Outlander books that have been published since the first volume in 1999: The Fiery Cross, A Breath of Snow and Ashes, An Echo in the Bone, and Written in My Own Heart\'s Blood. Featuring all new material and extensive illustrations, Diana shares with readers new and old the fascinating history and secrets behind her beloved series.',
@@ -264,7 +248,7 @@ User.find(9).books.create(
   author: 'Camilla Läckberg',
   description: 'Christian Thydell has been receiving anonymous threats since he began writing his novel \'The Mermaid\'. When one message, secreted within a bouquet of flowers, causes him to collapse at the launch party, crime writer Erica Falck is compelled to investigate.',
   isbn: '9780007419531',
-  picture_url: 'http://i.imgur.com/UFf91oR.jpg'
+  picture_url: 'http://i.imgur.com/pxhcKJy.jpg'
   )
 
 # Books for tenth user
