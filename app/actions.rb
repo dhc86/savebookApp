@@ -59,7 +59,7 @@ get '/users/:id' do
     @isMyProfile = requestUserId == loggedInUserId.to_s
     if @isMyProfile
       @lends = Lend.where(borrower_id: session[:user_id])
-      @lend_book_id = @lends.map {|l| l.book_id}
+      @lend_book_id = @lends.map {|l| l.book_id} if @lends
       erb :'users/profile'
     else
       erb :'users/show'
