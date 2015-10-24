@@ -12,13 +12,14 @@
       <form method="get" action="/books/:id/edit"c>
         <input type="hidden" name="book_id" value="<%= @book.id %>">
         <input type="hidden" name="book" value="<%= @book %>">
-        <button class="button">Edit Book</button>
+<button class="button btn btn-primary pull-left">Edit Book</button>
+        <!-- <button class="btn btn-primary pull-left" class="button" type="button"> Edit Book </button> -->
       </form>
     <% else %>
 
         <form method="get" action="/books/:id/lend">
-        
-          <button class="button">Borrow Book</button>
+          
+          <button class="button btn btn-primary pull-left">Borrow Book</button>
         </form>
     <% end %>
   </div>
