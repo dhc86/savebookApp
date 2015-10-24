@@ -141,6 +141,7 @@ get '/books/:id' do |id|
 # This feature calculates the distance between current user and book to borrow
   @book = Book.find(params[:id])
   @owner = @book.user
+  # binding.pry
   @a = Geokit::Geocoders::GoogleGeocoder.geocode current_user.address
   @b = Geokit::Geocoders::GoogleGeocoder.geocode @owner.address
   @distance = (@a.distance_to(@b)*100).round / 100.0
