@@ -5,7 +5,7 @@
         <p>
         <span><img src="<%= @book.picture_url %>" /></span>
         </p>
-        <span><img src="<%= @book.user.picture_url %>"></span>
+        <span><a href=<%="/users/" + @book.user_id.to_s %>><img src="<%= @book.user.picture_url %>"></a></span>
     </div>
 
     <div>
