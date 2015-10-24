@@ -19,21 +19,28 @@ end
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|
+   # if params[:borrow] == 'yes'
+
    # binding.pry
    id = params[:book_id]
    @book = Book.find(id)
    erb :'books/edit'
 end
 
-# Edit an existing book
-put '/books/:id' do |id|
-  @book = Book.find(id)
-  if @book.update(params[:post])
-    redirect "/books/#{@book.id}"
-  else
-    erb :'books/edit'
-  end
-end
+# # Edit an existing book
+# put '/books/:id' do |id|
+#   @book = Book.find(id)
+#   if @book.update(
+#       title: params[:title],
+#       author: params[:author],
+#       description: params[:description],
+#       picture_url: params[:picture_url]
+#     )
+#     redirect "/books/#{@book.id}"
+#   else
+#     erb :'books/edit'
+#   end
+# end
 
 # Login page for user
 get '/users/login' do
@@ -91,22 +98,6 @@ get '/books/new' do
   erb :'books/new'
 end
 
-#this will find the distance between the user and the book based on lacotion!
-get '/books/show' do
-  @user1 = User.find(id)
-  @user2 = User.find
-  @a = Geokit::Geocoders::GoogleGeocoder.geocode ''
-  @a = Geokit::Geocoders::GoogleGeocoder.geocode '' 
-  @distance = @a.distance_to(@b)
-
-  #need the other code to show the book information
-  
-
-end 
-
-
-
-
 # Save a new book to database
 post '/books' do
   # params = {
@@ -135,7 +126,8 @@ post '/books' do
       title: params[:title],
       author: params[:author],
       description: params[:description],
-      picture_url: params[:picture_url]
+      picture_url: params[:picture_url],
+      user_id: current_user.id 
     )
   end
   if @book.save
@@ -145,19 +137,42 @@ post '/books' do
   end
 end
 
+# Lend out a book
+post '/books/:id/lend' do |id|
+  id = params[:book_id]
+  @book = Book.find(params[:book_id])
+  @book.lends.create(
+    borrower_id: params[:borrower_id],
+    checkout: params[:checkout],
+    due: params[:due]
+    )
+  redirect "/books/#{id}"
+end
 
+get '/books/:id/lend' do |id|
+  id = params[:book_id]
+  if params[:lend_id]
+    lend = Lend.find(params[:lend_id])
+    lend.update(checkin: params[:checkin])
+    lend.save
+  end
+  redirect "/books/#{id}"
+end
+
+# put '/books/:id/lend' do |id|
+#   id = params[:book_id]
+#   if params[:lend_id]
+#     lend = Lend.find(params[:lend_id])
+#     lend.update(checkin: params[:checkin])
+#     lend.save
+#   end
+#   redirect "/books/#{id}"
+# end
 
 # Show details of a Book
 get '/books/:id' do |id|
   @book = Book.find(id)
   erb :'books/show'
-end
-
-
-
-# Get the Lend book page
-get '/books/:id/lend' do |id|
-
 end
 
 

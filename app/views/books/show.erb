@@ -12,13 +12,19 @@
       <form method="get" action="/books/:id/edit"c>
         <input type="hidden" name="book_id" value="<%= @book.id %>">
         <input type="hidden" name="book" value="<%= @book %>">
-        <button class="button">Edit Book</button>
+        <button class="btn button">Edit Book</button>
       </form>
-    <% else %>
-        <form method="get" action="/books/:id/lend">
-
-          <button class="button">Borrow Book</button>
+    <% elsif lend = @book.lends.find_by(checkin: nil) %>
+      <% if current_user.id = lend.borrower_id %>
+        <form method="put" action="/books/:id/lend">
+          <input type="hidden" name="lend_id" value="<%= lend && lend.id %>">
+          <input type="hidden" name="book_id" value="<%= @book.id %>">
+          <input type="hidden" name="checkin" value="<%= Date.today %>">
+          <button class="btn button">Return Book</button>
         </form>
+      <% end %>
+    <% else %>
+      <button id="btn_borrow_book" class="btn button">Borrow Book</button>
     <% end %>
   </div>
 
@@ -43,4 +49,43 @@
 
 
     <hr/>
+</div>
+
+<div>
+  
+  <% if ( lend = @book.lends.find_by(checkin: nil) ) %>
+    <h2>Book Lend Info</h2>
+    <p>
+    This book is currently not available
+    </p>
+    <p>
+      <label>Book was lent to: </label>
+      <%= User.find(lend.borrower_id).first_name %>  <%= User.find(lend.borrower_id).last_name %>   
+    </p>
+    <p>
+    <label>Checkout date was: </label><%= lend.checkout %>
+    </p>
+    <p>
+      <label>Book should be returned by: </label><%= lend.due %>
+    </p>
+  <% else %>
+    <div id="book_checkout_form">
+      <h2>Book Checkout Form</h2>
+      <p><strong>All Books are due <em>7 days</em> from checkout</strong></p>
+      <form method="post" action="/books/:id/lend">
+        <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
+        <input type="hidden" name="book_id" value="<%= @book.id %>">
+        <p>
+          <label>Checkout Date: </label><input type="date" name="checkout" value="<%= Date.today %>">
+        </p>
+        <p>
+          <label>Expected Checkin date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
+        </p>
+        <p>
+          <button class="button">Confirm Checkout</button>
+        </p>
+      </form>
+    </div>
+  <% end %>
+
 </div>
