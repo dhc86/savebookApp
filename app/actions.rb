@@ -25,7 +25,13 @@ end
 # Edit an existing book
 put '/books/:id' do |id|
   @book = Book.find(id)
-  if @book.update(params[:post])
+  if @book.update(
+    title: params[:title],
+    author: params[:author],
+    isbn: params[:isbn],
+    description: params[:description],
+    picture_url: params[:picture_url]
+  )
     redirect "/books/#{@book.id}"
   else
     erb :'books/edit'
@@ -34,6 +40,7 @@ end
 
 # Login page for user
 get '/users/login' do
+    redirect "/users/#{current_user.id}" if current_user
   erb :'users/login'
 end
 
@@ -62,6 +69,7 @@ get '/users/:id' do
 end
 
 post '/users/login' do
+
   @user = User.find_by(email: params[:email], password: params[:password])
   if @user
     session[:user_id] = @user.id
@@ -96,40 +104,6 @@ get '/books/new' do
   erb :'books/new'
 end
 
-#this will find the distance between the user and the book based on lacotion!
-get '/books/show' do
-  @user1 = User.find(id)
-  @user2 = User.find
-  @a = Geokit::Geocoders::GoogleGeocoder.geocode ''
-  @a = Geokit::Geocoders::GoogleGeocoder.geocode '' 
-  @distance = @a.distance_to(@b)
-
-  #need the other code to show the book information
-
-
-end 
-
-#Zudo code:
-# get '/books/:id'
-#   Load current user from database
-#   Load book from database
-#   Load book's owner(user) from database
-#   Get geo for current user
-#   Get geo for owner
-#   Compute distance
-#   Load ERB
-# end
-
-# get '/books/:id' do
-#   @user = User.find(session[:user_id])
-#   @book = Book.find(params[:id])
-#   @owner = @book.user
-#   @a = Geokit::Geocoders::GoogleGeocoder.geocode @user.address
-#   @b = Geokit::Geocoders::GoogleGeocoder.geocode @owner.address
-#   @distance = @a.distance_to(@b)
-#   erb :'books/show'
-# end
-
 get '/books/:isbn/info' do
   #if params[:isbn]
   book_details = Book.find_book_with_isbn(params[:isbn])
@@ -139,14 +113,7 @@ end
 
 # Save a new book to database
 post '/books' do
-  # params = {
-  #   book: {
-  #     title: 'value from input',
-  #     author: 'value from textarea'
-  #     description: 'value from textarea'
-  #     picture_url: ''
-  #   }
-  # }
+  redirect "/users/login" unless logged_in?
   @book = Book.new(
     title: params[:title],
     author: params[:author],
@@ -166,8 +133,17 @@ end
 
 # Show details of a Book
 get '/books/:id' do |id|
+
   redirect "/users/login" unless logged_in?
   @book = Book.find(id)
+  erb :'books/show'
+
+# This feature calculates the distance between current user and book to borrow
+  @book = Book.find(params[:id])
+  @owner = @book.user
+  @a = Geokit::Geocoders::GoogleGeocoder.geocode current_user.address
+  @b = Geokit::Geocoders::GoogleGeocoder.geocode @owner.address
+  @distance = (@a.distance_to(@b)*100).round / 100.0
   erb :'books/show'
 end
 
