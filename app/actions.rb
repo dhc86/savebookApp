@@ -1,7 +1,7 @@
 require "json"
 
 helpers do # methods defined here are available in the .erb files, actions.rb and templates in the app
-  
+
   def logged_in?
     !!current_user
   end
@@ -32,7 +32,7 @@ put '/books/:id' do |id|
     description: params[:description],
     picture_url: params[:picture_url]
   )
-    redirect "/books/#{@book.id}"
+  redirect "/books/#{@book.id}"
   else
     erb :'books/edit'
   end
@@ -40,7 +40,7 @@ end
 
 # Login page for user
 get '/users/login' do
-    redirect "/users/#{current_user.id}" if current_user
+  redirect "/users/#{current_user.id}" if current_user
   erb :'users/login'
 end
 
@@ -65,7 +65,7 @@ get '/users/:id' do
   else
     erb :'users/show'
   end
-  
+
 end
 
 post '/users/login' do
@@ -138,7 +138,7 @@ get '/books/:id' do |id|
   @book = Book.find(id)
   erb :'books/show'
 
-# This feature calculates the distance between current user and book to borrow
+  # This feature calculates the distance between current user and book to borrow
   @book = Book.find(params[:id])
   @owner = @book.user
   @a = Geokit::Geocoders::GoogleGeocoder.geocode current_user.address
