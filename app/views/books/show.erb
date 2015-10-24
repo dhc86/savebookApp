@@ -29,7 +29,12 @@
   </div>
 
     <% if (@distance != 0) %>
+
+
       <p>This book is <%= @distance %> miles away from you. Click on Borrow Book button to check availability</p>    
+
+     xz
+      <iframe style="height: 400px; width: 600px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCVt89sOKkehU7JDQpPncShX80rzGE6kj4&origin=<%= current_user.address %>&destination= <%= @book.user.address %> &avoid=tolls|highways"></iframe>
     <% else %>
       <p> You own this book </p>
     <% end %>
@@ -55,6 +60,9 @@
 
 
     <hr/>
+
+
+
 </div>
 
 <div>
