@@ -5,7 +5,7 @@
       <img src=<%= @user.picture_url%>>
     </div>
     <div class="profile-info">
-    Welcome
+    Welcome!
     </div>
     <div class="profile-info">
       <%= @user.first_name %> <%= @user.last_name %>
@@ -16,8 +16,10 @@
     <div class='row shelves'>
       <div class="row inner-shelves">
         <div class="col-sm-3 book-container">
-          <img src="http://www.iconarchive.com/download/i42578/oxygen-icons.org/oxygen/Actions-address-book-new.ico">
-          <div class="add-book">Add book</div>
+          <a href="/books/new">
+            <img src="http://www.iconarchive.com/download/i42578/oxygen-icons.org/oxygen/Actions-address-book-new.ico">
+            <div class="add-book">Add book</div>
+          </a>  
         </div>
         <% @user.books.each_with_index do |book, index| %>
           <% if index < 3 %>
