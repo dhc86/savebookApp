@@ -15,12 +15,21 @@
         <button class="button">Edit Book</button>
       </form>
     <% else %>
-        <form method="get" action="/books/:id/lend">
 
+        <form method="get" action="/books/:id/lend">
+        
           <button class="button">Borrow Book</button>
         </form>
     <% end %>
   </div>
+
+    <% if (@distance != 0) %>
+      <p>This book is <%= @distance %> miles away from you. Click on Borrow Book button to check availability</p>    
+    <% else %>
+      <p> You own this book </p>
+    <% end %>
+
+
 
     <p>
     <strong>Author: <%= @book.author %></strong>
