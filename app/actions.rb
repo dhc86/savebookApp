@@ -102,12 +102,12 @@ end
 # Save a new book to database
 post '/books' do
   redirect "/users/login" unless logged_in?
-  @book = Book.new(
+  @book = current_user.books.new(
     title: params[:title],
     author: params[:author],
     isbn: params[:isbn],
     description: params[:description],
-    picture_url: params[:picture_url]
+    picture_url: params[:url]
   )
   #end
   if @book.save
@@ -138,6 +138,7 @@ end
 
 # Edit an existing book
 put '/books/:id' do |id|
+  redirect "/users/login" unless logged_in?
   @book = Book.find(id)
   if @book.update(params[:post])
     redirect "/books/#{@book.id}"
