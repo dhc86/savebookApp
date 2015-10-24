@@ -17,11 +17,19 @@
     <% @user.books.each_slice(4) do |books| %>       
       <div class='row shelves'>
         <div class="row inner-shelves">
-          <% books.each do |b| %>
+          <% books.each do |book| %>
             <div class="col-sm-3 book-container">
-              <a href="/books/<%= b.id %>">
-              <img src= <%= b.picture_url %> >
-              <div class="book-own">Your book</div>
+              <a href="/books/<%= book.id %>">
+              <img src= <%= book.picture_url %> >
+                                <% if current_user && current_user.id == book.user_id %>
+                                    <div class="book-own">Your book</div>
+                                <% elsif book.lends && book.lends.find_by(borrower_id: current_user.id) %>
+                                    <div class="book-own">Loaned book</div>
+                                <% elsif (book.lends && lend = book.lends.find_by(checkin: nil)) %>
+                                    <div class="book-lend">Unavailable</div>
+                                <% else %>
+                                    <div class="book-borrow">Book borrow</div>
+                                <% end %>
               </a>
             </div>
           <% end %>

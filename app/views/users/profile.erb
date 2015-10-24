@@ -35,7 +35,9 @@
       </div>    
     </div>   
 
-    <% @user.books[3..-1].each_slice(4) do |books| %>       
+    <!-- Ran into an error here when I removed a book. 
+    Cant slice a nil class. Changed to 2..-1 for now -->
+    <% @user.books[2..-1].each_slice(4) do |books| %>       
       <div class='row shelves'>
         <div class="row inner-shelves">
           <% books.each do |b| %>
