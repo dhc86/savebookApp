@@ -32,9 +32,10 @@
                                 <img src= <%= book.picture_url %>>
                                 <% if current_user && current_user.id == book.user_id %>
                                     <div class="book-own">Your book</div>
-                                    <!-- Warning. This may break when we make books have many lends -->
+                                <% elsif book.lends && book.lends.find_by(borrower_id: current_user.id) %>
+                                    <div class="book-own">Loaned book</div>
                                 <% elsif (book.lends && lend = book.lends.find_by(checkin: nil)) %>
-                                    <div class="book-lend">Unavailale</div>
+                                    <div class="book-lend">Unavailable</div>
                                 <% else %>
                                     <div class="book-borrow">Book borrow</div>
                                 <% end %>
