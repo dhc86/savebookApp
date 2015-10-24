@@ -25,7 +25,13 @@ end
 # Edit an existing book
 put '/books/:id' do |id|
   @book = Book.find(id)
-  if @book.update(params[:post])
+  if @book.update(
+    title: params[:title],
+    author: params[:author],
+    isbn: params[:isbn],
+    description: params[:description],
+    picture_url: params[:picture_url]
+  )
     redirect "/books/#{@book.id}"
   else
     erb :'books/edit'
@@ -34,6 +40,7 @@ end
 
 # Login page for user
 get '/users/login' do
+    redirect "/users/#{current_user.id}" if current_user
   erb :'users/login'
 end
 
@@ -50,6 +57,7 @@ get '/users/:id' do
 end
 
 post '/users/login' do
+
   @user = User.find_by(email: params[:email], password: params[:password])
   if @user
     session[:user_id] = @user.id
@@ -127,14 +135,7 @@ end
 
 # Save a new book to database
 post '/books' do
-  # params = {
-  #   book: {
-  #     title: 'value from input',
-  #     author: 'value from textarea'
-  #     description: 'value from textarea'
-  #     picture_url: ''
-  #   }
-  # }
+  redirect "/users/login" unless logged_in?
   @book = Book.new(
     title: params[:title],
     author: params[:author],
@@ -154,7 +155,6 @@ end
 
 # Show details of a Book
 get '/books/:id' do |id|
-  redirect "/users/login" unless logged_in?
   @book = Book.find(id)
   erb :'books/show'
 end
