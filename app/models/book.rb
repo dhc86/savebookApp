@@ -10,6 +10,7 @@ class Book < ActiveRecord::Base
   
   # Finds details of a book based on user entered ISBN
   def self.find_book_with_isbn(isbn)
+    book_details = {}
     response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}")
      title = response["items"][0]["volumeInfo"]["title"]
      author = response["items"][0]["volumeInfo"]["authors"][0]
@@ -21,10 +22,11 @@ class Book < ActiveRecord::Base
      end
 
     if picture_url.nil?
-      { title: title, author: author, description: description }
+      book_details = { title: title, author: author, description: description }
     else
-      { title: title, author: author, description: description, picture_url: picture_url }
+      book_details = { title: title, author: author, description: description, picture_url: picture_url }
     end
+    return book_details
   end
 
 

@@ -25,12 +25,19 @@
         </div>
         <div class= "col-sm-12 main-right">
             <div class="row">
-                <% @books.each do |book| %>
+                <% @books.order(:title).each do |book| %>
                     <% if book.picture_url %>
                         <div class="col-sm-2 book-container">
-                            <a href=<%= "books/" + book.id.to_s %> class="thumbnail">
+                            <a href=<%= "books/" + book.id.to_s %>>
                                 <img src= <%= book.picture_url %>>
-                                <div class="add-book">Add book</div>
+                                <% if current_user && current_user.id == book.user_id %>
+                                    <div class="book-own">Your book</div>
+                                    <!-- Warning. This may break when we make books have many lends -->
+                                <% elsif (book.lend && lend = book.lend.find_by(checkin: nil)) %>
+                                    <div class="book-lend">Unavailale</div>
+                                <% else %>
+                                    <div class="book-borrow">Book borrow</div>
+                                <% end %>
                             </a>
                         </div>
                     <% end %>

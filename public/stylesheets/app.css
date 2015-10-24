@@ -1,3 +1,9 @@
+@media (min-width: 1200px){
+.container {
+    width: 1200px;
+}
+}
+
 /*Layout*/
 .main-board{
   position: relative;
@@ -25,6 +31,10 @@
   font-size: 18px;
 }
 
+.df-navlist a:hover{
+  color:black;
+}
+
 
 .navbar-toggle .icon-bar {
     background-color: #fff;
@@ -37,6 +47,7 @@
 }
 .profile-info{
   text-align: center;
+  font-size:28px ;
 }
 
 .profile-photo{
@@ -61,6 +72,10 @@
   color:#FFFFFF;
   background-color:#3B5999;
 }
+.login-button a{
+  color:#FFFFFF;
+}
+
 .login-button+.login-button, .login-pic+.login-button{
   margin-top: 50px;
 }
@@ -77,23 +92,17 @@
 .book-container{
   position: relative;
   text-align: center;
-  height: 400px;
+  height: 300px;
   overflow: hidden;
-  padding: 5px 5px;
+  padding: 0 5px;
   padding-top: 30px;
 }
 .book-container img {
-  width: 180px;
-  height: 230px;
+  width: 80%;
+  height: 82%;
+  margin-bottom: 5px;
 }
-@media (max-width: 780px) {
-  .book-container {
-    max-height: none;
-  }
-  .book-container img {
-    width: 200px;
-  }
-}
+
 
 .book-own{
   /*border: solid 3px red; */
@@ -101,7 +110,7 @@
   border-bottom-left-radius: 10px;
   background-color: blue;
   color: #FFFFFF;
-  height: 50px ;
+  height: 45px ;
   line-height: 50px;
   font-size: 20px;
 }
@@ -111,7 +120,7 @@
   border-bottom-left-radius: 10px;
   background-color: black;
   color: #FFFFFF;
-  height: 50px ;
+  height: 45px ;
   line-height: 50px;
   font-size: 20px;
 }
@@ -121,7 +130,7 @@
   border-bottom-left-radius: 10px;
   background-color: red;
   color: #FFFFFF;
-  height: 50px ;
+  height: 45px ;
   line-height: 50px;
   font-size: 20px;
 }
@@ -131,7 +140,7 @@
   border-bottom-left-radius: 10px;
   background-color: green;
   color: #FFFFFF;
-  height: 50px ;
+  height: 45px ;
   line-height: 50px;
   font-size: 20px;
 }
@@ -139,4 +148,11 @@
 .shelves{
   background-image: url("../images/shelves.png");
   background-repeat: no-repeat;
+  border-radius:20px;
+}
+
+.inner-shelves{
+  width:85%;
+  height:90% ;
+  margin:11% 11% 0 7%;
 }
