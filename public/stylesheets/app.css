@@ -174,7 +174,7 @@
   /*border: solid 3px red; */
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: blue;
+  background-color: #4e69a3;
   margin: 0 auto;
   width: 80%;
   color: #FFFFFF;
@@ -224,7 +224,7 @@
 .book-borrow{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: red;
+  background-color: #EE6363;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
