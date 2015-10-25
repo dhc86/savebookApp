@@ -1,18 +1,18 @@
 <!-- This is the page to your your own profile page -->
 <div class="row profile-photobar">
 
-  <div class='col-sm-3 profile-photo'>
-    <img src=<%= @user.picture_url%>>
-  </div>
-  <div class="col-sm-4 profile-info">
-    <%= @user.first_name %> <%= @user.last_name %>
-  </div>
+    <div class='col-sm-3 profile-photo'>
+        <img src=<%= @user.picture_url%>>
+    </div>
+    <div class="col-sm-4 profile-info">
+        <%= @user.first_name %> <%= @user.last_name %>
+    </div>
 </div>
 
 <div class="row"> 
   <div class=" col-sm-3 main-left">
     <h3>Requests for your books</h3>
-  <% @user.books.each do |book| %>
+    <% @user.books.each do |book| %>
     <% if book.requests && ( request = book.requests.find_by(attended_to: false) ) %>
         <p>
           <a href="/users/<%= request.borrower_id %>">
@@ -72,66 +72,87 @@
       <% if request.attended_to == true && request.accepted == false %>
          <p>
             Your request for <a href="/users/#{<%= request.owner_id %>}"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> was denied. Try requesting <a href="/books/#{<%= request.book.id %>}">here again</a> to see if the owner changes their mind.
-          </p>
-
-
-  </div>
-  <div class=" col-lg-9 main-right">
-    <div class='row shelves'>
-      <div class="row inner-shelves">
-        <div class="col-sm-3 book-container">
-          <a href="/books/new">
-            <img src="/images/addbook.ico">
-            <div class="add-book">Add book</div>
-          </a>  
-        </div>
-        <% @user.books.each_with_index do |book, index| %>
-          <% if index < 3 %>
-            <div class="col-sm-3 book-container">
-              <a href="/books/<%= book.id %>">
-                <img src= <%= book.picture_url %> >
-                <div class="book-own">Your book</div>
-              </a>
-            </div>
-          <% end %> 
-        <% end %> 
-      </div>    
-    </div>   
-
-    <% if @user.books.length > 3 %>
-      <% @user.books[3..-1].each_slice(4) do |books| %>       
-        <div class='row shelves'>
-          <div class="row inner-shelves">
-            <% books.each do |b| %>
-              <div class="col-sm-3 book-container">
-                <a href="/books/<%= b.id %>">
-                <img src= <%= b.picture_url %> >
-                <div class="book-own">Your book</div>
-                </a>
-              </div>
-            <% end %>
-          </div>    
-        </div>
+         </p>
+        <% end %>
       <% end %>
-    <% end %> 
+   <% end %>
 
-    <% if @lends %> 
-      <% @lend_book_id.each_slice(4) do |books_id| %>       
-        <div class='row shelves'>
-          <div class="row inner-shelves">
-            <% books_id.each do |id| %>
-              <div class="col-sm-3 book-container">
-                <a href="/books/<%= id %>">
-                <img src= <%= Book.find(id).picture_url %> >
-                <div class="book-lend">Lend book</div>
-                </a>
-              </div>
-            <% end %>
-          </div>    
-        </div>
-      <% end %>
-    <% end %>  
-  </div>
-</div>
+
   
+           
+    </div>
+    <div class=" col-lg-9 main-right">
+        <div class='row shelves'>
+            <div class="row inner-shelves">
+                <div class="col-sm-3 book-container">
+                    <a href="/books/new">
+                        <img src="/images/addbook.ico">
+                        <div class="add-book">Add book</div>
+                    </a>  
+                </div>
+                <% @user.books.each_with_index do |book, index| %>
+                    <% if index < 3 %>
+                        <div class="col-sm-3 book-container">
+                            <a href="/books/<%= book.id %>">
+                                <img src= <%= book.picture_url %> >
+                                <% if current_user && current_user.id == book.user_id && book.lends.find_by(checkin: nil) %>
+                                    <div class="book-lentout">Loaned</div>
+                                <% elsif current_user && current_user.id == book.user_id %>
+                                    <div class="book-own">Owned</div>
+                                <% elsif book.lends && current_user && book.lends.find_by(borrower_id: current_user.id) %>
+                                    <div class="book-borrowed">Borrowed</div>
+                                <% else %>
+                                    <div class="book-borrow">Request</div>
+                                <% end %>
+                            </a>
+                        </div>
+                    <% end %> 
+                <% end %> 
+            </div>    
+        </div>   
+
+        <% if @user.books.length > 3 %>
+            <% @user.books[3..-1].each_slice(4) do |books| %>       
+                <div class='row shelves'>
+                    <div class="row inner-shelves">
+                        <% books.each do |book| %>
+                            <div class="col-sm-3 book-container">
+                                <a href="/books/<%= book.id %>">
+                                    <img src= <%= book.picture_url %> >
+                                    <% if current_user && current_user.id == book.user_id && book.lends.find_by(checkin: nil) %>
+                                        <div class="book-lentout">Loaned</div>
+                                    <% elsif current_user && current_user.id == book.user_id %>
+                                        <div class="book-own">Owned</div>
+                                    <% elsif book.lends && current_user && book.lends.find_by(borrower_id: current_user.id) %>
+                                        <div class="book-borrowed">Borrowed</div>
+                                    <% else %>
+                                        <div class="book-borrow">Request</div>
+                                    <% end %>
+                                </a>
+                            </div>
+                        <% end %>
+                    </div>    
+                </div>
+            <% end %>
+        <% end %> 
+
+        <% if @lends %> 
+            <% @lend_book_id.each_slice(4) do |books_id| %>       
+                <div class='row shelves'>
+                    <div class="row inner-shelves">
+                        <% books_id.each do |id| %>
+                            <div class="col-sm-3 book-container">
+                                <a href="/books/<%= id %>">
+                                    <img src= <%= Book.find(id).picture_url %> >
+                                    <div class="book-lend">Lend book</div>
+                                </a>
+                            </div>
+                        <% end %>
+                    </div>    
+                </div>
+            <% end %>
+        <% end %>  
+    </div>
+</div>
+
 

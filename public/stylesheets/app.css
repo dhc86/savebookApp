@@ -185,7 +185,7 @@
 .book-lend{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: black;
+  background-color: #292421;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
@@ -197,7 +197,7 @@
 .book-lentout{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: cyan;
+  background-color: #D1EEEE;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
@@ -210,7 +210,7 @@
 .book-borrowed{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: yellow;
+  background-color: #FBEC5D;
   color: #FFFFFF;
   height: 45px ;
   width: 80%;
@@ -235,7 +235,7 @@
 .add-book{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: green;
+  background-color: #4A7023;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
