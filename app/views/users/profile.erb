@@ -1,24 +1,25 @@
 <!-- This is the page to your your own profile page -->
-<div class="container" >
-<div class="row">
+<div class="row profile-photobar">
   <div class=" col-lg-3 main-left">
     <div class='profile-photo'>
       <img src=<%= @user.picture_url%>>
     </div>
     <div class="profile-info">
-    Welcome!
+    <%= @user.first_name %> <%= @user.last_name %>
     </div>
-    <div class="profile-info">
-      <%= @user.first_name %> <%= @user.last_name %>
-    </div>
-  </div>
+  </div> 
+</div>
 
+<div class="row"> 
+  <div class=" col-lg-3 main-left">
+    <!-- Nataze you could add request pattern in this area -->
+  </div>
   <div class=" col-lg-9 main-right">
     <div class='row shelves'>
       <div class="row inner-shelves">
         <div class="col-sm-3 book-container">
           <a href="/books/new">
-            <img src="http://www.iconarchive.com/download/i42578/oxygen-icons.org/oxygen/Actions-address-book-new.ico">
+            <img src="/images/addbook.ico">
             <div class="add-book">Add book</div>
           </a>  
         </div>
@@ -35,41 +36,43 @@
       </div>    
     </div>   
 
-    <% @user.books[3..-1].each_slice(4) do |books| %>       
-      <div class='row shelves'>
-        <div class="row inner-shelves">
-          <% books.each do |b| %>
-            <div class="col-sm-3 book-container">
-              <a href="/books/<%= b.id %>">
-              <img src= <%= b.picture_url %> >
-              <div class="book-own">Your book</div>
-              </a>
-            </div>
-          <% end %>
-        </div>    
-      </div>
-    <% end %>
-    <% @lend_book_id.each_slice(4) do |books_id| %>       
-      <div class='row shelves'>
-        <div class="row inner-shelves">
-          <% books_id.each do |id| %>
-            <div class="col-sm-3 book-container">
-              <a href="/books/<%= id %>">
-              <img src= <%= Book.find(id).picture_url %> >
-              <div class="book-lend">Lend book</div>
-              </a>
-            </div>
-          <% end %>
-        </div>    
-      </div>
-    <% end %>
+    <% if @user.books.length > 3 %>
+      <% @user.books[3..-1].each_slice(4) do |books| %>       
+        <div class='row shelves'>
+          <div class="row inner-shelves">
+            <% books.each do |b| %>
+              <div class="col-sm-3 book-container">
+                <a href="/books/<%= b.id %>">
+                <img src= <%= b.picture_url %> >
+                <div class="book-own">Your book</div>
+                </a>
+              </div>
+            <% end %>
+          </div>    
+        </div>
+      <% end %>
+    <% end %> 
+
+    <% if @lends %> 
+      <% @lend_book_id.each_slice(4) do |books_id| %>       
+        <div class='row shelves'>
+          <div class="row inner-shelves">
+            <% books_id.each do |id| %>
+              <div class="col-sm-3 book-container">
+                <a href="/books/<%= id %>">
+                <img src= <%= Book.find(id).picture_url %> >
+                <div class="book-lend">Lend book</div>
+                </a>
+              </div>
+            <% end %>
+          </div>    
+        </div>
+      <% end %>
+    <% end %>  
   </div>
-
-
-
-
-  </div>
+</div>
   
+
 
 
 </div>
@@ -107,3 +110,4 @@
 
   
 </div>
+

@@ -1,11 +1,13 @@
 <div class="book-detail">
 
+
   <h1><%= @book.title %></h1>
-  <div>
-    <p>
-      <span><img src="<%= @book.picture_url %>" /></span>
-    </p>
-  </div>
+    <div>
+        <p>
+        <span><img src="<%= @book.picture_url %>" /></span>
+        </p>
+        <span><a href=<%="/users/" + @book.user_id.to_s %>><img src="<%= @book.user.picture_url %>"></a></span>
+    </div>
     
   <div>
     <% if current_user && current_user.id == @book.user_id %>
@@ -42,6 +44,26 @@
     <% end %>
   </div>
 
+    <div>
+        <% if current_user && current_user.id == @book.user_id %>
+            <form method="get" action="/books/:id/edit"c>
+                <input type="hidden" name="book_id" value="<%= @book.id %>">
+                <input type="hidden" name="book" value="<%= @book %>">
+                <button class="btn button">Edit Book</button>
+            </form>
+        <% elsif lend = @book.lends.find_by(checkin: nil) %>
+            <% if current_user.id = lend.borrower_id %>
+                <form method="put" action="/books/:id/lend">
+                    <input type="hidden" name="lend_id" value="<%= lend && lend.id %>">
+                    <input type="hidden" name="book_id" value="<%= @book.id %>">
+                    <input type="hidden" name="checkin" value="<%= Date.today %>">
+                    <button class="btn button">Return Book</button>
+                <% end %>
+            </form>
+        <% else %>
+            <button id="btn_borrow_book" class="btn button">Borrow Book</button>
+        <% end %>
+    </div>
     <% if (@distance != 0) %>
 
 
@@ -53,7 +75,7 @@
       <iframe id = "map" style="height: 400px; width: 600px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCVt89sOKkehU7JDQpPncShX80rzGE6kj4&origin=<%= current_user.address %>&destination= <%= @book.user.address %> &avoid=tolls|highways"></iframe>
       </p>
     <% else %>
-      <p> You own this book </p>
+        <p> You own this book </p>
     <% end %>
 
 
