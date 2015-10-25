@@ -4,6 +4,24 @@
 }
 }
 
+#distance{
+  color: green;
+  font-size: 25px;
+}
+
+/*
+ <div class="request_picture">
+          <img src="<%= User.find(request.borrower_id).picture_url %>" />
+        </div>
+        */
+.request_picture{
+   display:block;
+    height:100px;
+    overflow:hidden;
+    margin: -10px auto 40px;
+    width: 70px;
+}
+
 /*Layout*/
 .main-board{
   position: relative;
@@ -203,3 +221,52 @@
   margin:9% 11% 0 7%;
   padding-top: 20px;
 }
+
+.jumbotron {
+  margin-top: 5%;
+  height:430px;
+  background: url("../images/back_gound_login.png") no-repeat;
+  background-size: 100%;
+  position: relative;
+  
+}
+.center_container {
+  text-align: center;
+  position: relative;
+  top:130px;
+  margin: 0 auto;
+  width:25%;
+}
+
+.center_container{
+  background-color: rgba(111, 167, 225, 0.61) ;
+  transparency: 5%;
+  text-align: center;
+  position: relative;
+  top: 10%;
+  width: 40%;
+  border-radius: 15px;
+
+}
+
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  padding: 0 65px;
+
+}
+
+
+.form-group{
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+

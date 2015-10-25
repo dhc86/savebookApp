@@ -1,21 +1,4 @@
 
-
-
-
-
-<!-- This will call the distance between the user and the book -->
-<!-- <h1><%=  %></h1>
-
-<p>
-  this book is:<%= @distance %> miles apart from you!, click borrow to read this book!
-</p>
-
- -->
-
-
-
-
-
 <% if @book && @book.errors.any? %>
       <div>
         <strong>Some issues in the book details you tryna save, please fix them:</strong>
@@ -29,6 +12,9 @@
 <p>    
 <h2> Add a Book to your collection</h2>
 </p>
+
+
+
 
 <form id="fill-by-isbn">
   <label>Know the ISBN number? Add Book directly:  </label>
@@ -65,3 +51,136 @@
   </div>
 </form>
 
+
+
+<!-- Need to work on this one! -->
+<!-- <div class="enter_book_wrapper">
+  <h2> Add a Book to your collection</h2>
+
+  <h3>In this section, you can enter your book information.</h3>
+
+  <div class="enter_isbn">
+
+    <form class="form-horizontal" role="form" id="fill-by-isbn">
+      <label>Know the ISBN number? Add Book directly:  </label>
+      <input type="text" name="isbn" value="" />
+      <button >Submit ISBN</button>
+    </form>    
+  </div>
+
+</div>
+
+
+<div class="container">
+  <h2>Horizontal form</h2>
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon"><img src="/images/icon-user2.png"></span>
+    <input type="text" id="email"  placeholder=" enter email..."  name="email">
+  </div>
+
+ -->
+
+
+
+
+<!-- <div class="container">
+  <h2>Form control: textarea</h2>
+  <p>The form below contains a textarea for comments:</p>
+  <form role="form">
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" rows="5" id="comment"></textarea>
+    </div>
+  </form>
+</div>
+ -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <legend class="text-center header">Add a book to your collection</legend>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<style>
+    .header {
+        background-color: #F5F5F5;
+        color: #36A0FF;
+        height: 70px;
+        font-size: 27px;
+        padding: 10px;
+    }
+</style>

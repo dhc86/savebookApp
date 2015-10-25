@@ -131,18 +131,39 @@ post '/books' do
   end
 end
 
-# Lend out a book
-post '/books/:id/lend' do |id|
-  id = params[:book_id]
-  @book = Book.find(params[:book_id])
-  @book.lends.create(
+# Create a new request for book
+post '/books/:id/request' do |id|
+  Request.create(
+    book_id: params[:book_id],
     borrower_id: params[:borrower_id],
-    checkout: params[:checkout],
-    due: params[:due]
-    )
+    owner_id: params[:owner_id]  
+  )
+  id = params[:book_id]
   redirect "/books/#{id}"
 end
 
+# Lend out a book
+post '/books/:id/lend' do |id|
+  id = params[:book_id]
+  request = Request.find(params[:request_id])
+  request.update(
+    attended_to: true,
+    accepted: true
+    )
+  redirect "/users/#{@book.user.id}"
+end
+
+# using put does not work
+post '/books/:id/denied' do |id|
+  request = Request.find(params[:request_id])
+  request.update(
+    attended_to: true
+    )
+  @book = Book.find(params[:book_id])
+  redirect "/users/#{@book.user.id}"
+end
+
+# using put does not work
 get '/books/:id/lend' do |id|
   id = params[:book_id]
   if params[:lend_id]

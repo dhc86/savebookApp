@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 4) do
 
   create_table "books", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2) do
     t.date     "due"
     t.date     "checkin"
     t.date     "checkout"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "owner_id"
+    t.integer  "borrower_id"
+    t.boolean  "accepted",    default: false
+    t.boolean  "attended_to", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
