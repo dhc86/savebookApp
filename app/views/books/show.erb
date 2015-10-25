@@ -1,10 +1,12 @@
 <div class="book-detail">
   <h1><%= @book.title %></h1>
-    <div>
+    <div class="small_pic">
+        <span><a href=<%="/users/" + @book.user_id.to_s %>><img src="<%= @book.user.picture_url %>"></a></span>
+    </div>
+    <div class="book_pic">
         <p>
         <span><img src="<%= @book.picture_url %>" /></span>
         </p>
-        <span><a href=<%="/users/" + @book.user_id.to_s %>><img src="<%= @book.user.picture_url %>"></a></span>
     </div>
     
   <div>
