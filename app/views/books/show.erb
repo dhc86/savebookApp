@@ -1,10 +1,12 @@
 <div class="book-detail">
   <h1><%= @book.title %></h1>
-    <div>
+    <div class="small_pic">
+        <span><a href=<%="/users/" + @book.user_id.to_s %>><img src="<%= @book.user.picture_url %>"></a></span>
+    </div>
+    <div class="book_pic">
         <p>
         <span><img src="<%= @book.picture_url %>" /></span>
         </p>
-        <span><a href=<%="/users/" + @book.user_id.to_s %>><img src="<%= @book.user.picture_url %>"></a></span>
     </div>
     
   <div>
@@ -42,26 +44,7 @@
     <% end %>
   </div>
 
-    <div>
-        <% if current_user && current_user.id == @book.user_id %>
-            <form method="get" action="/books/:id/edit"c>
-                <input type="hidden" name="book_id" value="<%= @book.id %>">
-                <input type="hidden" name="book" value="<%= @book %>">
-                <button class="btn button">Edit Book</button>
-            </form>
-        <% elsif lend = @book.lends.find_by(checkin: nil) %>
-            <% if current_user.id = lend.borrower_id %>
-                <form method="put" action="/books/:id/lend">
-                    <input type="hidden" name="lend_id" value="<%= lend && lend.id %>">
-                    <input type="hidden" name="book_id" value="<%= @book.id %>">
-                    <input type="hidden" name="checkin" value="<%= Date.today %>">
-                    <button class="btn button">Return Book</button>
-                <% end %>
-            </form>
-        <% else %>
-            <button id="btn_borrow_book" class="btn button">Borrow Book</button>
-        <% end %>
-    </div>
+
     <% if (@distance != 0) %>
 
 

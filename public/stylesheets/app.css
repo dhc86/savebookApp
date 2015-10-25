@@ -123,17 +123,53 @@
 
 /*Books*/
 
+.hover_effect{
+  position: relative;
+  text-align: center;
+  height: 300px;
+  overflow: hidden;
+  width: 190px;
+  padding: 0 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; 
+  display: inline-block;
+
+}
+
+.small_pic {
+  height: 100px;
+  width: 100px;
+}
+
+.small_pic img {
+  height: 100%;
+  width: 100%;
+}
+
+
+.hover_effect:hover {
+    background-color: #e8e8ee;
+     border: 5px solid #DCDCDC;  
+     box-shadow: 5px 5px 5px 5px #DCDCDC;
+}
+
+
 .book-container{
   position: relative;
   text-align: center;
   height: 300px;
   overflow: hidden;
   padding: 0 5px;
+  padding-bottom: 30px; 
   padding-top: 30px;
+  width: 100%;
 }
 .book-container img {
   width: 80%;
   height: 82%;
+}
+.book-container a {
+  text-decoration: none;
 }
 
 
@@ -141,7 +177,7 @@
   /*border: solid 3px red; */
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: blue;
+  background-color: #4e69a3;
   margin: 0 auto;
   width: 80%;
   color: #FFFFFF;
@@ -191,7 +227,7 @@
 .book-borrow{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: red;
+  background-color: #EE6363;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
