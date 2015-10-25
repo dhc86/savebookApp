@@ -25,24 +25,6 @@
             <label>Book should be returned by: </label><%= lend.due %>
             </p>
         <% end %>
-        <!-- For book check out form -->
-        <div id="book_checkout_form">
-            <h2>Book Checkout Form</h2>
-            <p><strong>All Books are due <em>7 days</em> from checkout</strong></p>
-            <form method="post" action="/books/:id/lend">
-                <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
-                <input type="hidden" name="book_id" value="<%= @book.id %>">
-                <p>
-                <label>Checkout Date: </label><input type="date" name="checkout" value="<%= Date.today %>">
-                </p>
-                <p>
-                <label>Expected Checkin date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
-                </p>
-                <p>
-                <button class="button">Confirm Checkout</button>
-                </p>
-            </form>
-        </div>
     </div>                
     <div class="col-sm-5">
         <!-- For book detail information -->
@@ -62,38 +44,37 @@
         </p>
     <div>
     <!-- For request a book  -->
-    <% if current_user && current_user.id == @book.user_id %>
-      <form method="get" action="/books/:id/edit"c>
-        <input type="hidden" name="book_id" value="<%= @book.id %>">
-        <input type="hidden" name="book" value="<%= @book %>">
-        <button class="btn button">Edit Book</button>
-      </form>
-    <% elsif @book.requests.empty? || ( @book.lends.find_by(checkin: nil) ) %>
-      <form method="post" action="/books/:id/request">
-        <input type="hidden" name="book_id" value="<%= @book.id %>">
-        <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
-        <input type="hidden" name="owner_id" value="<%= @book.user.id %>">
-            <button id="btn_request_book" class="btn button">Request Book</button>
-      </form>
-   <% elsif @book.requests.find_by(accepted: true) && @book.lends.find_by(checkin: nil) && current_user.id != @book.lends.find_by(checkin: nil).borrower_id %>
-          <span class="btn button">Book Unavailable</span>
-    <% end %> 
-        
-        <% if @book.requests && ( request = @book.requests.find_by(attended_to: false) ) %>
-          <% if request.borrower_id == current_user.id %>
-            <span class="btn button">Request Sent</span>
-          <% end %>
-       <% elsif lend = @book.lends.find_by(checkin: nil) %>
+      <% if current_user && current_user.id == @book.user_id %>
+        <form method="get" action="/books/:id/edit"c>
+          <input type="hidden" name="book_id" value="<%= @book.id %>">
+          <input type="hidden" name="book" value="<%= @book %>">
+          <button class="btn button">Edit Book</button>
+        </form>
+      <% elsif @book.requests.empty? || ( @book.lends.find_by(checkin: nil) ) %>
+        <form method="post" action="/books/:id/request">
+          <input type="hidden" name="book_id" value="<%= @book.id %>">
+          <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
+          <input type="hidden" name="owner_id" value="<%= @book.user.id %>">
+              <button id="btn_request_book" class="btn button">Request Book</button>
+        </form>
+      <% elsif @book.requests.find_by(accepted: true) && @book.lends.find_by(checkin: nil) && current_user.id != @book.lends.find_by(checkin: nil).borrower_id %>
+            <span class="btn button">Book Unavailable</span>
+      <% end %>   
+      <% if @book.requests && ( request = @book.requests.find_by(attended_to: false) ) %>
+        <% if request.borrower_id == current_user.id %>
+          <span class="btn button">Request Sent</span>
+        <% end %>
+      <% elsif lend = @book.lends.find_by(checkin: nil) %>
         <% if current_user.id = lend.borrower_id %>
-          <form method="post" action="/books/:id/return">
-            <input type="hidden" name="lend_id" value="<%= lend && lend.id %>">
-            <input type="hidden" name="book_id" value="<%= @book.id %>">
-            <input type="hidden" name="checkin" value="<%= Date.today %>">
-            <button class="btn button">Return Book</button>
-          </form>  
+        <form method="post" action="/books/:id/return">
+          <input type="hidden" name="lend_id" value="<%= lend && lend.id %>">
+          <input type="hidden" name="book_id" value="<%= @book.id %>">
+          <input type="hidden" name="checkin" value="<%= Date.today %>">
+          <button class="btn button">Return Book</button>
+        </form>  
         <% end %>          
       <% end %>
-
+<!-- For google distance -->
       <% if (@distance != 0) %>
       <p>This book is <span id="distance"><%= @distance %> miles</span> away from you.</p>    
       <button id="btn_show_map" class="btn button" >Show Map</button>
@@ -104,14 +85,6 @@
     <% else %>
         <p> You own this book </p>
     <% end %>
-  </div> 
-
-  <div class="col-sm-5">
-<!-- For book detail information -->     
-      <div class="white-space"></div>
-  </div> 
- 
-<!-- For google map distance -->
-    
+    </div> 
   </div>  
 </div>
