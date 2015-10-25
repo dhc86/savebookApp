@@ -1,19 +1,16 @@
 <!-- This is the page to show other user's profile -->
 
 <div class="row profile-photobar">
-  <div class='col-sm-3 profile-photo'>
-    <img src=<%= @user.picture_url%>>
-  </div>
-  <div class="col-sm-4 profile-info">
-    <%= @user.first_name %> <%= @user.last_name %>
-  </div>
+    <div class='col-sm-3 profile-photo'>
+        <img src=<%= @user.picture_url%>>
+    </div>
+    <div class="col-sm-4 profile-info">
+        <%= @user.first_name %> <%= @user.last_name %>
+    </div>
 </div>
 
-
 <div class="row">
-<<<<<<< HEAD
     <div class=" col-lg-3 main-left">
-
     </div>
     <div class=" col-lg-9 main-right">       
         <% @user.books.each_slice(4) do |books| %>       
