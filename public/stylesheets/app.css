@@ -321,7 +321,9 @@
   padding-right: 55px;
   padding-left: 55px;
   width: 55%;
-   min-height: 1px;
+  min-height: 1px;
+  position: relative;
+  left: 260px;
 }
 
 .add-book-form-control {
