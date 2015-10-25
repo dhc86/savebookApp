@@ -59,7 +59,7 @@ get '/users/:id' do
     @isMyProfile = requestUserId == loggedInUserId.to_s
     if @isMyProfile
       @lends = Lend.where(borrower_id: session[:user_id])
-      @lend_book_id = @lends.map {|l| l.book_id}
+      @lend_book_id = @lends.map {|l| l.book_id} if @lends
       erb :'users/profile'
     else
       erb :'users/show'
@@ -131,6 +131,17 @@ post '/books' do
   end
 end
 
+# Create a new request for book
+post '/books/:id/request' do |id|
+  Request.create(
+    book_id: params[:book_id],
+    borrower_id: params[:borrower_id],
+    owner_id: params[:owner_id]  
+  )
+  id = params[:book_id]
+  redirect "/books/#{id}"
+end
+
 # Lend out a book
 post '/books/:id/lend' do |id|
   id = params[:book_id]
@@ -140,9 +151,25 @@ post '/books/:id/lend' do |id|
     checkout: params[:checkout],
     due: params[:due]
     )
-  redirect "/books/#{id}"
+  request = Request.find(params[:request_id])
+  request.update(
+    attended_to: true,
+    accepted: true
+    )
+  redirect "/users/#{@book.user.id}"
 end
 
+# using put does not work
+post '/books/:id/denied' do |id|
+  request = Request.find(params[:request_id])
+  request.update(
+    attended_to: true
+    )
+  @book = Book.find(params[:book_id])
+  redirect "/users/#{@book.user.id}"
+end
+
+# using put does not work
 get '/books/:id/lend' do |id|
   id = params[:book_id]
   if params[:lend_id]

@@ -4,10 +4,28 @@
 }
 }
 
+#distance{
+  color: green;
+  font-size: 25px;
+}
+
+/*
+ <div class="request_picture">
+          <img src="<%= User.find(request.borrower_id).picture_url %>" />
+        </div>
+        */
+.request_picture{
+   display:block;
+    height:100px;
+    overflow:hidden;
+    margin: -10px auto 40px;
+    width: 70px;
+}
+
 /*Layout*/
 .main-board{
   position: relative;
-  top: 100px;
+  top: 80px;
 }
 /*nav bar in layout*/
 
@@ -46,11 +64,23 @@
   padding: 20px 20px;
 }
 .profile-info{
+  display: inline-block;
+  position: relative;
+  top:120px ;
+  left: 250px;  
   text-align: center;
   font-size:28px ;
+  color: #fff;
 }
 
+.profile-photobar{
+  height:400px;
+  background-image: url('/images/profilebackground.jpg');
+  background-position:0 -224px ;
+}
 .profile-photo{
+  position: relative;
+  top:150px;
   border: solid 1px black;
   width: 200px;
   height:200px;
@@ -60,6 +90,7 @@
 .profile-photo img{
   width: 200px;
   height:200px;
+  border:solid 5px #fff;
 }
 /*Login page*/
 .login-button{
@@ -100,7 +131,6 @@
 .book-container img {
   width: 80%;
   height: 82%;
-  margin-bottom: 5px;
 }
 
 
@@ -109,6 +139,8 @@
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: blue;
+  margin: 0 auto;
+  width: 80%;
   color: #FFFFFF;
   height: 45px ;
   line-height: 50px;
@@ -121,9 +153,37 @@
   background-color: black;
   color: #FFFFFF;
   height: 45px ;
+  margin: 0 auto;
+  width: 80%;
   line-height: 50px;
   font-size: 20px;
 }
+
+.book-lentout{
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: cyan;
+  color: #FFFFFF;
+  height: 45px ;
+  margin: 0 auto;
+  width: 80%;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+
+.book-borrowed{
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: yellow;
+  color: #FFFFFF;
+  height: 45px ;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 50px;
+  font-size: 20px;
+}
+
 
 .book-borrow{
   border-bottom-right-radius: 10px;
@@ -131,6 +191,8 @@
   background-color: red;
   color: #FFFFFF;
   height: 45px ;
+  margin: 0 auto;
+  width: 80%;
   line-height: 50px;
   font-size: 20px;
 }
@@ -141,6 +203,8 @@
   background-color: green;
   color: #FFFFFF;
   height: 45px ;
+  margin: 0 auto;
+  width: 80%;
   line-height: 50px;
   font-size: 20px;
 }
@@ -154,7 +218,8 @@
 .inner-shelves{
   width:85%;
   height:90% ;
-  margin:11% 11% 0 7%;
+  margin:9% 11% 0 7%;
+  padding-top: 20px;
 }
 
 .jumbotron {
