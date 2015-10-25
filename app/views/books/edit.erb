@@ -1,4 +1,3 @@
-
 <div class="book-detail">
  <p> Here is the current information of your book. In this page you can update your book information.</p>
  
@@ -8,8 +7,6 @@
  <p>
    <span><img src="<%= @book.picture_url %>" /></span>
  </p>
-
-
  <p>
    <strong>Author: <%= @book.author %></strong>
  </p>
@@ -20,7 +17,7 @@
    <p>
    <%= @book.description %>
    </p>
- </div>
+</div>
 
  <p>
    Added on: <%= @book.created_at.to_formatted_s(:long_ordinal)  %>             
