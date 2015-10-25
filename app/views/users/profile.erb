@@ -35,17 +35,11 @@
             <input type="hidden" name="request_id" value="<%= request.id %>">
             <button class="btn button">Deny Request</button>
           </form>
-        <p>
-          
-        </p>
     <% end %>
   <% end %>
-
-  <hr />
-
+  <hr/>
   <h3>Books you requested</h3>
     <% if ( requests = Request.where(borrower_id: @user.id) ) %>
-      <h4>Pending Requests</h4>
       <% requests.each do |request| %>
         <% if request.attended_to == false %>
           <p>
@@ -56,7 +50,6 @@
       <% end %>
     <% end %>
     <% if ( requests = Request.where(borrower_id: @user.id) ) %>
-      <h4>Approved Requests</h4>
       <% requests.each do |request| %>
         <% if request.attended_to == true && request.accepted == true && request.book.lends.find_by(checkin: nil) %>
           <p>
@@ -67,7 +60,6 @@
       <% end %>
     <% end %>
     <% if ( requests = Request.where(borrower_id: @user.id) ) %>
-      <h4>Denied Requests</h4>
       <% requests.each do |request| %>
       <% if request.attended_to == true && request.accepted == false %>
          <p>
@@ -76,10 +68,7 @@
         <% end %>
       <% end %>
    <% end %>
-
-
-  
-           
+         
     </div>
     <div class=" col-lg-9 main-right">
         <div class='row shelves'>
@@ -144,7 +133,7 @@
                             <div class="col-sm-3 book-container">
                                 <a href="/books/<%= id %>">
                                     <img src= <%= Book.find(id).picture_url %> >
-                                    <div class="book-lend">Lend book</div>
+                                    <div class="book-borrowed">Borrowed</div>
                                 </a>
                             </div>
                         <% end %>
