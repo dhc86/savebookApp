@@ -143,10 +143,10 @@
 }
 
 
-.hover_effect:hover {
-    background-color: #e8e8ee;
-     border: 5px solid #DCDCDC;  
-     box-shadow: 5px 5px 5px 5px #DCDCDC;
+.book_effect:hover {
+  background-color: #e8e8ee;
+  border: 5px solid #DCDCDC;  
+  box-shadow: 5px 5px 5px 5px #DCDCDC;
 }
 
 
