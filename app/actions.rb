@@ -139,7 +139,7 @@ post '/books/:id/lend' do |id|
     borrower_id: params[:borrower_id],
     checkout: params[:checkout],
     due: params[:due]
-    )
+  )
   redirect "/books/#{id}"
 end
 
