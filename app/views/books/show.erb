@@ -3,7 +3,6 @@
         <h1><%= @book.title %></h1>
     </div>
     <div class="col-sm-12 white-space">
-
     </div>
     <div class="col-sm-1 profile_thumb">
         <a href=<%="/users/" + @book.user_id.to_s %>><img src="<%= @book.user.picture_url %>"></a>
@@ -61,45 +60,7 @@
         <p>
         Added on: <%= @book.created_at.to_formatted_s(:long_ordinal) %>
         </p>
-
-<!-- For book check out form -->
-      <div id="book_checkout_form">
-        <h2>Book Checkout Form</h2>
-        <p><strong>All Books are due <em>7 days</em> from checkout</strong></p>
-        <form method="post" action="/books/:id/lend">
-          <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
-          <input type="hidden" name="book_id" value="<%= @book.id %>">
-          <p>
-            <label>Checkout Date: </label><input type="date" name="checkout" value="<%= Date.today %>">
-          </p>
-          <p>
-            <label>Expected Checkin date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
-          </p>
-          <p>
-            <button class="button">Confirm Checkout</button>
-          </p>
-        </form>
-      </div>
-  </div>                
-  <div class="col-sm-5">
-<!-- For book detail information -->
-    <p>
-      <strong>Author: <%= @book.author %></strong>
-    </p>
-    <div class="description">
-      <p>
-        Description:
-      </p>
-      <p>
-        <%= @book.description %>
-      </p>
-    </div>
-    <p>
-    Added on: <%= @book.created_at.to_formatted_s(:long_ordinal) %>
-    </p>
-    
-
-  <div>
+    <div>
     <!-- For request a book  -->
     <% if current_user && current_user.id == @book.user_id %>
       <form method="get" action="/books/:id/edit"c>
@@ -107,7 +68,7 @@
         <input type="hidden" name="book" value="<%= @book %>">
         <button class="btn button">Edit Book</button>
       </form>
-    <% elsif @book.requests.empty? && ( @book.lends.find_by(checkin: nil) ) %>
+    <% elsif @book.requests.empty? || ( @book.lends.find_by(checkin: nil) ) %>
       <form method="post" action="/books/:id/request">
         <input type="hidden" name="book_id" value="<%= @book.id %>">
         <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
@@ -132,12 +93,8 @@
           </form>  
         <% end %>          
       <% end %>
-      <div class="white-space"></div>
-  </div> 
-<!-- For borrow a book (older) -->
-  
-<!-- For google map distance -->
-    <% if (@distance != 0) %>
+
+      <% if (@distance != 0) %>
       <p>This book is <span id="distance"><%= @distance %> miles</span> away from you.</p>    
       <button id="btn_show_map" class="btn button" >Show Map</button>
       <button id="btn_close_map" class="btn button" >Close Map</button>
@@ -147,5 +104,16 @@
     <% else %>
         <p> You own this book </p>
     <% end %>
+  </div> 
+
+  <div class="col-sm-5">
+<!-- For book detail information -->     
+      <div class="white-space"></div>
+  </div> 
+ 
+<!-- For google map distance -->
+    
   </div>  
 </div>
+Status API Training Shop Blog About Pricing
+© 2015 GitHub, Inc. Terms Privacy Security Contact Help
