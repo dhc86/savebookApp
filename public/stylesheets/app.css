@@ -298,44 +298,45 @@
 }
 
 
-#fill-by-isbn {
-  float: right;
-  margin-top: 20%;
+
+/*For show book detail page */
+
+.profile_thumb img{
+  width: 100%;
 }
 
-.complete_form {
-  width: 140%;
+.book-container-large{
+  height: 300px;
 }
 
-/*css for add a book page*/
-.header {
+.book-container-large img{
+  width: 100% ;
+}
+
+/**/
+.background-add-book-form {
+  background: url("../images/blue_book2.png") no-repeat;
+  background-size: 100%;
+  border-radius: 15px;
+  opacity: 0.9;
+}
+
+.header-add-book-form {
     color: #36A0FF;
     font-size: 27px;
     padding: 10px;
     border-bottom: solid 1px #FFF;
 }
 
-.bigicon {
-    font-size: 35px;
-    color: #36A0FF;
+.add-book-form{
+  min-height: 1px;
+  padding-right: 55px;
+  padding-left: 55px;
+  width: 55%;
+   min-height: 1px;
 }
 
-.col-md-6{
-    position: relative;
-    min-height: 1px;
-    padding-right: 55px;
-    padding-left: 55px;
-    width: 55%;
-}
-.col-md-8{
-    position: relative;
-    min-height: 1px;
-    padding-right: 55px;
-    padding-left: 55px;
-    width: 55%;
-}
-
-.form-control {
+.add-book-form-control {
     display: block;
     width: 100%;
     height: 44px;
@@ -355,38 +356,40 @@
     margin-top: 2%;
 }
 
-
-
-.well {
-  background: url("../images/blue_book2.png") no-repeat;
-  background-size: 100%;
-  border-radius: 15px;
-  opacity: 0.9;
-}
-
-.col-md-6 {
-    position: relative;
-    min-height: 1px;
-}
-
 #isbn_text_message{
   color: white;
   font-size: 13px;
 }
 
-.white-space{
-  height:85px;
-}
-
-.fill-by-isbn{
-  position: relative;
-}
-
-.addbook{
+.addbook-button{
   margin-top: 20px; 
     position: relative;
     left: 80px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+    position: relative;
+    left: 185px;
 }
+
+/*css for add a book page*/
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .btn-lg {
     padding: 10px 16px;
     font-size: 18px;
@@ -394,18 +397,9 @@
     border-radius: 6px;
     position: relative;
     left: 185px;
-
-/*For show book detail page */
-
-.profile_thumb img{
-  width: 100%;
-
 }
 
-.book-container-large{
-  height: 300px;
-}
 
-.book-container-large img{
-  width: 100% ;
-}
+*/
+
+
