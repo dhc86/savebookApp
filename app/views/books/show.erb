@@ -18,7 +18,7 @@
       </form>
     <% elsif lend = @book.lends.find_by(checkin: nil) %>
       <% if current_user.id = lend.borrower_id %>
-        <form method="put" action="/books/:id/lend">
+        <form method="post" action="/books/:id/return">
           <input type="hidden" name="lend_id" value="<%= lend && lend.id %>">
           <input type="hidden" name="book_id" value="<%= @book.id %>">
           <input type="hidden" name="checkin" value="<%= Date.today %>">
@@ -30,9 +30,10 @@
         <input type="hidden" name="book_id" value="<%= @book.id %>">
         <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
         <input type="hidden" name="owner_id" value="<%= @book.user.id %>">
-        <% if @book.requests == nil || @book.requests.find_by(attended_to: false) == nil %>
-          <button id="btn_request_book" class="btn button">Request Book</button>
-        <% else %>
+        <% if  @book.requests == nil || @book.requests.find_by(attended_to: false) == nil  %>
+          <% if @book.requests && ( req = @book.requests.find_by(borrower_id: current_user.id) ) && req.attended_to != false %>
+            <button id="btn_request_book" class="btn button">Request Book</button>
+        <% elsif @book.requests.find_by(accepted: true) && @book.lends.find_by(checkin: nil)  %>
           <span class="btn button">Book Unavailable</span>
         <% end %>   
         <% if @book.requests && ( request = @book.requests.find_by(attended_to: false) ) %>

@@ -151,9 +151,15 @@ post '/books/:id/lend' do |id|
     accepted: true
     )
   @book = Book.find(params[:book_id])
+  @book.lends.create(
+    borrower_id: params[:borrower_id],
+    due: params[:due],
+    checkout: params[:checkout]
+    )
   redirect "/users/#{@book.user_id}"
 end
 
+# Deny book request
 # using put does not work
 post '/books/:id/denied' do |id|
   request = Request.find(params[:request_id])
@@ -164,8 +170,9 @@ post '/books/:id/denied' do |id|
   redirect "/users/#{@book.user_id}"
 end
 
+# Return book
 # using put does not work
-get '/books/:id/lend' do |id|
+post '/books/:id/return' do |id|
   id = params[:book_id]
   if params[:lend_id]
     lend = Lend.find(params[:lend_id])
