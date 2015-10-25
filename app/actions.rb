@@ -150,7 +150,8 @@ post '/books/:id/lend' do |id|
     attended_to: true,
     accepted: true
     )
-  redirect "/users/#{@book.user.id}"
+  @book = Book.find(params[:book_id])
+  redirect "/users/#{@book.user_id}"
 end
 
 # using put does not work
@@ -160,7 +161,7 @@ post '/books/:id/denied' do |id|
     attended_to: true
     )
   @book = Book.find(params[:book_id])
-  redirect "/users/#{@book.user.id}"
+  redirect "/users/#{@book.user_id}"
 end
 
 # using put does not work
