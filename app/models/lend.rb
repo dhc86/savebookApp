@@ -6,7 +6,7 @@ class Lend < ActiveRecord::Base
   validates :borrower_id, numericality: { only_integer: true }
 
   validate :due_date, if: :checkout
-  validate :checkin_date if :checkout
+  validate :checkin_date, if: :checkout
 
   def due_date
     errors.add(:due, 'due date must be after checkout') if due && due < checkout
