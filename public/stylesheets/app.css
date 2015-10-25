@@ -4,6 +4,24 @@
 }
 }
 
+#distance{
+  color: green;
+  font-size: 25px;
+}
+
+/*
+ <div class="request_picture">
+          <img src="<%= User.find(request.borrower_id).picture_url %>" />
+        </div>
+        */
+.request_picture{
+   display:block;
+    height:100px;
+    overflow:hidden;
+    margin: -10px auto 40px;
+    width: 70px;
+}
+
 /*Layout*/
 .main-board{
   position: relative;
