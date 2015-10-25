@@ -1,6 +1,6 @@
 <!-- This is the page to your your own profile page -->
 <div class="row profile-photobar">
-  <div class=" col-lg-3 main-left">
+  <div class="col-lg-3 main-left">
     <div class='profile-photo'>
       <img src=<%= @user.picture_url%>>
     </div>
@@ -12,7 +12,35 @@
 
 <div class="row"> 
   <div class=" col-lg-3 main-left">
-    <!-- Nataze you could add request pattern in this area -->
+    <h3>Requests for your books</h3>
+  <% @user.books.each do |book| %>
+    <% if book.requests && ( request = book.requests.find_by(attended_to: false) ) %>
+        <p>
+          <a href="/users/<%= request.borrower_id %>">
+          <%= User.find(request.borrower_id).first_name %> <%= User.find(request.borrower_id).last_name %> 
+          </a> wants to borrow <%= book.title %>.
+        </p>
+        <p>
+          <p>Books are due <em>7 days</em> from checkout by default</p>
+          <form method="post" action="/books/:id/lend">
+            <input type="hidden" name="book_id" value="<%= book.id %>">
+            <input type="hidden" name="borrower_id" value="<%= request.borrower_id %>">
+            <input type="hidden" name="checkout" value="<%= Date.today %>">
+            <label>Due date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
+            <input type="hidden" name="request_id" value="<%= request.id %>">
+            <button class="btn button">Approve Request</button>
+          </form>
+        </p>
+          <form method="post" action="/books/:id/denied">
+            <input type="hidden" name="book_id" value="<%= book.id %>">
+            <input type="hidden" name="request_id" value="<%= request.id %>">
+            <button class="btn button">Deny Request</button>
+          </form>
+        <p>
+          
+        </p>
+    <% end %>
+  <% end %>
   </div>
   <div class=" col-lg-9 main-right">
     <div class='row shelves'>
@@ -72,43 +100,4 @@
   </div>
 </div>
   
-
-
-
-</div>
-
-
-<h3>Requests for your books</h3>
-  <% @user.books.each do |book| %>
-    <% if book.requests && ( request = book.requests.find_by(attended_to: false) ) %>
-        <p>
-          <a href="/users/<%= request.borrower_id %>">
-          <%= User.find(request.borrower_id).first_name %> <%= User.find(request.borrower_id).last_name %> 
-          </a> wants to borrow <%= book.title %>.
-        </p>
-        <p>
-          <p>Books are due <em>7 days</em> from checkout by default</p>
-          <form method="post" action="/books/:id/lend">
-            <input type="hidden" name="book_id" value="<%= book.id %>">
-            <input type="hidden" name="borrower_id" value="<%= request.borrower_id %>">
-            <input type="hidden" name="checkout" value="<%= Date.today %>">
-            <label>Due date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
-            <input type="hidden" name="request_id" value="<%= request.id %>">
-            <button class="btn button">Approve Request</button>
-          </form>
-        </p>
-          <form method="post" action="/books/:id/denied">
-            <input type="hidden" name="book_id" value="<%= book.id %>">
-            <input type="hidden" name="request_id" value="<%= request.id %>">
-            <button class="btn button">Deny Request</button>
-          </form>
-        <p>
-          
-        </p>
-    <% end %>
-  <% end %>
-
-
-  
-</div>
 
