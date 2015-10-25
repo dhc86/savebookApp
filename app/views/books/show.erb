@@ -25,7 +25,6 @@
         <p>
           <label>Book should be returned by: </label><%= lend.due %>
         </p>
-<<<<<<< HEAD
       <% end %>
 <!-- For book check out form -->
       <div id="book_checkout_form">
@@ -99,26 +98,6 @@
       <% end %>
       <div class="white-space"></div>
 <!-- For borrow a book (older) -->
-      <div>
-        <% if current_user && current_user.id == @book.user_id %>
-            <form method="get" action="/books/:id/edit"c>
-                <input type="hidden" name="book_id" value="<%= @book.id %>">
-                <input type="hidden" name="book" value="<%= @book %>">
-                <button class="btn button">Edit Book</button>
-            </form>
-        <% elsif lend = @book.lends.find_by(checkin: nil) %>
-            <% if current_user.id = lend.borrower_id %>
-                <form method="put" action="/books/:id/lend">
-                    <input type="hidden" name="lend_id" value="<%= lend && lend.id %>">
-                    <input type="hidden" name="book_id" value="<%= @book.id %>">
-                    <input type="hidden" name="checkin" value="<%= Date.today %>">
-                    <button class="btn button">Return Book</button>
-                </form>
-            <% end %>
-        <% else %>
-            <button id="btn_borrow_book" class="btn button">Borrow Book</button>
-        <% end %>
-      </div>
     </div> 
 <!-- For google map distance -->
     <% if (@distance != 0) %>
