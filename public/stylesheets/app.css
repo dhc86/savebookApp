@@ -9,6 +9,25 @@
   font-size: 25px;
 }
 
+.hover_effect{
+  position: relative;
+  text-align: center;
+  height: 300px;
+  overflow: hidden;
+  width: 190px;
+  padding: 0 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; 
+  display: inline-block;
+
+}
+
+.hover_effect:hover {
+    background-color: #e8e8ee;
+     border: 5px solid #DCDCDC;  
+     box-shadow: 5px 5px 5px 5px #DCDCDC;
+}
+
 /*
  <div class="request_picture">
           <img src="<%= User.find(request.borrower_id).picture_url %>" />
@@ -126,7 +145,9 @@
   height: 300px;
   overflow: hidden;
   padding: 0 5px;
+  padding-bottom: 30px; 
   padding-top: 30px;
+  width: 100%;
 }
 .book-container img {
   width: 80%;
