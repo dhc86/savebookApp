@@ -24,17 +24,34 @@
       <% end %>
         </form>
     <% else %>
-      <button id="btn_borrow_book" class="btn button">Borrow Book</button>
+      <form method="post" action="/books/:id/request">
+        <input type="hidden" name="book_id" value="<%= @book.id %>">
+        <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
+        <input type="hidden" name="owner_id" value="<%= @book.user.id %>">
+        <% if @book.requests == nil || @book.requests.find_by(attended_to: false) == nil %>
+          <button id="btn_request_book" class="btn button">Request Book</button>
+        <% else %>
+          <span class="btn button">Book Unavailable</span>
+        <% end %>   
+        <% if @book.requests && ( request = @book.requests.find_by(attended_to: false) ) %>
+          <% if request.borrower_id == current_user.id %>
+            <span class="btn button">Request Sent</span>
+          <% end %>
+        <% end %>
+      </form>
     <% end %>
   </div>
 
     <% if (@distance != 0) %>
 
 
-      <p>This book is <%= @distance %> miles away from you. Click on Borrow Book button to check availability</p>    
+      <p>This book is <span id="distance"><%= @distance %> miles</span> away from you.</p>    
 
-     
-      <iframe style="height: 400px; width: 600px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCVt89sOKkehU7JDQpPncShX80rzGE6kj4&origin=<%= current_user.address %>&destination= <%= @book.user.address %> &avoid=tolls|highways"></iframe>
+      <button id="btn_show_map" class="btn button" >Show Map</button>
+      <button id="btn_close_map" class="btn button" >Close Map</button>
+      <p>
+      <iframe id = "map" style="height: 400px; width: 600px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCVt89sOKkehU7JDQpPncShX80rzGE6kj4&origin=<%= current_user.address %>&destination= <%= @book.user.address %> &avoid=tolls|highways"></iframe>
+      </p>
     <% else %>
       <p> You own this book </p>
     <% end %>
@@ -82,24 +99,27 @@
     <p>
       <label>Book should be returned by: </label><%= lend.due %>
     </p>
-  <% else %>
-    <div id="book_checkout_form">
-      <h2>Book Checkout Form</h2>
-      <p><strong>All Books are due <em>7 days</em> from checkout</strong></p>
-      <form method="post" action="/books/:id/lend">
-        <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
-        <input type="hidden" name="book_id" value="<%= @book.id %>">
-        <p>
-          <label>Checkout Date: </label><input type="date" name="checkout" value="<%= Date.today %>">
-        </p>
-        <p>
-          <label>Expected Checkin date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
-        </p>
-        <p>
-          <button class="button">Confirm Checkout</button>
-        </p>
-      </form>
-    </div>
   <% end %>
+
+
+
+  <div id="book_checkout_form">
+    <h2>Book Checkout Form</h2>
+    <p><strong>All Books are due <em>7 days</em> from checkout</strong></p>
+    <form method="post" action="/books/:id/lend">
+      <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
+      <input type="hidden" name="book_id" value="<%= @book.id %>">
+      <p>
+        <label>Checkout Date: </label><input type="date" name="checkout" value="<%= Date.today %>">
+      </p>
+      <p>
+        <label>Expected Checkin date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
+      </p>
+      <p>
+        <button class="button">Confirm Checkout</button>
+      </p>
+    </form>
+  </div>
+  
 
 </div>

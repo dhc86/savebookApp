@@ -1,12 +1,12 @@
 <!-- This is the page to show other user's profile -->
 <div class="container" >
-<div class="row">
-  <div class=" col-lg-3 main-left">
-    <div class='profile-photo'>
-      <img src=<%= @user.picture_url%>>
-    </div>
+  <div class="row">
+    <div class=" col-lg-3 main-left">
+      <div class='profile-photo'>
+        <img src=<%= @user.picture_url%>>
+      </div>
     <div class="profile-info">
-    Take a look at 
+      Take a look at 
     </div>
     <div class="profile-info">
       <%= @user.first_name %> <%= @user.last_name %>
@@ -22,12 +22,15 @@
               <a href="/books/<%= b.id %>">
               <img src= <%= b.picture_url %> >
               <div class="book-own">Your book</div>
-              </a>
+                </a>
+              </div>
             </div>
           <% end %>
         </div>
-      </div>
+       </div>
     <% end %>
   </div>
-</div>
-</div>  
+  
+
+  
+  
