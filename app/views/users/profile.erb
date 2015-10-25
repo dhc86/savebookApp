@@ -10,36 +10,76 @@
 </div>
 
 <div class="row"> 
-    <div class=" col-sm-3 main-left">
-        <h3>Requests for your books</h3>
-        <% @user.books.each do |book| %>
-            <% if book.requests && ( request = book.requests.find_by(attended_to: false) ) %>
-                <p>
-                <a href="/users/<%= request.borrower_id %>">
-                    <%= User.find(request.borrower_id).first_name %> <%= User.find(request.borrower_id).last_name %> 
-                </a> wants to borrow <%= book.title %>.
-                </p>
-                <p>
-                <p>Books are due <em>7 days</em> from checkout by default</p>
-                <form method="post" action="/books/:id/lend">
-                    <input type="hidden" name="book_id" value="<%= book.id %>">
-                    <input type="hidden" name="borrower_id" value="<%= request.borrower_id %>">
-                    <input type="hidden" name="checkout" value="<%= Date.today %>">
-                    <label>Due date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
-                    <input type="hidden" name="request_id" value="<%= request.id %>">
-                    <button class="btn button">Approve Request</button>
-                </form>
-                </p>
-                <form method="post" action="/books/:id/denied">
-                    <input type="hidden" name="book_id" value="<%= book.id %>">
-                    <input type="hidden" name="request_id" value="<%= request.id %>">
-                    <button class="btn button">Deny Request</button>
-                </form>
-                <p>
+  <div class=" col-sm-3 main-left">
+    <h3>Requests for your books</h3>
+    <% @user.books.each do |book| %>
+    <% if book.requests && ( request = book.requests.find_by(attended_to: false) ) %>
+        <p>
+          <a href="/users/<%= request.borrower_id %>">
+          <%= User.find(request.borrower_id).first_name %> <%= User.find(request.borrower_id).last_name %> 
+          </a> wants to borrow <%= book.title %>.
+        </p>
+        <p>
+          <p>Books are due <em>7 days</em> from checkout by default</p>
+          <form method="post" action="/books/:id/lend">
+            <input type="hidden" name="book_id" value="<%= book.id %>">
+            <input type="hidden" name="borrower_id" value="<%= request.borrower_id %>">
+            <input type="hidden" name="checkout" value="<%= Date.today %>">
+            <label>Due date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
+            <input type="hidden" name="request_id" value="<%= request.id %>">
+            <button class="btn button">Approve Request</button>
+          </form>
+        </p>
+          <form method="post" action="/books/:id/denied">
+            <input type="hidden" name="book_id" value="<%= book.id %>">
+            <input type="hidden" name="request_id" value="<%= request.id %>">
+            <button class="btn button">Deny Request</button>
+          </form>
+        <p>
+          
+        </p>
+    <% end %>
+  <% end %>
 
-                </p>
-            <% end %>
+  <hr />
+
+  <h3>Books you requested</h3>
+    <% if ( requests = Request.where(borrower_id: @user.id) ) %>
+      <h4>Pending Requests</h4>
+      <% requests.each do |request| %>
+        <% if request.attended_to == false %>
+          <p>
+          Your request for <a href="/users/#{<%= request.owner_id %>}"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> is still pending...
+          </p>
+          <hr />
         <% end %>
+      <% end %>
+    <% end %>
+    <% if ( requests = Request.where(borrower_id: @user.id) ) %>
+      <h4>Approved Requests</h4>
+      <% requests.each do |request| %>
+        <% if request.attended_to == true && request.accepted == true && request.book.lends.find_by(checkin: nil) %>
+          <p>
+            Your request for <a href="/users/#{<%= request.owner_id %>}"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> was approved! View <a href="/books/#{<%= request.book.id %>}">book now</a>
+          </p>
+          <hr />
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if ( requests = Request.where(borrower_id: @user.id) ) %>
+      <h4>Denied Requests</h4>
+      <% requests.each do |request| %>
+      <% if request.attended_to == true && request.accepted == false %>
+         <p>
+            Your request for <a href="/users/#{<%= request.owner_id %>}"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> was denied. Try requesting <a href="/books/#{<%= request.book.id %>}">here again</a> to see if the owner changes their mind.
+         </p>
+        <% end %>
+      <% end %>
+   <% end %>
+
+
+  
+           
     </div>
     <div class=" col-lg-9 main-right">
         <div class='row shelves'>
