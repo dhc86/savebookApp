@@ -8,6 +8,9 @@
   color: green;
   font-size: 25px;
 }
+.white-space{
+  height:50px ;
+}
 
 /*
  <div class="request_picture">
@@ -221,7 +224,7 @@
   margin:9% 11% 0 7%;
   padding-top: 20px;
 }
-
+/*For login and some form style*/
 .jumbotron {
   margin-top: 5%;
   height:430px;
@@ -264,9 +267,17 @@
 
 
 
+/*For show book detail page */
 
+.profile_thumb img{
+  width: 100%;
+}
 
+.book-container-large{
+  height: 300px;
+}
 
-
-
+.book-container-large img{
+  width: 100% ;
+}
 
