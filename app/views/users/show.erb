@@ -1,43 +1,43 @@
 <!-- This is the page to show other user's profile -->
 
 <div class="row profile-photobar">
-  <div class=" col-lg-3 main-left">
-    <div class='profile-photo'>
-      <img src=<%= @user.picture_url%>>
-    </div>
-    <div class="profile-info">
-    <%= @user.first_name %> <%= @user.last_name %>
-    </div>
-  </div> 
+    <div class=" col-lg-3 main-left">
+        <div class='profile-photo'>
+            <img src=<%= @user.picture_url%>>
+        </div>
+        <div class="profile-info">
+            <%= @user.first_name %> <%= @user.last_name %>
+        </div>
+    </div> 
 </div>
 
 
 <div class="row">
-  <div class=" col-lg-3 main-left">
-   
-  </div>
-  <div class=" col-lg-9 main-right">       
-    <% @user.books.each_slice(4) do |books| %>       
-      <div class='row shelves'>
-        <div class="row inner-shelves">
-          <% books.each do |book| %>
-            <div class="col-sm-3 book-container">
-              <a href="/books/<%= book.id %>">
-                <img src= <%= book.picture_url %> >
-                <% if current_user && current_user.id == book.user_id %>
-                    <div class="book-own">Your book</div>
-                <% elsif book.lends && book.lends.find_by(borrower_id: current_user.id) %>
-                    <div class="book-own">Loaned book</div>
-                <% elsif (book.lends && lend = book.lends.find_by(checkin: nil)) %>
-                    <div class="book-lend">Unavailable</div>
-                <% else %>
-                    <div class="book-borrow">Book borrow</div>
-                <% end %>
-              </a>
+    <div class=" col-lg-3 main-left">
+
+    </div>
+    <div class=" col-lg-9 main-right">       
+        <% @user.books.each_slice(4) do |books| %>       
+            <div class='row shelves'>
+                <div class="row inner-shelves">
+                    <% books.each do |book| %>
+                        <div class="col-sm-3 book-container">
+                            <a href="/books/<%= book.id %>">
+                                <img src= <%= book.picture_url %> >
+                                <% if current_user && current_user.id == book.user_id %>
+                                    <div class="book-own">Your book</div>
+                                <% elsif book.lends && book.lends.find_by(borrower_id: current_user.id) %>
+                                    <div class="book-own">Loaned book</div>
+                                <% elsif (book.lends && lend = book.lends.find_by(checkin: nil)) %>
+                                    <div class="book-lend">Unavailable</div>
+                                <% else %>
+                                    <div class="book-borrow">Book borrow</div>
+                                <% end %>
+                            </a>
+                        </div>
+                    <% end %>
+                </div>
             </div>
-          <% end %>
-        </div>
-       </div>
-    <% end %>
-  </div>
+        <% end %>
+    </div>
 </div>
