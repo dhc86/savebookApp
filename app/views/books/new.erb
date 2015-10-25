@@ -1,58 +1,14 @@
 
 <% if @book && @book.errors.any? %>
-      <div>
-        <strong>Some issues in the book details you tryna save, please fix them:</strong>
-        <ul>
-          <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-<!-- <p>    
-<h2> Add a Book to your collection</h2>
-</p> -->
-
-
-
-<!-- <div class="container"> -->
-
- 
-
-<!-- 
-  <form method="post" id="new-book" action="/books">
-    <div>
-      <label>Title:</label>
-      <input type="text" id="title" name="title" value="<%= @book && @book.title %>">
-    </div>
-    <div>
-      <label>Author:</label>
-      <input type="text" id="author" name="author" value="<%= @book && @book.author %>">
-    </div>
-    <div>
-      <label>ISBN:</label>
-      <input type="text" id="isbn" name="isbn" value="<%= @book && @book.isbn %>">
-    </div>
-    <div>
-      <label>Description: </label>
-      <p>
-      <textarea name="description" id="description" rows="10" cols="50" value="<%= @book && @book.description %>">
-      </textarea> 
-      </p>
-    </div>
-    <div>
-      <label>Picture url (optional):</label>
-      <input type="text" id="url" name="url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
-    </div> 
-    <div>
-      <button class="button btn btn-primary pull-left">Add Book</button>
-    </div>
-  </form> -->
-
-
-<!-- </div> -->
-
-
+  <div>
+    <strong>Some issues in the book details you tryna save, please fix them:</strong>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="background-add-book-form">
   <div class="row">
@@ -81,120 +37,20 @@
               <textarea class="add-book-form-control"  name="description" id="description" rows="100" cols="50" value="<%= @book && @book.description %>" placeholder=" Enter description about the book..."></textarea>
             </div>
              <div >
-              <button class="button btn-lg btn-primary addbook">Add Book</button>
+              <button class="button btn-lg btn-primary addbook-button">Add Book</button>
             </div>
         </form>              
       </div>
-
-
-
     <div class="col-sm-4">
       <div id="fill-by-isbn">
-       <form class="form_line">
+        <form class="form_line">
          <p>
           <label id="isbn_text_message">Know the ISBN number? Add Book directly:  </label>
          </p> 
-          <input  type="text" name="isbn" name="isbn" placeholder=" type ISBN" class="form-control">
-          <button id="isbn-fill" data-loading-text="Loading..." class="addbook button btn btn-primary" autocomplete="off">Submit ISBN</button>
-            
+          <input  type="text" name="isbn" name="isbn" placeholder=" type ISBN" class="add-book-form-control">
+          <button id="isbn-fill" data-loading-text="Loading..." class="isbn-button button btn btn-primary" autocomplete="off">Submit ISBN</button>          
         </form>
       </div>
     </div>
   </div>  
 </div>
-
-<style>
- /*   .header {
-        color: #36A0FF;
-        font-size: 27px;
-        padding: 10px;
-        border-bottom: solid 1px #FFF;
-    }
-
-    .bigicon {
-        font-size: 35px;
-        color: #36A0FF;
-    }
-
-.col-md-6{
-    position: relative;
-    min-height: 1px;
-    padding-right: 55px;
-    padding-left: 55px;
-    width: 55%;
-}
-.col-md-8{
-    position: relative;
-    min-height: 1px;
-    padding-right: 55px;
-    padding-left: 55px;
-    width: 55%;
-}
-
-.form-control {
-    display: block;
-    width: 100%;
-    height: 44px;
-    padding: 26px 12px;
-    font-size: 20px;
-    line-height: 1.428571429;
-    color: #555;
-    vertical-align: middle;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    margin-top: 2%;
-}
-
-
-.well {
-  background: url("../images/blue_book2.png") no-repeat;
-  background-size: 100%;
-  border-radius: 15px;
-  opacity: 0.9;
-}
-
-.col-md-6 {
-    position: relative;
-    min-height: 1px;
-   /* width: 55%;*/
-}
-/*
-#isbn_text_message{
-  color: white;
-  font-size: 13px;
-}
-
-.white-space{
-  height:85px;
-}
-
-.fill-by-isbn{
-  position: relative;
-}
-
-.addbook{
-  margin-top: 20px; 
-    position: relative;
-    left: 185px;
-}
-.btn-lg {
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.33;
-    border-radius: 6px;
-    position: relative;
-    left: 185px;
-}
-*/
-
-
-</style>
-
-
-
