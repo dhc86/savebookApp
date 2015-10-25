@@ -1,36 +1,3 @@
-<div class="book-detail">
- <p> Here is the current information of your book. In this page you can update your book information.</p>
- 
- <h1><%= @book.title %></h1>
-
- <p>This is the current information about your book</p>
- <p>
-   <span><img src="<%= @book.picture_url %>" /></span>
- </p>
- <p>
-   <strong>Author: <%= @book.author %></strong>
- </p>
- <div class="description">
-   <p>
-   Description:
-   </p>
-   <p>
-   <%= @book.description %>
-   </p>
-</div>
-
- <p>
-   Added on: <%= @book.created_at.to_formatted_s(:long_ordinal)  %>             
- </p>
- <p>
-   By: <%= @book.user.first_name %>  <%= @book.user.last_name %>
- </p>
-
- <hr/>
-</div>
-
-
-<h1>Here you can update your book information</h1>
 <% if @book && @book.errors.any? %>
      <div>
        <strong>Some issues in the book details you tryna save, please fix them:</strong>
@@ -42,30 +9,38 @@
      </div>
    <% end %>
 <p>    
-<h2> Add a Book to your collection</h2>
-</p>
-<form method="post" action="/books">
- <div>
-   <label>Title:</label>
-   <input type="text" name="title" value="<%= @book && @book.title %>">
- </div>
- <div>
-   <label>Author:</label>
-   <input type="text" name="author" value="<%= @book && @book.author %>">
- </div>
- <div>
-   <label>Description: </label>
-   <p>
-   <textarea name="description" rows="10" cols="50" value="<%= @book && @book.description %>">
-   </textarea> 
-   </p>
- </div>
- <div>
-   <label>Picture url (optional):</label>
-   <input type="text" name="picture_url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
- </div>
- <div>
-   <button class="button btn btn-primary pull-left">Add Book</button>
- </div>
-</form>
 
+<div class="background-add-book-form">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 header-add-book-form">Update your Book Information</div>
+    <div class="col-sm-12 white-space"></div>
+    <div class="col-sm-12 white-space"></div>
+  </div>
+  <div class="row">
+      <div class="col-md-6 add-book-form">
+        <form method="post" id="new-book" action="/books">
+            <input  type="text" id="title" name = "title" placeholder=" Title" class="add-book-form-control" value="<%= @book && @book.title %>">
+
+            <div class="form_line">
+              <input  type="text" id="author" name="author" value="<%= @book && @book.author %>" placeholder=" Author" class="add-book-form-control">
+            </div>
+
+            <div class="form_line">
+              <input  type="text" id="isbn" name="isbn" value="<%= @book && @book.isbn %>" placeholder=" ISBN" class="add-book-form-control">
+            </div>
+
+            <div class="form_line">
+              <input  type="text" id="url" name="url" placeholder=" Picture URL (optional)" class="add-book-form-control">
+            </div>
+
+            <div class="form_line">
+              <textarea class="add-book-form-control"  name="description" id="description" rows="100" cols="50" value="<%= @book && @book.description %>" placeholder=" Enter description about the book..."></textarea>
+            </div>
+             <div >
+              <button class="button btn-lg btn-primary addbook-button">Update Book</button>
+            </div>
+        </form>              
+      </div>
+
+  </div>  
+</div>
