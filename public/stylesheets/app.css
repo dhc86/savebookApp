@@ -8,6 +8,9 @@
   color: green;
   font-size: 25px;
 }
+.white-space{
+  height:50px ;
+}
 
 /*
  <div class="request_picture">
@@ -64,11 +67,9 @@
   padding: 20px 20px;
 }
 .profile-info{
-  display: inline-block;
   position: relative;
-  top:120px ;
-  left: 250px;  
-  text-align: center;
+  top:330px ;
+  left: 10px;  
   font-size:28px ;
   color: #fff;
 }
@@ -80,12 +81,10 @@
 }
 .profile-photo{
   position: relative;
-  top:150px;
+  top:170px;
   border: solid 1px black;
   width: 200px;
   height:200px;
-  margin-right: auto;
-  margin-left: auto;
 }
 .profile-photo img{
   width: 200px;
@@ -144,10 +143,10 @@
 }
 
 
-.hover_effect:hover {
-    background-color: #e8e8ee;
-     border: 5px solid #DCDCDC;  
-     box-shadow: 5px 5px 5px 5px #DCDCDC;
+.book_effect:hover {
+  background-color: #e8e8ee;
+  border: 5px solid #DCDCDC;  
+  box-shadow: 5px 5px 5px 5px #DCDCDC;
 }
 
 
@@ -159,8 +158,8 @@
   padding: 0 5px;
   padding-bottom: 30px; 
   padding-top: 30px;
-  width: 100%;
 }
+
 .book-container img {
   width: 80%;
   height: 82%;
@@ -257,7 +256,7 @@
   margin:9% 11% 0 7%;
   padding-top: 20px;
 }
-
+/*For login and some form style*/
 .jumbotron {
   margin-top: 5%;
   height:430px;
@@ -300,9 +299,16 @@
 
 
 
+/*For show book detail page */
 
+.profile_thumb img{
+  width: 100%;
+}
 
+.book-container-large{
+  height: 300px;
+}
 
-
-
-
+.book-container-large img{
+  width: 100% ;
+}
