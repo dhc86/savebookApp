@@ -1,127 +1,124 @@
-
 <% if @book && @book.errors.any? %>
-      <div>
+    <div>
         <strong>Some issues in the book details you tryna save, please fix them:</strong>
         <ul>
-          <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
+            <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
         </ul>
-      </div>
-    <% end %>
+    </div>
+<% end %>
 <p>    
 <h2> Add a Book to your collection</h2>
 </p>
 
 
-
-
 <form id="fill-by-isbn">
-  <label>Know the ISBN number? Add Book directly:  </label>
-  <input type="text" name="isbn" value="" />
-  <button id="isbn-fill" data-loading-text="Loading..." class="button btn btn-primary" autocomplete="off">Submit ISBN</button>
+    <label>Know the ISBN number? Add Book directly:  </label>
+    <input type="text" name="isbn" value="" />
+    <button id="isbn-fill" data-loading-text="Loading..." class="button btn btn-primary" autocomplete="off">Submit ISBN</button>
 </form>
 
 <form method="post" id="new-book" action="/books">
-  <div>
-    <label>Title:</label>
-    <input type="text" id="title" name="title" value="<%= @book && @book.title %>">
-  </div>
-  <div>
-    <label>Author:</label>
-    <input type="text" id="author" name="author" value="<%= @book && @book.author %>">
-  </div>
-  <div>
-    <label>ISBN:</label>
-    <input type="text" id="isbn" name="isbn" value="<%= @book && @book.isbn %>">
-  </div>
-  <div>
-    <label>Description: </label>
-    <p>
-    <textarea name="description" id="description" rows="10" cols="50" value="<%= @book && @book.description %>">
-    </textarea> 
-    </p>
-  </div>
-  <div>
-    <label>Picture url (optional):</label>
-    <input type="text" id="url" name="url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
-  </div> 
-  <div>
-    <button class="button btn btn-primary pull-left">Add Book</button>
-  </div>
+    <div>
+        <label>Title:</label>
+        <input type="text" id="title" name="title" value="<%= @book && @book.title %>">
+    </div>
+    <div>
+        <label>Author:</label>
+        <input type="text" id="author" name="author" value="<%= @book && @book.author %>">
+    </div>
+    <div>
+        <label>ISBN:</label>
+        <input type="text" id="isbn" name="isbn" value="<%= @book && @book.isbn %>">
+    </div>
+    <div>
+        <label>Description: </label>
+        <p>
+        <textarea name="description" id="description" rows="10" cols="50" value="<%= @book && @book.description %>">
+        </textarea> 
+        </p>
+    </div>
+    <div>
+        <label>Picture url (optional):</label>
+        <input type="text" id="url" name="url" style="width: 300px;" value="<%= @book && @book.picture_url %>">
+    </div> 
+    <div>
+        <button class="button btn btn-primary pull-left">Add Book</button>
+    </div>
 </form>
 
 
 
 <!-- Need to work on this one! -->
 <!-- <div class="enter_book_wrapper">
-  <h2> Add a Book to your collection</h2>
+    <h2> Add a Book to your collection</h2>
 
-  <h3>In this section, you can enter your book information.</h3>
+    <h3>In this section, you can enter your book information.</h3>
 
-  <div class="enter_isbn">
+    <div class="enter_isbn">
 
-    <form class="form-horizontal" role="form" id="fill-by-isbn">
-      <label>Know the ISBN number? Add Book directly:  </label>
-      <input type="text" name="isbn" value="" />
-      <button >Submit ISBN</button>
-    </form>    
-  </div>
+        <form class="form-horizontal" role="form" id="fill-by-isbn">
+            <label>Know the ISBN number? Add Book directly:  </label>
+            <input type="text" name="isbn" value="" />
+            <button >Submit ISBN</button>
+        </form>    
+    </div>
 
 </div>
 
 
 <div class="container">
-  <h2>Horizontal form</h2>
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-10">          
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox"> Remember me</label>
+    <h2>Horizontal form</h2>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Email:</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Password:</label>
+            <div class="col-sm-10">          
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+            </div>
+        </div>
+        <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>
 
-  <div class="input-group input-group-lg">
+<div class="input-group input-group-lg">
     <span class="input-group-addon"><img src="/images/icon-user2.png"></span>
     <input type="text" id="email"  placeholder=" enter email..."  name="email">
-  </div>
+</div>
 
- -->
+-->
 
 
 
 
 <!-- <div class="container">
-  <h2>Form control: textarea</h2>
-  <p>The form below contains a textarea for comments:</p>
-  <form role="form">
-    <div class="form-group">
-      <label for="comment">Comment:</label>
-      <textarea class="form-control" rows="5" id="comment"></textarea>
-    </div>
-  </form>
+    <h2>Form control: textarea</h2>
+    <p>The form below contains a textarea for comments:</p>
+    <form role="form">
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+    </form>
 </div>
- -->
+-->
 
 <div class="container">
     <div class="row">

@@ -4,9 +4,10 @@
             e.preventDefault();
             console.log('hello');
             var isbn = $(this).siblings('input').val();  //save field in isbn variable
+            isbn = isbn.replace(/-/g, '');
             console.log('you asked me to search', isbn); //printi it
             var $btn = $(this).button('loading');
-            setTimeout(function () {
+            setTimeout(function () { // will make a loading button that times out after 2 secs
                 $btn.button('reset');
             }, 2000);
             $.ajax({   // makes the request without leaving your page!
