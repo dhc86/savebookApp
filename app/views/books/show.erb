@@ -1,17 +1,53 @@
 <div class="row">
-  <div class="col-lg-12 ">
+  <div class="col-sm-12 ">
     <h1><%= @book.title %></h1>
   </div>
-  <div class="col-lg-12 white-space">
+  <div class="col-sm-12 white-space">
     
   </div>
-  <div class="col-lg-1 profile_thumb">
+  <div class="col-sm-1 profile_thumb">
     <a href=<%="/users/" + @book.user_id.to_s %>><img src="<%= @book.user.picture_url %>"></a>
+
   </div>
-  <div class="col-lg-3 book-container-large">
-      <img src="<%= @book.picture_url %>" />                
-  </div>
-  <div class="col-lg-5">
+  <div class="col-sm-3 book-container-large">
+<!-- For book cover photo -->
+      <img src="<%= @book.picture_url %>" />
+<!-- For book status information -->
+      <% if ( lend = @book.lends.find_by(checkin: nil) ) %>
+        <h2>Book Lend Info</h2>
+        <p>This book is currently not available</p>
+        <p>
+          <label>Book was lent to: </label>
+          <%= User.find(lend.borrower_id).first_name %>  <%= User.find(lend.borrower_id).last_name %>   
+        </p>
+        <p>
+        <label>Checkout date was: </label><%= lend.checkout %>
+        </p>
+        <p>
+          <label>Book should be returned by: </label><%= lend.due %>
+        </p>
+      <% end %>
+<!-- For book check out form -->
+      <div id="book_checkout_form">
+        <h2>Book Checkout Form</h2>
+        <p><strong>All Books are due <em>7 days</em> from checkout</strong></p>
+        <form method="post" action="/books/:id/lend">
+          <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
+          <input type="hidden" name="book_id" value="<%= @book.id %>">
+          <p>
+            <label>Checkout Date: </label><input type="date" name="checkout" value="<%= Date.today %>">
+          </p>
+          <p>
+            <label>Expected Checkin date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
+          </p>
+          <p>
+            <button class="button">Confirm Checkout</button>
+          </p>
+        </form>
+      </div>
+  </div>                
+  <div class="col-sm-5">
+<!-- For book detail information -->
     <p>
       <strong>Author: <%= @book.author %></strong>
     </p>
@@ -28,7 +64,7 @@
     </p>
     
     <div>
-    <!-- For request a book  -->
+<!-- For request a book  -->
       <% if current_user && current_user.id == @book.user_id %>
         <form method="get" action="/books/:id/edit"c>
           <input type="hidden" name="book_id" value="<%= @book.id %>">
@@ -61,7 +97,8 @@
           <% end %>
         </form>
       <% end %>
-    <!-- For borrow a book (older) -->
+      <div class="white-space"></div>
+<!-- For borrow a book (older) -->
       <div>
         <% if current_user && current_user.id == @book.user_id %>
             <form method="get" action="/books/:id/edit"c>
@@ -83,7 +120,7 @@
         <% end %>
       </div>
     </div> 
-
+<!-- For google map distance -->
     <% if (@distance != 0) %>
       <p>This book is <span id="distance"><%= @distance %> miles</span> away from you.</p>    
       <button id="btn_show_map" class="btn button" >Show Map</button>
@@ -94,59 +131,5 @@
     <% else %>
         <p> You own this book </p>
     <% end %>
-
-  <% if ( lend = @book.lends.find_by(checkin: nil) ) %>
-    <h2>Book Lend Info</h2>
-    <p>
-    This book is currently not available
-    </p>
-    <p>
-      <label>Book was lent to: </label>
-      <%= User.find(lend.borrower_id).first_name %>  <%= User.find(lend.borrower_id).last_name %>   
-    </p>
-    <p>
-    <label>Checkout date was: </label><%= lend.checkout %>
-    </p>
-    <p>
-      <label>Book should be returned by: </label><%= lend.due %>
-    </p>
-  <% end %>
   </div>  
-  <div class="col-lg-3"></div>   
-<div class="col-lg-11 white-space"></div>
-<div class="col-lg-11 white-space"></div>
-  <div class="col-lg-6 col-lg-offset-4">
-    <% if ( lend = @book.lends.find_by(checkin: nil) ) %>
-      <h2>Book Lend Info</h2>
-      <p>This book is currently not available</p>
-      <p>
-        <label>Book was lent to: </label>
-        <%= User.find(lend.borrower_id).first_name %>  <%= User.find(lend.borrower_id).last_name %>   
-      </p>
-      <p>
-      <label>Checkout date was: </label><%= lend.checkout %>
-      </p>
-      <p>
-        <label>Book should be returned by: </label><%= lend.due %>
-      </p>
-    <% end %>
-    <div id="book_checkout_form">
-      <h2>Book Checkout Form</h2>
-      <p><strong>All Books are due <em>7 days</em> from checkout</strong></p>
-      <form method="post" action="/books/:id/lend">
-        <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
-        <input type="hidden" name="book_id" value="<%= @book.id %>">
-        <p>
-          <label>Checkout Date: </label><input type="date" name="checkout" value="<%= Date.today %>">
-        </p>
-        <p>
-          <label>Expected Checkin date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
-        </p>
-        <p>
-          <button class="button">Confirm Checkout</button>
-        </p>
-      </form>
-    </div>
-  </div>
-
 </div>
