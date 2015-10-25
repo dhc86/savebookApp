@@ -1,17 +1,16 @@
 <!-- This is the page to your your own profile page -->
 <div class="row profile-photobar">
-  <div class="col-lg-3 main-left">
-    <div class='profile-photo'>
-      <img src=<%= @user.picture_url%>>
-    </div>
-    <div class="profile-info">
+
+  <div class='col-sm-3 profile-photo'>
+    <img src=<%= @user.picture_url%>>
+  </div>
+  <div class="col-sm-4 profile-info">
     <%= @user.first_name %> <%= @user.last_name %>
-    </div>
-  </div> 
+  </div>
 </div>
 
 <div class="row"> 
-  <div class=" col-lg-3 main-left">
+  <div class=" col-sm-3 main-left">
     <h3>Requests for your books</h3>
   <% @user.books.each do |book| %>
     <% if book.requests && ( request = book.requests.find_by(attended_to: false) ) %>
