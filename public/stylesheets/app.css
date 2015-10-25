@@ -8,6 +8,9 @@
   color: green;
   font-size: 25px;
 }
+.white-space{
+  height:50px ;
+}
 
 /*
  <div class="request_picture">
@@ -64,11 +67,9 @@
   padding: 20px 20px;
 }
 .profile-info{
-  display: inline-block;
   position: relative;
-  top:120px ;
-  left: 250px;  
-  text-align: center;
+  top:330px ;
+  left: 10px;  
   font-size:28px ;
   color: #fff;
 }
@@ -80,12 +81,10 @@
 }
 .profile-photo{
   position: relative;
-  top:150px;
+  top:170px;
   border: solid 1px black;
   width: 200px;
   height:200px;
-  margin-right: auto;
-  margin-left: auto;
 }
 .profile-photo img{
   width: 200px;
@@ -120,17 +119,53 @@
 
 /*Books*/
 
+.hover_effect{
+  position: relative;
+  text-align: center;
+  height: 300px;
+  overflow: hidden;
+  width: 190px;
+  padding: 0 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; 
+  display: inline-block;
+
+}
+
+.small_pic {
+  height: 100px;
+  width: 100px;
+}
+
+.small_pic img {
+  height: 100%;
+  width: 100%;
+}
+
+
+.book_effect:hover {
+  background-color: #e8e8ee;
+  border: 5px solid #DCDCDC;  
+  box-shadow: 5px 5px 5px 5px #DCDCDC;
+}
+
+
 .book-container{
   position: relative;
   text-align: center;
   height: 300px;
   overflow: hidden;
   padding: 0 5px;
+  padding-bottom: 30px; 
   padding-top: 30px;
 }
+
 .book-container img {
   width: 80%;
   height: 82%;
+}
+.book-container a {
+  text-decoration: none;
 }
 
 
@@ -138,7 +173,7 @@
   /*border: solid 3px red; */
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: blue;
+  background-color: #4e69a3;
   margin: 0 auto;
   width: 80%;
   color: #FFFFFF;
@@ -150,7 +185,7 @@
 .book-lend{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: black;
+  background-color: #292421;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
@@ -162,7 +197,7 @@
 .book-lentout{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: cyan;
+  background-color: #D1EEEE;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
@@ -175,7 +210,7 @@
 .book-borrowed{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: yellow;
+  background-color: #FBEC5D;
   color: #FFFFFF;
   height: 45px ;
   width: 80%;
@@ -188,7 +223,7 @@
 .book-borrow{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: red;
+  background-color: #EE6363;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
@@ -200,7 +235,7 @@
 .add-book{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: green;
+  background-color: #4A7023;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
@@ -221,7 +256,7 @@
   margin:9% 11% 0 7%;
   padding-top: 20px;
 }
-
+/*For login and some form style*/
 .jumbotron {
   margin-top: 5%;
   height:430px;
@@ -321,6 +356,7 @@
 }
 
 
+
 .well {
   background: url("../images/blue_book2.png") no-repeat;
   background-size: 100%;
@@ -358,9 +394,18 @@
     border-radius: 6px;
     position: relative;
     left: 185px;
+
+/*For show book detail page */
+
+.profile_thumb img{
+  width: 100%;
+
 }
 
+.book-container-large{
+  height: 300px;
+}
 
-
-
-
+.book-container-large img{
+  width: 100% ;
+}

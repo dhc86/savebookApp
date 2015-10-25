@@ -56,8 +56,8 @@ get '/users/:id' do
   loggedInUserId  = session[:user_id] 
   @user = User.find(requestUserId)
   if loggedInUserId
-    @isMyProfile = requestUserId == loggedInUserId.to_s
-    if @isMyProfile
+    isMyProfile = requestUserId == loggedInUserId.to_s
+    if isMyProfile
       @lends = Lend.where(borrower_id: session[:user_id])
       @lend_book_id = @lends.map {|l| l.book_id} if @lends
       erb :'users/profile'
@@ -150,7 +150,8 @@ post '/books/:id/lend' do |id|
     attended_to: true,
     accepted: true
     )
-  redirect "/users/#{@book.user.id}"
+  @book = Book.find(params[:book_id])
+  redirect "/users/#{@book.user_id}"
 end
 
 # using put does not work
@@ -160,7 +161,7 @@ post '/books/:id/denied' do |id|
     attended_to: true
     )
   @book = Book.find(params[:book_id])
-  redirect "/users/#{@book.user.id}"
+  redirect "/users/#{@book.user_id}"
 end
 
 # using put does not work
