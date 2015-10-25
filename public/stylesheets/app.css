@@ -8,21 +8,17 @@
   color: green;
   font-size: 25px;
 }
+
 .white-space{
   height:50px ;
 }
 
-/*
- <div class="request_picture">
-          <img src="<%= User.find(request.borrower_id).picture_url %>" />
-        </div>
-        */
 .request_picture{
-   display:block;
-    height:100px;
-    overflow:hidden;
-    margin: -10px auto 40px;
-    width: 70px;
+  display:block;
+  height:100px;
+  overflow:hidden;
+  margin: -10px auto 40px;
+  width: 70px;
 }
 
 /*Layout*/
@@ -30,15 +26,15 @@
   position: relative;
   top: 80px;
 }
-/*nav bar in layout*/
 
+/*nav bar in layout*/
 .df-navbar {
   position: fixed;
   top: 0px;
   width: 100%;
   height: 80px;
   background-color: #3B5999;
-     z-index: 100;
+  z-index: 100;
 }
 
 .df-navlist{
@@ -56,7 +52,6 @@
   color:black;
 }
 
-
 .navbar-toggle .icon-bar {
     background-color: #fff;
 }
@@ -66,6 +61,7 @@
   height:auto;
   padding: 20px 20px;
 }
+
 .profile-info{
   position: relative;
   top:330px ;
@@ -79,6 +75,7 @@
   background-image: url('/images/profilebackground.jpg');
   background-position:0 -224px ;
 }
+
 .profile-photo{
   position: relative;
   top:170px;
@@ -86,11 +83,13 @@
   width: 200px;
   height:200px;
 }
+
 .profile-photo img{
   width: 200px;
   height:200px;
   border:solid 5px #fff;
 }
+
 /*Login page*/
 .login-button{
   text-align: center;
@@ -102,6 +101,7 @@
   color:#FFFFFF;
   background-color:#3B5999;
 }
+
 .login-button a{
   color:#FFFFFF;
 }
@@ -110,15 +110,12 @@
   margin-top: 50px;
 }
 
-
 .login-pic{
   text-align: center;
   margin: 0 auto;
 }
 
-
 /*Books*/
-
 .hover_effect{
   position: relative;
   text-align: center;
@@ -142,13 +139,11 @@
   width: 100%;
 }
 
-
 .book_effect:hover {
   background-color: #e8e8ee;
   border: 5px solid #DCDCDC;  
   box-shadow: 5px 5px 5px 5px #DCDCDC;
 }
-
 
 .book-container{
   position: relative;
@@ -164,13 +159,13 @@
   width: 80%;
   height: 82%;
 }
+
 .book-container a {
   text-decoration: none;
 }
 
 
 .book-own{
-  /*border: solid 3px red; */
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: #4e69a3;
@@ -206,7 +201,6 @@
   font-size: 20px;
 }
 
-
 .book-borrowed{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -218,7 +212,6 @@
   line-height: 50px;
   font-size: 20px;
 }
-
 
 .book-borrow{
   border-bottom-right-radius: 10px;
@@ -281,7 +274,6 @@
   top: 10%;
   width: 40%;
   border-radius: 15px;
-
 }
 
 .input-group {
@@ -289,15 +281,11 @@
   display: table;
   border-collapse: separate;
   padding: 0 65px;
-
 }
-
 
 .form-group{
   display: inline-block;
 }
-
-
 
 /*For show book detail page */
 
@@ -311,4 +299,79 @@
 
 .book-container-large img{
   width: 100% ;
+}
+
+/*Add book page*/
+.background-add-book-form {
+  background: url("../images/blue_book2.png") no-repeat;
+  background-size: 100%;
+  border-radius: 15px;
+  opacity: 0.9;
+}
+
+.header-add-book-form {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+    border-bottom: solid 1px #FFF;
+}
+
+.add-book-form{
+  min-height: 1px;
+  padding-right: 55px;
+  padding-left: 55px;
+  width: 55%;
+   min-height: 1px;
+}
+
+.add-book-form-control {
+  display: block;
+  width: 100%;
+  height: 44px;
+  padding: 26px 12px;
+  font-size: 20px;
+  line-height: 1.428571429;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  margin-top: 2%;
+}
+
+#isbn_text_message{
+  color: white;
+  font-size: 20px;
+}
+
+.addbook-button{
+  margin-top: 20px; 
+  margin-bottom: 20px;
+  position: relative;
+  padding: 10px 16px;
+  font-size: 22px;
+  line-height: 1.33;
+  border-radius: 6px;
+  position: relative;
+  left: 185px;
+}
+
+#description{
+  height: 300px;
+}
+
+.isbn-button{
+  margin-top: 20px; 
+  position: relative;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+  position: relative;
+  left: 124px;
 }
