@@ -44,7 +44,7 @@
       <% requests.each do |request| %>
         <% if request.attended_to == false %>
           <p>
-          Your request for <a href="/users/#{<%= request.owner_id %>}"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> is still pending...
+          Your request for <a href="/users/<%= request.owner_id %>"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> is still pending...
           </p>
           <hr />
         <% end %>
