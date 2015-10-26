@@ -68,14 +68,12 @@
         <input type="hidden" name="book" value="<%= @book %>">
         <button class="btn button">Edit Book</button>
       </form>
-    <% elsif @book.requests.empty? || ( @book.requests && req = @book.requests.find_by(accepted: false) ) %>
-      <% if req.attended_to == true %>
+     <% elsif @book.requests.empty? || ( @book.requests && req = @book.requests.find_by(accepted: false) && req.attended_to == true) %>
         <form method="post" action="/books/:id/request">
           <input type="hidden" name="book_id" value="<%= @book.id %>">
           <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
           <input type="hidden" name="owner_id" value="<%= @book.user.id %>">
           <button id="btn_request_book" class="btn button">Request Book</button>
-      <% end %>
       </form>
      <% elsif !@book.lends.find_by(checkin: nil) %>
       <form method="post" action="/books/:id/request">
@@ -132,7 +130,7 @@
       <form action="/books/:id/review" method="post">
         <input type="hidden" name= "book_id" value="<%= @book.id %>">
         <input type="hidden" name="current_user" value="<%= current_user.id %>">
-        <p>Review by: <%= current_user.first_name %> <%= current_user.last_name %> </p>
+        <p>Review by: <%= current_user.first_name %>  <%= current_user.last_name %></p>
         <label>Review: </label>
         <p>
         <textarea rows="5" cols="30" name="text" value="text"></textarea>
@@ -177,7 +175,7 @@
           <input name="_method" type="hidden" value="delete" />
           <input type="hidden" name="book_id" value="<%= @book.id %>">
           <input type="hidden" name="review_id" value="<%= review.id %>">
-            <button type="submit" class="btn button">Delete Review</button>
+            <button type="submit" class="button">Delete Review</button>
           </form>
         <% end %>
       </p>
