@@ -202,7 +202,7 @@
 .book-borrowed{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: #FBEC5D;
+  background-color: #E3CF57;
   color: #FFFFFF;
   height: 45px ;
   width: 80%;
@@ -372,6 +372,10 @@
   line-height: 1.33;
   border-radius: 6px;
   position: relative;
+<<<<<<< HEAD
+  left: 124px;
+}
+=======
   left: 185px;
 
 }
@@ -387,3 +391,4 @@
   left: 260px;
 
 }
+>>>>>>> 600d84f3ba18254cb72b4630bcbc896d0dd7a5e1
