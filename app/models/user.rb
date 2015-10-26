@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :books, dependent: :destroy
   has_many :lends
-
+  has_many :reviews
 
   validates :first_name, presence: true
   validates :last_name, presence: true

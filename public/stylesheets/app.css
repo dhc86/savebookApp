@@ -3,6 +3,13 @@
     width: 1200px;
 }
 }
+
+.cover_map{
+  height: 400px; 
+  width: 600px;
+  background-color: #E9EAED;
+}
+
 body{
   background-color: #E9EAED;
 }
@@ -403,3 +410,17 @@ body{
   left: 260px;
 
 }
+
+/*books review*/
+.list_of_reviews {
+position: relative;
+left: 40%;
+
+}
+
+
+
+
+
+
+
