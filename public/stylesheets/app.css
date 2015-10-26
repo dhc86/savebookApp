@@ -206,7 +206,7 @@ body{
 .book-lentout{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: #D1EEEE;
+  background-color: #8B6969;
   color: #FFFFFF;
   height: 45px ;
   margin: 0 auto;
@@ -219,7 +219,7 @@ body{
 .book-borrowed{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: #E3CF57;
+  background-color: #CDCD00;
   color: #FFFFFF;
   height: 45px ;
   width: 80%;
