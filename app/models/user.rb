@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # extend Geocoder::Model::ActiveRecord
- 
+
   has_many :books, dependent: :destroy
   has_many :lends
   has_many :reviews
