@@ -3,7 +3,9 @@
     width: 1200px;
 }
 }
-
+body{
+  background-color: #E9EAED;
+}
 #distance{
   color: green;
   font-size: 25px;
@@ -61,6 +63,13 @@
   height:auto;
   padding: 20px 20px;
 }
+.profile-background-wall{
+  margin-top: 10px;
+  background-image:url('/images/background-wall.jpg');
+  background-repeat: repeat-y;
+}
+
+
 .profile-info{
   position: relative;
   top:330px ;
@@ -68,6 +77,14 @@
   font-size:28px ;
   color: #fff;
 }
+
+.request-form{
+  border-radius: 5px ;
+  width: 100%;
+  padding:5px ;
+  background-color:#FFF;
+}
+
 
 .profile-photobar{
   height:400px;
