@@ -16,11 +16,11 @@ body{
 }
 
 .request_picture{
-  display:block;
-  height:100px;
-  overflow:hidden;
-  margin: -10px auto 40px;
-  width: 70px;
+   display:block;
+    height:100px;
+    overflow:hidden;
+    margin: -10px auto 40px;
+    width: 70px;
 }
 
 /*Layout*/
@@ -28,15 +28,15 @@ body{
   position: relative;
   top: 80px;
 }
-
 /*nav bar in layout*/
+
 .df-navbar {
   position: fixed;
   top: 0px;
   width: 100%;
   height: 80px;
   background-color: #3B5999;
-  z-index: 100;
+     z-index: 100;
 }
 
 .df-navlist{
@@ -63,12 +63,12 @@ body{
   height:auto;
   padding: 20px 20px;
 }
-
 .profile-background-wall{
   margin-top: 10px;
   background-image:url('/images/background-wall.jpg');
   background-repeat: repeat-y;
 }
+
 
 .profile-info{
   position: relative;
@@ -117,7 +117,6 @@ body{
   color:#FFFFFF;
   background-color:#3B5999;
 }
-
 .login-button a{
   color:#FFFFFF;
 }
@@ -142,7 +141,6 @@ body{
   padding-top: 5px;
   padding-bottom: 5px; 
   display: inline-block;
-
 }
 
 .small_pic {
@@ -175,13 +173,13 @@ body{
   width: 80%;
   height: 82%;
 }
-
 .book-container a {
   text-decoration: none;
 }
 
 
 .book-own{
+  /*border: solid 3px red; */
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: #4e69a3;
@@ -217,10 +215,11 @@ body{
   font-size: 20px;
 }
 
+
 .book-borrowed{
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  background-color: #FBEC5D;
+  background-color: #E3CF57;
   color: #FFFFFF;
   height: 45px ;
   width: 80%;
@@ -228,6 +227,7 @@ body{
   line-height: 50px;
   font-size: 20px;
 }
+
 
 .book-borrow{
   border-bottom-right-radius: 10px;
@@ -304,7 +304,6 @@ body{
 }
 
 /*For show book detail page */
-
 .profile_thumb img{
   width: 100%;
 }
@@ -317,7 +316,7 @@ body{
   width: 100% ;
 }
 
-/*Add book page*/
+/**/
 .background-add-book-form {
   background: url("../images/blue_book2.png") no-repeat;
   background-size: 100%;
@@ -338,8 +337,6 @@ body{
   padding-left: 55px;
   width: 55%;
   min-height: 1px;
-  position: relative;
-  left: 260px;
 }
 
 .add-book-form-control {
@@ -364,15 +361,15 @@ body{
 
 #isbn_text_message{
   color: white;
-  font-size: 20px;
+  font-size: 13px;
 }
 
 .addbook-button{
   margin-top: 20px; 
-  margin-bottom: 20px;
   position: relative;
+  left: 80px;
   padding: 10px 16px;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
   position: relative;
@@ -386,10 +383,23 @@ body{
 .isbn-button{
   margin-top: 20px; 
   position: relative;
+  left: 80px;
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
   position: relative;
-  left: 124px;
+  left: 185px;
+}
+
+/*update book */
+.add-book-form-update-book {
+  min-height: 1px;
+  padding-right: 55px;
+  padding-left: 55px;
+  width: 55%;
+  min-height: 1px;
+  position: relative;
+  left: 260px;
+
 }

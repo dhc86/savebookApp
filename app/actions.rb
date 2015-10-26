@@ -113,6 +113,23 @@ get '/books/:isbn/info' do
   #end
 end
 
+post '/books/:id/edit' do
+  redirect "/users/login" unless logged_in?
+  @book = Book.find(params[:book_id])
+  if @book.update(
+    title: params[:title],
+    author: params[:author],
+    isbn: params[:isbn],
+    description: params[:description],
+    picture_url: params[:url]
+  )
+  #end
+    redirect "/books/#{@book.id}"
+  else
+    erb :'/books/edit'
+  end
+end
+
 # Save a new book to database
 post '/books' do
   redirect "/users/login" unless logged_in?
@@ -149,13 +166,13 @@ post '/books/:id/lend' do |id|
   request.update(
     attended_to: true,
     accepted: true
-    )
+  )
   @book = Book.find(params[:book_id])
   @book.lends.create(
     borrower_id: params[:borrower_id],
     due: params[:due],
     checkout: params[:checkout]
-    )
+  )
   redirect "/users/#{@book.user_id}"
 end
 
@@ -165,7 +182,7 @@ post '/books/:id/denied' do |id|
   request = Request.find(params[:request_id])
   request.update(
     attended_to: true
-    )
+  )
   @book = Book.find(params[:book_id])
   redirect "/users/#{@book.user_id}"
 end
