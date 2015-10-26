@@ -34,7 +34,7 @@
                                     <div class="book-lentout">Loaned</div>
                                 <% elsif current_user && current_user.id == book.user_id %>
                                     <div class="book-own">Owned</div>
-                                <% elsif book.lends && current_user && book.lends.find_by(borrower_id: current_user.id) %>
+                                <% elsif book.lends && current_user && book.lends.find_by(borrower_id: current_user.id) && book.lends.find_by(checkin: nil) %>
                                     <div class="book-borrowed">Borrowed</div>
                                 <% elsif (book.lends && lend = book.lends.find_by(checkin: nil)) %>
                                     <div class="book-lend">Unavailable</div>
