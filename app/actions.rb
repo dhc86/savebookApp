@@ -113,6 +113,23 @@ get '/books/:isbn/info' do
   #end
 end
 
+post '/books/:id/edit' do
+  redirect "/users/login" unless logged_in?
+  @book = Book.find(params[:book_id])
+  if @book.update(
+    title: params[:title],
+    author: params[:author],
+    isbn: params[:isbn],
+    description: params[:description],
+    picture_url: params[:url]
+  )
+  #end
+    redirect "/books/#{@book.id}"
+  else
+    erb :'/books/edit'
+  end
+end
+
 # Save a new book to database
 post '/books' do
   redirect "/users/login" unless logged_in?

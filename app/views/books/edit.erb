@@ -18,7 +18,8 @@
   </div>
   <div class="row">
       <div class="col-md-6 add-book-form">
-        <form method="post" id="new-book" action="/books">
+          <form method="post" id="new-book" action="/books/:id/edit">
+              <input  type="hidden" name="book_id" value = <%= @book && @book.id %>>
             <input  type="text" id="title" name = "title" placeholder=" Title" class="add-book-form-control" value="<%= @book && @book.title %>">
 
             <div class="form_line">
@@ -30,11 +31,11 @@
             </div>
 
             <div class="form_line">
-              <input  type="text" id="url" name="url" placeholder=" Picture URL (optional)" class="add-book-form-control">
+                <input type="text" id="url" name="url" value="<%= @book && @book.picture_url %>"placeholder=" Picture URL (optional)" class="add-book-form-control">
             </div>
 
             <div class="form_line">
-              <textarea class="add-book-form-control"  name="description" id="description" rows="100" cols="50" value="<%= @book && @book.description %>" placeholder=" Enter description about the book..."></textarea>
+                <textarea class="add-book-form-control" name="description" id="description" rows="100" cols="50" placeholder=" Enter description about the book..."><%=@book && @book.description %></textarea>
             </div>
              <div >
               <button class="button btn-lg btn-primary addbook-button">Update Book</button>
