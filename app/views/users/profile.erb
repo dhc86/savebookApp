@@ -54,7 +54,7 @@
       <% requests.each do |request| %>
         <% if request.attended_to == true && request.accepted == true && request.book.lends.find_by(checkin: nil) %>
           <p>
-            Your request for <a href="/users/#{<%= request.owner_id %>}"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> was approved! View <a href="/books/#{<%= request.book.id %>}">book now</a>
+            Your request for <a href="/users/<%= request.owner_id %>"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> was approved! View <a href="/books/<%= request.book.id %>">book now</a>
           </p>
           <hr />
         <% end %>
@@ -64,7 +64,7 @@
       <% requests.each do |request| %>
       <% if request.attended_to == true && request.accepted == false %>
          <p>
-            Your request for <a href="/users/#{<%= request.owner_id %>}"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> was denied. Try requesting <a href="/books/#{<%= request.book.id %>}">here again</a> to see if the owner changes their mind.
+            Your request for <a href="/users/<%= request.owner_id %>"><%= User.find(request.owner_id).first_name %>  <%= User.find(request.owner_id).last_name %></a> book: <%= request.book.title %> was denied. Try requesting <a href="/books/<%= request.book.id %>">here again</a> to see if the owner changes their mind.
          </p>
         <% end %>
       <% end %>
