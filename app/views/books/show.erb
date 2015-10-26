@@ -50,37 +50,28 @@
         <input type="hidden" name="book" value="<%= @book %>">
         <button class="btn button">Edit Book</button>
       </form>
-     <% elsif @book.requests.empty? || ( @book.requests && req = @book.requests.find_by(accepted: false) && req.attended_to == true) %>
+    <% elsif @book.requests && ( request = @book.requests.find_by(attended_to: false) ) %>
+      <% if request.borrower_id == current_user.id %>
+            <span class="button">Request Sent</span>
+      <% end %>
+     <% elsif current_user.id != @book.id && !@book.lends.find_by(checkin: nil) %>
         <form method="post" action="/books/:id/request">
           <input type="hidden" name="book_id" value="<%= @book.id %>">
           <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
           <input type="hidden" name="owner_id" value="<%= @book.user.id %>">
           <button id="btn_request_book" class="btn button">Request Book</button>
-      </form>
-     <% elsif !@book.lends.find_by(checkin: nil) %>
-      <form method="post" action="/books/:id/request">
-        <input type="hidden" name="book_id" value="<%= @book.id %>">
-        <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
-        <input type="hidden" name="owner_id" value="<%= @book.user.id %>">
-            <button id="btn_request_book" class="btn button">Request Book</button>
-      </form>
+      </form> 
    <% elsif @book.requests.find_by(accepted: true) && @book.lends.find_by(checkin: nil) && current_user.id != @book.lends.find_by(checkin: nil).borrower_id %>
           <span class="btn button">Book Unavailable</span>
-    <% end %> 
-        
-        <% if @book.requests && ( request = @book.requests.find_by(attended_to: false) ) %>
-          <% if request.borrower_id == current_user.id %>
-            <span class="btn button">Request Sent</span>
-          <% end %>
-       <% elsif lend = @book.lends.find_by(checkin: nil) %>
-        <% if current_user.id = lend.borrower_id %>
+    <% elsif lendd = @book.lends.find_by(checkin: nil) %>
+      <% if current_user.id == lendd.borrower_id %>
           <form method="post" action="/books/:id/return">
             <input type="hidden" name="lend_id" value="<%= lend && lend.id %>">
             <input type="hidden" name="book_id" value="<%= @book.id %>">
             <input type="hidden" name="checkin" value="<%= Date.today %>">
             <button class="btn button">Return Book</button>
-          </form>  
-        <% end %>          
+      <% end %>
+          </form>           
       <% end %>
 
       <% if (@distance != 0) %>
@@ -88,6 +79,7 @@
       <button id="btn_show_map" class="btn button" >Show Map</button>
       <button id="btn_close_map" class="btn button" >Close Map</button>
       <p>
+      <div class="cover_map"></div>
       <iframe id = "map" style="height: 400px; width: 600px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCVt89sOKkehU7JDQpPncShX80rzGE6kj4&origin=<%= current_user.address %>&destination= <%= @book.user.address %> &avoid=tolls|highways"></iframe>
       </p>
     <% else %>
@@ -105,6 +97,7 @@
   </div>  
 </div>
 
+<div class="box_reviews">
  <hr/>
   <% if current_user %>
     <% unless @book.reviews.find_by(user_id: current_user.id)  %>
@@ -115,7 +108,7 @@
         <p>Review by: <%= current_user.first_name %>  <%= current_user.last_name %></p>
         <label>Review: </label>
         <p>
-        <textarea rows="5" cols="30" name="text" value="text"></textarea>
+        <textarea class="add-book-form-control"  name="text" id="description" rows="100" cols="50" placeholder=" Enter a review about the book..."></textarea>
         </p>
         <label>Rating: </label>
         <select name="rating" value="rating">
@@ -137,7 +130,7 @@
   <% end %>
  
 
-
+<div class="list_of_reviews">
   <% if @book.reviews %>
     <h2>Reviews by Users</h2>
     <hr />
@@ -164,3 +157,5 @@
       <hr />
     <% end %>
   <% end %>
+  </div>
+</div>

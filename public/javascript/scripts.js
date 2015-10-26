@@ -18,6 +18,7 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
     map.show();
     $('#btn_show_map').hide();
     $('#btn_close_map').show();
+    $('.cover_map').hide();
 
   });
    // Close Map
@@ -25,6 +26,7 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
   map.hide();
   $('#btn_close_map').hide();
   $('#btn_show_map').show();
+  $('.cover_map').show();
 
   });
 
