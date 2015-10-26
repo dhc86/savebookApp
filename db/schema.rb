@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 6) do
 
   create_table "books", force: :cascade do |t|
     t.integer  "user_id"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 4) do
     t.boolean  "attended_to", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.integer  "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "text"
   end
 
   create_table "users", force: :cascade do |t|

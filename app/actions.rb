@@ -22,21 +22,8 @@ get '/books/:id/edit' do |id|
   erb :'books/edit'
 end
 
-# Edit an existing book
-put '/books/:id' do |id|
-  @book = Book.find(id)
-  if @book.update(
-    title: params[:title],
-    author: params[:author],
-    isbn: params[:isbn],
-    description: params[:description],
-    picture_url: params[:picture_url]
-  )
-  redirect "/books/#{@book.id}"
-  else
-    erb :'books/edit'
-  end
-end
+# # Edit an existing book
+
 
 # Login page for user
 get '/users/login' do
@@ -209,17 +196,6 @@ get '/books/:id' do |id|
 end
 
 
-# Edit an existing book
-put '/books/:id' do |id|
-  redirect "/users/login" unless logged_in?
-  @book = Book.find(id)
-  if @book.update(params[:post])
-    redirect "/books/#{@book.id}"
-  else
-    erb :'books/edit'
-  end
-end
-
 
 # Get the page to edit the book
 get '/books/:id/edit' do |id|
@@ -240,5 +216,23 @@ end
 get '/login' do
   erb :'/login'
 end
+
+post '/books/:id/review' do
+  @review = Review.create(
+    text: params[:text],
+    rating: params[:rating].to_i,
+    user_id: params[:current_user],
+    book_id: params[:book_id]
+    )
+  redirect '/books/' + params[:book_id].to_s
+end
+
+delete '/delete/review' do
+  if current_user
+    Review.find(params[:review_id]).destroy
+    end
+    redirect '/books/' + params[:book_id].to_s 
+end
+
 
 

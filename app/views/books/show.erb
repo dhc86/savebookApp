@@ -68,7 +68,16 @@
         <input type="hidden" name="book" value="<%= @book %>">
         <button class="btn button">Edit Book</button>
       </form>
-    <% elsif @book.requests.empty? || ( @book.lends.find_by(checkin: nil) ) %>
+    <% elsif @book.requests.empty? || ( @book.requests && req = @book.requests.find_by(accepted: false) ) %>
+      <% if req.attended_to == true %>
+        <form method="post" action="/books/:id/request">
+          <input type="hidden" name="book_id" value="<%= @book.id %>">
+          <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
+          <input type="hidden" name="owner_id" value="<%= @book.user.id %>">
+          <button id="btn_request_book" class="btn button">Request Book</button>
+      <% end %>
+      </form>
+     <% elsif !@book.lends.find_by(checkin: nil) %>
       <form method="post" action="/books/:id/request">
         <input type="hidden" name="book_id" value="<%= @book.id %>">
         <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
@@ -115,5 +124,63 @@
     
   </div>  
 </div>
-Status API Training Shop Blog About Pricing
-© 2015 GitHub, Inc. Terms Privacy Security Contact Help
+
+ <hr/>
+  <% if current_user %>
+    <% unless @book.reviews.find_by(user_id: current_user.id)  %>
+      <h4>Add Reviews</h4>
+      <form action="/books/:id/review" method="post">
+        <input type="hidden" name= "book_id" value="<%= @book.id %>">
+        <input type="hidden" name="current_user" value="<%= current_user.id %>">
+        <p>Review by: <%= current_user.first_name %> <%= current_user.last_name %> </p>
+        <label>Review: </label>
+        <p>
+        <textarea rows="5" cols="30" name="text" value="text"></textarea>
+        </p>
+        <label>Rating: </label>
+        <select name="rating" value="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <p>
+        <button type="submit" class="btn button">Submit Review</button>
+        </p>
+      </form>
+    <% end %>
+  <% else %>
+    <p>
+      <h3>You must <a href="/">Sign In or Sign Up</a> to review this song</h3>
+    </p>
+  <% end %>
+ 
+
+
+  <% if @book.reviews %>
+    <h2>Reviews by Users</h2>
+    <hr />
+    <% @book.reviews.each do |review| %>
+      <p>
+        Name: <%= User.find_by(id: review.user_id).first_name %>  <%= User.find_by(id: review.user_id).last_name %>
+      </p>
+      <p>
+        Ratings: <%= review.rating %>
+      </p>
+      <p>
+        <%= review.text %>             
+      </p>
+      <p>
+        <% if current_user.id == User.find_by(id: review.user_id).id %>
+          <form method="post" action="/delete/review">
+          <input name="_method" type="hidden" value="delete" />
+          <input type="hidden" name="book_id" value="<%= @book.id %>">
+          <input type="hidden" name="review_id" value="<%= review.id %>">
+            <button type="submit" class="btn button">Delete Review</button>
+          </form>
+        <% end %>
+      </p>
+      <hr />
+    <% end %>
+  <% end %>
