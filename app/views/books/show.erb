@@ -25,24 +25,6 @@
             <label>Book should be returned by: </label><%= lend.due %>
             </p>
         <% end %>
-        <!-- For book check out form -->
-        <div id="book_checkout_form">
-            <h2>Book Checkout Form</h2>
-            <p><strong>All Books are due <em>7 days</em> from checkout</strong></p>
-            <form method="post" action="/books/:id/lend">
-                <input type="hidden" name="borrower_id" value="<%= current_user.id %>">
-                <input type="hidden" name="book_id" value="<%= @book.id %>">
-                <p>
-                <label>Checkout Date: </label><input type="date" name="checkout" value="<%= Date.today %>">
-                </p>
-                <p>
-                <label>Expected Checkin date: </label><input type="date" name="due" value="<%= (Date.today + 7.days) %>">
-                </p>
-                <p>
-                <button class="button">Confirm Checkout</button>
-                </p>
-            </form>
-        </div>
     </div>                
     <div class="col-sm-5">
         <!-- For book detail information -->
