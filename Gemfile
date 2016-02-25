@@ -22,9 +22,4 @@ group :development, :test do
 
 end
 
-group :production, :test do
-  
-  gem 'shotgun'
-  gem 'pg'
 
-end
