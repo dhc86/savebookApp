@@ -15,7 +15,9 @@ require 'geokit'
 
 
 
-require 'pry'
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s

@@ -1,9 +1,7 @@
 require 'rake'
 require "sinatra/activerecord/rake"
 require ::File.expand_path('../config/environment', __FILE__)
-require 'active_record'
 
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 Rake::Task["db:create"].clear
 Rake::Task["db:drop"].clear
