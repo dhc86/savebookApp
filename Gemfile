@@ -19,7 +19,10 @@ group :development, :test do
   gem 'pry'
   gem 'shotgun'
   gem 'sqlite3'
-
 end
+
+group :production do 
+  gem 'pg'
+end 
 
 
