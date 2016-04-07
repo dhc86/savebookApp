@@ -55,9 +55,9 @@ task "db:version" do
   puts "Current version: #{ActiveRecord::Migrator.current_version}"
 end
 
-# desc 'Seed database with dummy data'
-# task 'db:seed'do 
-#   # Read file and have an IO oject
-#   # Iterate over the lines 
-#   # on the block create object for database
-# end
+desc 'Seed database with dummy data'
+task 'db:seed'do 
+  # Read file and have an IO oject
+  # Iterate over the lines 
+  # on the block create object for database
+end
